@@ -1,0 +1,349 @@
+########
+# LATEX #
+#########
+# Start document 
+snippet startdoc "LaTeX Start Document" 
+\documentclass[12pt]{article}
+\usepackage{fontspec}
+\setmainfont{Atkinson Hyperlegible}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{amsthm}  
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\hypersetup{breaklinks=true}
+\definecolor{mattegray}{rgb}{0.3, 0.3, 0.3}
+\definecolor{matteblue}{rgb}{0.2, 0.4, 0.6}
+\definecolor{mattegreen}{rgb}{0.3, 0.5, 0.3}
+\definecolor{mattered}{rgb}{0.8, 0.2, 0.2}
+\hypersetup{
+	colorlinks=true,   % Farvede links (ingen rammer omkring links)
+	linkcolor=mattered,    % Farve på interne links (til indholdsfortegnelsen og sektioner)
+	citecolor=red,     % Farve på citations-links (hvis du bruger bibtex)
+	filecolor=magenta, % Farve på links til filer
+	urlcolor=blue      % Farve på eksterne links
+}
+\lstset{
+	basicstyle=\ttfamily\footnotesize, 
+	backgroundcolor=\color{mattegray!10},   
+	frame=single,                      
+	rulecolor=\color{mattegray!80},     
+	keywordstyle=\color{matteblue},    
+	stringstyle=\color{mattegreen},     
+	commentstyle=\color{mattegreen!60!black},
+	numbers=left,                     
+	numberstyle=\tiny\color{mattegray},     
+	breaklines=true,                 
+	breakatwhitespace=true,         
+	captionpos=b,                  
+	tabsize=2,
+	literate={\_}{\_}1
+}
+
+\begin{document}
+${1:Din tekst her...}
+\end{document}
+endsnippet
+
+snippet toc "Indholdsfortegnelse"
+\tableofcontents
+\newpage
+endsnippet
+
+snippet label "Label"
+\label{${1:Label name}}
+endsnippet
+
+snippet newpage "Ny Side"
+\newpage
+endsnippet
+
+snippet noi "Ingen Indrykning"
+\noindent 
+endsnippet
+
+snippet ref "Reference with parentheses"
+(\ref{${1:Ref name}})
+endsnippet
+
+snippet bluetext "Blå tekst"
+\textcolor{blue}{${1:Din tekst her...}}
+endsnippet
+
+snippet input "Indsæt Dokument"
+\input{chapters/${1:path/to/document}}
+endsnippet
+
+snippet sec "Sektion"
+\section{${1:Section title}}
+${2:Indhold her...}
+endsnippet
+
+snippet sub "Undersektion"
+\subsection{${1:Subsection title}}
+${2:Indhold her...}
+endsnippet
+
+snippet subsub "Underundersektion"
+\subsubsection{${1:Subsubsection title}}
+${2:Indhold her...}
+endsnippet
+
+snippet bf "Fed tekst"
+\textbf{${1:Din tekst her...}}
+endsnippet
+
+snippet ul "Understreget tekst"
+\underline{${1:Din tekst her...}}
+endsnippet
+
+snippet it "Kursiv tekst"
+\textit{${1:Din tekst her...}}
+endsnippet
+
+snippet fig "Figur"
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8]{${1:path/to/image}}
+	\caption{${2:Caption tekst}}
+	\label{fig:${3:label}}
+\end{figure}
+endsnippet
+
+snippet tbox "Tcolorbox"
+\begin{tcolorbox}[title=${1:Titel her...}]
+${2:Indsæt her...}
+\end{tcolorbox}
+endsnippet
+
+snippet itemize "Punktliste"
+\begin{itemize}
+	\item ${1:Første punkt}
+\end{itemize}
+endsnippet
+
+snippet item "item " w
+\item  
+endsnippet
+
+
+
+snippet num "Nummereret liste"
+\begin{enumerate}
+	\item ${1:Første punkt}
+\end{enumerate}
+endsnippet
+
+snippet lst "Kodeblok"
+\begin{lstlisting}[language=python, caption=${1:Et eksempel på Python-kode}]
+${2:Indsæt kode her...}
+\end{lstlisting}
+endsnippet
+
+snippet link "Wrap Link"
+{\href{${1:https://din-url-her.dk}}{${2:https://din-url-her.dk}}}
+endsnippet
+
+
+snippet eq "Ligning med tal"
+\begin{equation}
+${1:Indsæt din ligning her...}
+\end{equation}
+endsnippet
+
+# TODO: Footnotes, tabeller
+
+
+########
+# MATH #
+########
+snippet boldsym "Bold Symbol" w
+\boldsymbol{${1:variable}} $0
+endsnippet
+
+snippet int "Integral" w
+\int_{${1:lower}}^{${2:upper}} ${3:expression} $0
+endsnippet
+
+snippet inn "in " w
+\in 
+endsnippet
+
+snippet cap "cap" w
+\cap 
+endsnippet
+
+snippet cup "cup" w
+\cup 
+endsnippet
+
+snippet mk "Inline Math" w
+\\( ${1} \\) $0
+endsnippet
+
+snippet dm "Display Math" w
+\[
+	${1:${VISUAL}}
+\]$0
+endsnippet
+
+snippet frac "Fraction" w
+\frac{$1}{$2}$0
+endsnippet
+
+snippet ss "Super Script" i
+^{$1}$0
+endsnippet
+
+snippet sd "subscript" i
+_{$1}$0
+endsnippet
+
+snippet sqrt "Square Root" wi
+\sqrt{${1:${VISUAL}}}$0
+endsnippet
+
+snippet pmat "Pmat" w
+\begin{pmatrix} $1 \end{pmatrix} $0
+endsnippet
+
+snippet bmat "Bmat" w
+\begin{bmatrix} $1 \end{bmatrix} $0
+endsnippet
+
+snippet sum "sum" w
+\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n}
+endsnippet
+
+snippet lim "limit" w
+\lim_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+snippet prod "product" w
+\prod_{${1:n=${2:1}}}^{${3:\infty}} ${4:${VISUAL}} $0
+endsnippet
+
+snippet part "d/dx" w
+\frac{\partial ${1:V}}{\partial ${2:x}} $0
+endsnippet
+
+snippet ooo "\infty" w
+\infty
+endsnippet
+
+snippet => "Implies" w
+\implies
+endsnippet
+
+snippet == "Equals" w
+&= $1 \\\\
+endsnippet
+
+snippet != "Not Equal" w
+\neq 
+endsnippet
+
+snippet <= "leq" w
+\le 
+endsnippet
+
+snippet >= "geq" w
+\ge 
+endsnippet
+
+snippet times "cross" Aw
+\times 
+endsnippet
+
+# Greek letters
+snippet alpha "Greek alpha"
+\alpha
+endsnippet
+
+snippet beta "Greek beta"
+\beta
+endsnippet
+
+snippet gamma "Greek gamma"
+\gamma
+endsnippet
+
+snippet Gamma "Greek Gamma"
+\Gamma
+endsnippet
+
+snippet delta "Greek delta"
+\delta
+endsnippet
+
+snippet Delta "Greek Delta"
+\Delta
+endsnippet
+
+snippet epsilon "Greek epsilon"
+\epsilon
+endsnippet
+
+snippet zeta "Greek zeta"
+\zeta
+endsnippet
+
+snippet theta "Greek theta"
+\theta
+endsnippet
+
+snippet Theta "Greek Theta"
+\Theta
+endsnippet
+
+snippet iota "Greek iota"
+\iota
+endsnippet
+
+snippet lambda "Greek lambda"
+\lambda
+endsnippet
+
+snippet Lambda "Greek Lambda"
+\Lambda
+endsnippet
+
+snippet omega "Greek omega"
+\omega
+endsnippet
+
+snippet Omega "Greek Omega"
+\Omega
+endsnippet
+
+snippet mu "Greek mu"
+\mu
+endsnippet
+
+snippet Sigma "Sigma"
+\Sigma
+endsnippet
+
+snippet sigma "sigma"
+\sigma
+endsnippet
+
+snippet Phi "Greek Phi"
+\Phi
+endsnippet
+
+snippet pi "Greek pi"
+\pi
+endsnippet
+
+snippet lamda "lamda"
+\lambda
+endsnippet
+
+
+
+# vim:ft=snippets:

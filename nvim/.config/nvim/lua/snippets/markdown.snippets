@@ -1,0 +1,224 @@
+############
+# MARKDOWN #
+############
+
+snippet link
+[${1:text}](https://${2:url})
+endsnippet
+
+snippet bold
+**${1:bold text}**
+endsnippet
+
+snippet italic
+*${1:italic text}*
+endsnippet
+
+snippet code
+\`${1:code}\`
+endsnippet
+
+snippet codeb
+\`\`\`${1:language}
+${2:your code here}
+\`\`\`
+endsnippet
+
+snippet callout
+> ${1:blockquote}
+endsnippet
+
+snippet todo
+- [ ] ${1:task}
+endsnippet 
+
+
+########
+# MATH #
+########
+snippet mk "Inline Math" w
+$${1}${0}$
+endsnippet
+
+snippet dm "Display Math" w
+$$
+${1:${VISUAL}}
+$$
+$0
+endsnippet
+
+snippet boldsym "Bold Symbol" w
+\boldsymbol{${1:variable}} $0
+endsnippet
+
+snippet frac "Fraction" w
+\frac{$1}{$2}$0
+endsnippet
+
+snippet ss "Super Script" i
+^{$1}$0
+endsnippet
+
+snippet sd "subscript" i
+_{$1}$0
+endsnippet
+
+snippet sqrt "Square Root" wi
+\sqrt{${1:${VISUAL}}}$0
+endsnippet
+
+snippet pmat "Pmat" w
+\begin{pmatrix} $1 \end{pmatrix} $0
+endsnippet
+
+snippet bmat "Bmat" w
+\begin{bmatrix} $1 \end{bmatrix} $0
+endsnippet
+
+snippet sum "sum" w
+\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n}
+endsnippet
+
+snippet lim "limit" w
+\lim_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+snippet prod "product" w
+\prod_{${1:n=${2:1}}}^{${3:\infty}} ${4:${VISUAL}} $0
+endsnippet
+
+snippet part "d/dx" w
+\frac{\partial ${1:V}}{\partial ${2:x}} $0
+endsnippet
+
+snippet int "Integral" w
+\int_{${1:lower}}^{${2:upper}} ${3:expression} $0
+endsnippet
+
+snippet ooo "\infty" w
+\infty
+endsnippet
+
+snippet => "Implies" w
+\implies
+endsnippet
+
+snippet == "Equals" w
+&= $1 \\\\
+endsnippet
+
+snippet != "Not Equal" w
+\neq 
+endsnippet
+
+snippet <= "leq" w
+\le 
+endsnippet
+
+snippet >= "geq" w
+\ge 
+endsnippet
+
+snippet times "cross" Aw
+\times 
+endsnippet
+
+# Greek letters
+snippet alpha "Greek alpha"
+\alpha
+endsnippet
+
+snippet beta "Greek beta"
+\beta
+endsnippet
+
+snippet gamma "Greek gamma"
+\gamma
+endsnippet
+
+snippet Gamma "Greek Gamma"
+\Gamma
+endsnippet
+
+snippet delta "Greek delta"
+\delta
+endsnippet
+
+snippet Delta "Greek Delta"
+\Delta
+endsnippet
+
+snippet epsilon "Greek epsilon"
+\epsilon
+endsnippet
+
+snippet zeta "Greek zeta"
+\zeta
+endsnippet
+
+snippet theta "Greek theta"
+\theta
+endsnippet
+
+snippet Theta "Greek Theta"
+\Theta
+endsnippet
+
+snippet iota "Greek iota"
+\iota
+endsnippet
+
+snippet lambda "Greek lambda"
+\lambda
+endsnippet
+
+snippet Lambda "Greek Lambda"
+\Lambda
+endsnippet
+
+snippet omega "Greek omega"
+\omega
+endsnippet
+
+snippet Omega "Greek Omega"
+\Omega
+endsnippet
+
+snippet mu "Greek mu"
+\mu
+endsnippet
+
+snippet Sigma "Greek Sigma"
+\Sigma
+endsnippet
+
+snippet sigma "Greek sigma"
+\sigma
+endsnippet
+
+snippet Phi "Greek Phi"
+\Phi
+endsnippet
+
+snippet pi "Greek pi"
+\pi
+endsnippet
+
+
+
+snippet to "Arrow"
+\to
+endsnippet
+
+snippet inn "in " w
+\in 
+endsnippet
+
+snippet cap "cap" w
+\cap 
+endsnippet
+
+snippet cup "cup" w
+\cup 
+endsnippet
+
