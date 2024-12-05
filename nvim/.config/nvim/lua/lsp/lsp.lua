@@ -6,7 +6,7 @@ return {
 
 		local lspconfig_defaults = require('lspconfig').util.default_config
 		lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-		'force',
+			'force',
 		lspconfig_defaults.capabilities,
 		require('cmp_nvim_lsp').default_capabilities()
 		)
@@ -44,6 +44,23 @@ return {
 
 		-- Latex
 		lspconfig.digestif.setup({})
+
+		-- TypeScript Server
+        lspconfig.ts_ls.setup({
+            on_attach = function(client, bufnr)
+                client.server_capabilities.documentFormattingProvider = false
+            end,
+        })
+
+		-- JavaScript/Typescript lining
+        lspconfig.eslint.setup({
+            on_attach = function(client, bufnr)
+                client.server_capabilities.documentFormattingProvider = true
+            end,
+        })
+
+		-- Tailwind for CSS
+        lspconfig.tailwindcss.setup({})
 
 		---------------------
 		-- End LSP servers --

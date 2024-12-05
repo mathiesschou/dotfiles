@@ -6,7 +6,7 @@ return {
 
 		configs.setup({
 			-- TS languages
-			ensure_installed = { "lua", "vim", "python", "markdown" },
+			ensure_installed = { "lua", "vim", "python", "markdown", "javascript", "typescript", "html", "css", "json"},
 		})
 	end
 }
