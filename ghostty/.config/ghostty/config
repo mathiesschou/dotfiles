@@ -1,8 +1,8 @@
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 
 # Font
 font-family = "MesloLGS NF"
-font-size = 13
+font-size = 16
 
 # Cursor
 cursor-style = block
