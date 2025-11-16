@@ -1,0 +1,9 @@
+# Nix
+result
+result-*
+
+# macOS
+.DS_Store
+
+# Backup
+*.backup
