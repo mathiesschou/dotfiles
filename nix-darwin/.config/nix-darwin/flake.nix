@@ -52,7 +52,13 @@ system.activationScripts.extraActivation.text = ''
   
   # Run setup script as user (we're root, so use sudo -u)
   echo "Running default terminal setup..."
-  sudo -u mathies /bin/bash ${./set-default-terminal.sh}
+  /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./set-default-terminal.sh}
+
+
+  # Setup SSH key
+  echo "Checking SSH setup.."
+  /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./setup-ssh.sh}
+
 '';
 
 					
