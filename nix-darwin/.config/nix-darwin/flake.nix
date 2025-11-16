@@ -26,6 +26,15 @@
 						git
 						stow
 						zsh-powerlevel10k
+						tree
+
+						# for neovim
+						ripgrep
+						fd
+						gcc
+						nodejs_20
+						lazygit
+						fzf
 					];					
 				
 				homebrew = {
