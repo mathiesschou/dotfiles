@@ -1,0 +1,18 @@
+theme = catppuccin-mocha
+
+# Font
+font-family = "MesloLGS NF"
+font-size = 13
+
+# Cursor
+cursor-style = block
+cursor-style-blink = true
+
+# Window
+window-padding-x = 10
+window-padding-y = 10
+window-decoration = true
+
+# Other
+confirm-close-surface = false
+shell-integration-features = no-cursor
