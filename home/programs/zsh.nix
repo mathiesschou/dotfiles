@@ -14,6 +14,13 @@
 
     initContent = lib.mkMerge [
       (lib.mkBefore ''
+        # direnv hook (auto-load Nix environments)
+        # Must be loaded before instant prompt to avoid console output warnings
+        if command -v direnv &> /dev/null; then
+          export DIRENV_LOG_FORMAT=""
+          eval "$(direnv hook zsh)"
+        fi
+
         # Enable Powerlevel10k instant prompt
         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
@@ -50,12 +57,6 @@
             echo "WARNING: Context7 API key not found in Keychain"
             echo "Add it with: security add-generic-password -a \"\$USER\" -s \"context7-api-key\" -w \"YOUR_API_KEY\""
           fi
-        fi
-
-        # direnv hook (auto-load Nix environments)
-        # Installed via Homebrew to avoid fish dependency issue
-        if command -v direnv &> /dev/null; then
-          eval "$(direnv hook zsh)"
         fi
       ''
     ];

@@ -18,7 +18,17 @@
     # Plugins
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
-      catppuccin
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+          # Catppuccin theme settings (must be set BEFORE plugin loads)
+          set -g @catppuccin_flavour "macchiato"
+          set -g @catppuccin_window_status_style "rounded"
+          set -g @catppuccin_status_background "default"
+          set -g @catppuccin_window_current_fill "number"
+          set -g @catppuccin_window_current_text "#W"
+        '';
+      }
     ];
 
     extraConfig = ''
@@ -38,23 +48,19 @@
       # Status bar at top
       set-option -g status-position top
 
-      # Catppuccin theme settings
-      set -g @catppuccin_window_status_style "rounded"
+      # Transparent background (must be set after plugin loads)
+      set -g status-style bg=default
 
-      # Rounded borders for all elements
-      set -g @catppuccin_pane_border_style "rounded"
-      set -g @catppuccin_window_left_separator ""
-      set -g @catppuccin_window_right_separator ""
-      set -g @catppuccin_window_middle_separator " █"
-      set -g @catppuccin_status_left_separator  ""
-      set -g @catppuccin_status_right_separator ""
-      set -g @catppuccin_status_connect_separator "no"
-
+      # Custom status bar content
       set -g status-left ""
       set -g status-right "#{E:@catppuccin_status_application} #{E:@catppuccin_status_session}"
 
-      # Transparent background
-      set -g status-style bg=default
+      # Pane borders (must be set after theme)
+      set -g pane-border-lines heavy
+      set -g popup-border-lines rounded
+
+      # Ensure UTF-8 support for borders
+      set -gq utf8 on
     '';
   };
 }
