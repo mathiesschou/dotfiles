@@ -47,6 +47,16 @@
            "font-meslo-lg-nerd-font"
            "sioyek"
            "microsoft-outlook"
+           "nikitabobko/tap/aerospace"
+       ];
+
+       taps = [
+        "nikitabobko/tap"
+        "felixKratz/formulae"
+       ];
+
+       brews = [
+        "felixkratz/formulae/borders"
        ];
 
        onActivation = {

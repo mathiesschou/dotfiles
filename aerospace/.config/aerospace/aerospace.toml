@@ -1,0 +1,68 @@
+# Start AeroSpace at login
+start-at-login = true
+
+# Normalizations
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Mouse follows focus
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Exec on startup - JankyBorders for window borders
+after-startup-command = [
+    'exec-and-forget borders active_color=0xffff0000 inactive_color=0xff494d64 width=10.0'
+]
+
+# Gaps
+[gaps]
+inner.horizontal = 8
+inner.vertical = 8
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
+
+# Main keybindings (Option as primary modifier)
+[mode.main.binding]
+
+# Option + arrow keys for focus
+alt-left = 'focus left'
+alt-down = 'focus down'
+alt-up = 'focus up'
+alt-right = 'focus right'
+
+# Option + Shift + arrow keys for moving windows
+alt-shift-left = 'move left'
+alt-shift-down = 'move down'
+alt-shift-up = 'move up'
+alt-shift-right = 'move right'
+
+# Workspaces (Option + number)
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+
+# Move window to workspace (Option + Shift + number)
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+
+# Layout
+alt-f = 'fullscreen'
+alt-s = 'layout tiles horizontal vertical'
+alt-a = 'layout accordion horizontal vertical'
+
+# Resize mode (Option + r)
+alt-r = 'mode resize'
+
+[mode.resize.binding]
+left = 'resize width -50'
+down = 'resize height +50'
+up = 'resize height -50'
+right = 'resize width +50'
+esc = 'mode main'
+enter = 'mode main'
