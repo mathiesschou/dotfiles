@@ -23,6 +23,7 @@
     brews = [
       "felixkratz/formulae/borders"
       "felixkratz/formulae/sketchybar"
+      "direnv"
     ];
 
     onActivation = {

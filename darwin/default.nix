@@ -61,6 +61,11 @@
   system.stateVersion = 5;
   system.primaryUser = "mathies";
 
+  # Hostname configuration
+  networking.computerName = "mathies-macos";
+  networking.hostName = "mathies-macos";
+  networking.localHostName = "mathies-macos";
+
   # Keyboard settings
   system.keyboard = {
     enableKeyMapping = true;
@@ -110,14 +115,15 @@
     echo "Ensuring sketchybar service..."
     /usr/bin/sudo -u mathies /opt/homebrew/bin/brew services restart sketchybar 2>/dev/null || true
 
-    # Setup npm global directory and install Claude Code
-    echo "Setting up Claude Code..."
+    # Setup npm global directory and install AI tools
+    echo "Setting up AI CLI tools..."
     /usr/bin/sudo -u mathies /bin/bash -c '
       export HOME=/Users/mathies
       mkdir -p $HOME/.npm-global
       echo "prefix=$HOME/.npm-global" > $HOME/.npmrc
       export PATH="$HOME/.npm-global/bin:${pkgs.nodejs_20}/bin:$PATH"
       npm install -g @anthropic-ai/claude-code
+      npm install -g @openai/codex
     ' || true
 
     # Restart SystemUIServer to apply menubar changes

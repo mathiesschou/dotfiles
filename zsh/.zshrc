@@ -26,3 +26,9 @@ alias la='ls -a'
 
 # Add npm global bin to PATH
 export PATH="$HOME/.npm-global/bin:$PATH"
+
+# direnv hook (auto-load Nix environments)
+# Installed via Homebrew to avoid fish dependency issue
+if command -v direnv &> /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
