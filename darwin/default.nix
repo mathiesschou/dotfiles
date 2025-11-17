@@ -124,6 +124,57 @@
       export PATH="$HOME/.npm-global/bin:${pkgs.nodejs_20}/bin:$PATH"
       npm install -g @anthropic-ai/claude-code
       npm install -g @openai/codex
+      npm install -g context7
+    ' || true
+
+    # Setup Claude Code MCP servers
+    echo "Setting up Claude Code MCP servers..."
+    /usr/bin/sudo -u mathies /bin/bash -c '
+      export HOME=/Users/mathies
+      export PATH="$HOME/.npm-global/bin:/opt/homebrew/bin:${pkgs.nodejs_20}/bin:$PATH"
+
+      # Check if MCP servers are already configured
+      if ! claude mcp list 2>/dev/null | grep -q "serena"; then
+        echo "Installing Serena MCP server..."
+        claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server
+      fi
+
+      if ! claude mcp list 2>/dev/null | grep -q "sequential-thinking"; then
+        echo "Installing Sequential Thinking MCP server..."
+        claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
+      fi
+
+      if ! claude mcp list 2>/dev/null | grep -q "context7"; then
+        echo "Installing Context7 MCP server..."
+        claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp
+      fi
+
+      echo "✓ Claude Code MCP servers configured"
+    ' || true
+
+    # Setup Codex MCP servers
+    echo "Setting up Codex MCP servers..."
+    /usr/bin/sudo -u mathies /bin/bash -c '
+      export HOME=/Users/mathies
+      export PATH="$HOME/.npm-global/bin:/opt/homebrew/bin:${pkgs.nodejs_20}/bin:$PATH"
+
+      # Check if MCP servers are already configured
+      if ! grep -q "mcp_servers.serena" $HOME/.codex/config.toml 2>/dev/null; then
+        echo "Installing Serena MCP server..."
+        codex mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server
+      fi
+
+      if ! grep -q "mcp_servers.sequential-thinking" $HOME/.codex/config.toml 2>/dev/null; then
+        echo "Installing Sequential Thinking MCP server..."
+        codex mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
+      fi
+
+      if ! grep -q "mcp_servers.context7" $HOME/.codex/config.toml 2>/dev/null; then
+        echo "Installing Context7 MCP server..."
+        codex mcp add context7 -- npx -y @upstash/context7-mcp
+      fi
+
+      echo "✓ Codex MCP servers configured"
     ' || true
 
     # Restart SystemUIServer to apply menubar changes

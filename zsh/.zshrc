@@ -4,7 +4,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Load powerlevel10k theme (installed via Nix)
-source $HOME/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null || true
+if [ -f $HOME/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theme ]; then
+  source $HOME/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+elif [ -n "${commands[fzf-share]}" ]; then
+  source "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" 2>/dev/null
+fi
 
 # Load p10k configuration if it exists
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

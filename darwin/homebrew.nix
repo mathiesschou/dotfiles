@@ -24,6 +24,7 @@
       "felixkratz/formulae/borders"
       "felixkratz/formulae/sketchybar"
       "direnv"
+      "uv"
     ];
 
     onActivation = {
