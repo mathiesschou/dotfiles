@@ -4,6 +4,7 @@
   imports = [
     ./programs/git.nix
     ./programs/zsh.nix
+    ./programs/tmux.nix
     ./programs/neovim.nix
     ./programs/ghostty.nix
     ./programs/aerospace.nix
@@ -18,7 +19,6 @@
     packages = with pkgs; [
       stow
       zsh-powerlevel10k
-      tmux
     ];
 
     sessionVariables = {
