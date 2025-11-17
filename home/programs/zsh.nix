@@ -41,6 +41,17 @@
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
 
+        # Load Context7 API key from macOS Keychain
+        if command -v security &> /dev/null; then
+          CONTEXT7_KEY=$(security find-generic-password -a "$USER" -s "context7-api-key" -w 2>/dev/null || echo "")
+          if [[ -n "$CONTEXT7_KEY" ]]; then
+            export CONTEXT7_API_KEY="$CONTEXT7_KEY"
+          else
+            echo "WARNING: Context7 API key not found in Keychain"
+            echo "Add it with: security add-generic-password -a \"\$USER\" -s \"context7-api-key\" -w \"YOUR_API_KEY\""
+          fi
+        fi
+
         # direnv hook (auto-load Nix environments)
         # Installed via Homebrew to avoid fish dependency issue
         if command -v direnv &> /dev/null; then
