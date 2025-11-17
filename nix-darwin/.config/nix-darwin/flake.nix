@@ -46,6 +46,7 @@
            "zoom"
            "font-meslo-lg-nerd-font"
            "sioyek"
+           "microsoft-outlook"
        ];
 
        onActivation = {
