@@ -56,6 +56,13 @@ for sid in 1 2 3 4 5; do
              --subscribe space.$sid aerospace_workspace_change
 done
 
+# Spotify (left of notch)
+sketchybar --add item spotify q \
+           --set spotify update_freq=2 \
+                         updates=on \
+                         script="$PLUGIN_DIR/spotify.sh" \
+                         drawing=off
+
 # Clock (right of notch)
 sketchybar --add item clock e \
            --set clock update_freq=10 \
