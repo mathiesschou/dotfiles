@@ -11,3 +11,4 @@ fi
 # Nix-darwin aliases
 alias dr='sudo darwin-rebuild switch --flake ~/dotfiles/nix-darwin/.config/nix-darwin'
 
+export PATH="$HOME/.npm-global/bin:$PATH"

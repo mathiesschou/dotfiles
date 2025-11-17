@@ -27,27 +27,29 @@
        stow
        zsh-powerlevel10k
        tree
-       duti # default apps for certain filetypes
-
-# for neovim
+       duti
        ripgrep
        fd
        gcc
        nodejs_20
        lazygit
        fzf
-       ];					
+       ];
+
+       environment.variables = {
+         NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+       };
 
        homebrew = {
        enable = true;
 
        casks = [
          "ghostty"
-           "zoom"
-           "font-meslo-lg-nerd-font"
-           "sioyek"
-           "microsoft-outlook"
-           "nikitabobko/tap/aerospace"
+         "zoom"
+         "font-meslo-lg-nerd-font"
+         "sioyek"
+         "microsoft-outlook"
+         "nikitabobko/tap/aerospace"
        ];
 
        taps = [
@@ -57,6 +59,7 @@
 
        brews = [
         "felixkratz/formulae/borders"
+        "felixkratz/formulae/sketchybar"
        ];
 
        onActivation = {
@@ -67,6 +70,14 @@
        };
 
        system.defaults = {
+         NSGlobalDomain = {
+           _HIHideMenuBar = true;
+         };
+
+         finder = {
+           AppleShowAllExtensions = true;
+         };
+
          dock = {
            autohide = true;
            show-recents = false;
@@ -85,16 +96,23 @@
          };
        };
 
-
        nix.settings.experimental-features = "nix-command flakes";
+       
        programs.zsh.enable = true;
        programs.zsh = {
          promptInit = ''
            source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-           '';
+         '';
+         
+         shellInit = ''
+           export PATH="$HOME/.npm-global/bin:$PATH"
+         '';
+
+  interactiveShellInit = ''
+    # Source zshrc if it exists
+    [[ -f ~/.zshrc ]] && source ~/.zshrc
+  '';
        };
-
-
 
        system.stateVersion = 5;
        system.primaryUser = "mathies";
@@ -114,13 +132,13 @@
     /usr/sbin/softwareupdate --install-rosetta --agree-to-license
   fi
 
-# Run setup script as user (we're root, so use sudo -u)
-         echo "Running default terminal setup..."
-         /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./set-default-terminal.sh}
+# Run setup script as user
+  echo "Running default terminal setup..."
+  /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./set-default-terminal.sh}
 
 # Setup SSH key
-       echo "Checking SSH setup.."
-         /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./setup-ssh.sh}
+  echo "Checking SSH setup.."
+  /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./setup-ssh.sh}
 
 # Remove quarantine from Sioyek
   if [[ -d "/Applications/Sioyek.app" ]]; then
@@ -137,11 +155,26 @@
       echo "✓ Sioyek set as default PDF viewer"
     fi
   fi
+
+# Start sketchybar service
+  echo "Ensuring sketchybar service..."
+  /usr/bin/sudo -u mathies /opt/homebrew/bin/brew services restart sketchybar 2>/dev/null || true
+
+# Setup npm global directory and install Claude Code
+  echo "Setting up Claude Code..."
+  /usr/bin/sudo -u mathies /bin/bash -c '
+    export HOME=/Users/mathies
+    mkdir -p $HOME/.npm-global
+    echo "prefix=$HOME/.npm-global" > $HOME/.npmrc
+    export PATH="$HOME/.npm-global/bin:${pkgs.nodejs_20}/bin:$PATH"
+    npm install -g @anthropic-ai/claude-code
+  ' || true
+
+# Restart SystemUIServer to apply menubar changes
+  /usr/bin/killall SystemUIServer 2>/dev/null || true
        '';
 
-
        nixpkgs.hostPlatform = "aarch64-darwin";
-
 
        users.users.mathies = {
          name = "mathies";

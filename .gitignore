@@ -7,3 +7,11 @@ result-*
 
 # Backup
 *.backup
+*.bak
+
+# Debug/logs
+*-debug.log
+debug.log
+
+# Claude Code
+.claude/

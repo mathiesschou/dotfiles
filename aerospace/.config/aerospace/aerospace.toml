@@ -8,19 +8,24 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # Mouse follows focus
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-# Exec on startup - JankyBorders for window borders
 after-startup-command = [
-    'exec-and-forget borders active_color=0xffff0000 inactive_color=0xff494d64 width=10.0'
+    'exec-and-forget borders active_color=0xffff0000 inactive_color=0xff494d64 width=10.0',
+    'exec-and-forget /opt/homebrew/bin/sketchybar'
 ]
+
+exec-on-workspace-change = ['/bin/bash', '-c', 
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+
 
 # Gaps
 [gaps]
-inner.horizontal = 8
-inner.vertical = 8
-outer.left = 8
-outer.bottom = 8
-outer.top = 8
-outer.right = 8
+inner.horizontal = 15
+inner.vertical = 15
+outer.left = 15
+outer.bottom = 15
+outer.top = 15
+outer.right = 15
 
 # Main keybindings (Option as primary modifier)
 [mode.main.binding]

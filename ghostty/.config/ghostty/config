@@ -16,3 +16,4 @@ window-decoration = true
 # Other
 confirm-close-surface = false
 shell-integration-features = no-cursor
+keybind = shift+enter=text:\x1b\r
