@@ -13,6 +13,7 @@
       "microsoft-powerpoint"
       "nikitabobko/tap/aerospace"
       "spotify"
+      "adguard"
     ];
 
     taps = [

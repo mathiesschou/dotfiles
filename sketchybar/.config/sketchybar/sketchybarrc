@@ -13,6 +13,9 @@ export GREY=0xff6c7086
 export TRANSPARENT=0x00000000
 export BLUE_TRANSPARENT=0x8089b4fa
 
+# Semi-transparent backgrounds for pills
+export BLUE_BG=0x4089b4fa
+
 export ITEM_HEIGHT=26
 export ITEM_CORNER_RADIUS=13
 export ITEM_BORDER_WIDTH=2
@@ -26,10 +29,10 @@ sketchybar --bar height=30 \
                  sticky=on \
                  padding_left=6 \
                  padding_right=6 \
-                 margin=8 \
+                 margin=0 \
                  corner_radius=0 \
                  y_offset=0 \
-                 color=$TRANSPARENT
+                 color=$BLACK
 
 # Default values
 sketchybar --default updates=when_shown \
@@ -61,11 +64,11 @@ for sid in 1 2 3 4 5; do
 done
 
 sketchybar --add bracket spaces '/space\..*/' \
-           --set spaces background.color=$TRANSPARENT \
+           --set spaces background.color=$BLUE_BG \
                          background.height=$ITEM_HEIGHT \
                          background.corner_radius=$ITEM_CORNER_RADIUS \
                          background.border_width=$ITEM_BORDER_WIDTH \
-                         background.border_color=$RED \
+                         background.border_color=$BLUE \
                          background.padding_left=6 \
                          background.padding_right=6 \
                          background.drawing=on
@@ -77,15 +80,15 @@ sketchybar --add event spotify_change "com.spotify.client.PlaybackStateChanged"
 
 sketchybar --add item battery right \
            --set battery update_freq=120 \
-                         icon.color=$YELLOW \
-                         label.color=$YELLOW \
+                         icon.color=$BLUE \
+                         label.color=$BLUE \
                          background.height=$ITEM_HEIGHT \
                          background.corner_radius=$ITEM_CORNER_RADIUS \
                          background.padding_left=6 \
                          background.padding_right=6 \
                          background.border_width=$ITEM_BORDER_WIDTH \
-                         background.border_color=$YELLOW \
-                         background.color=$TRANSPARENT \
+                         background.border_color=$BLUE \
+                         background.color=$BLUE_BG \
                          background.drawing=on \
                          script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
@@ -93,29 +96,29 @@ sketchybar --add item battery right \
 sketchybar --add item clock right \
            --set clock update_freq=10 \
                        icon="" \
-                       icon.color=$MAGENTA \
-                       label.color=$MAGENTA \
+                       icon.color=$BLUE \
+                       label.color=$BLUE \
                        background.height=$ITEM_HEIGHT \
                        background.corner_radius=$ITEM_CORNER_RADIUS \
                        background.padding_left=6 \
                        background.padding_right=6 \
                        background.border_width=$ITEM_BORDER_WIDTH \
-                       background.border_color=$MAGENTA \
-                       background.color=$TRANSPARENT \
+                       background.border_color=$BLUE \
+                       background.color=$BLUE_BG \
                        background.drawing=on \
                        script="$PLUGIN_DIR/clock.sh"
 
 sketchybar --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
-                         icon.color=$GREEN \
-                         label.color=$GREEN \
+                         icon.color=$BLUE \
+                         label.color=$BLUE \
                          background.height=$ITEM_HEIGHT \
                          background.corner_radius=$ITEM_CORNER_RADIUS \
                          background.padding_left=6 \
                          background.padding_right=6 \
                          background.border_width=$ITEM_BORDER_WIDTH \
-                         background.border_color=$GREEN \
-                         background.color=$TRANSPARENT \
+                         background.border_color=$BLUE \
+                         background.color=$BLUE_BG \
                          background.drawing=on \
            --subscribe volume volume_change
 
@@ -132,7 +135,7 @@ sketchybar --add item spotify right \
                          background.padding_right=6 \
                          background.border_width=$ITEM_BORDER_WIDTH \
                          background.border_color=$BLUE \
-                         background.color=$TRANSPARENT \
+                         background.color=$BLUE_BG \
                          drawing=off \
                          updates=on \
            --subscribe spotify spotify_change
