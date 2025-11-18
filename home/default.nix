@@ -19,6 +19,14 @@
     packages = with pkgs; [
       stow
       zsh-powerlevel10k
+
+      # Language servers
+      clang-tools  # includes clangd
+      lua-language-server
+      nodePackages.typescript-language-server
+      rust-analyzer
+      nodePackages.vscode-langservers-extracted  # html, css, json
+      pyright
     ];
 
     sessionVariables = {

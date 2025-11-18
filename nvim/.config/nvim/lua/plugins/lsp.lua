@@ -95,56 +95,80 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "lua",
         callback = function(args)
-          vim.lsp.start({ name = "lua_ls", bufnr = args.buf })
+          local config = vim.lsp.config.lua_ls
+          if config and config.cmd then
+            vim.lsp.start({ name = "lua_ls", bufnr = args.buf })
+          end
         end,
       })
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "c", "cpp", "objc", "objcpp" },
         callback = function(args)
-          vim.lsp.start({ name = "clangd", bufnr = args.buf })
+          local config = vim.lsp.config.clangd
+          if config and config.cmd then
+            vim.lsp.start({ name = "clangd", bufnr = args.buf })
+          end
         end,
       })
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
         callback = function(args)
-          vim.lsp.start({ name = "ts_ls", bufnr = args.buf })
+          local config = vim.lsp.config.ts_ls
+          if config and config.cmd then
+            vim.lsp.start({ name = "ts_ls", bufnr = args.buf })
+          end
         end,
       })
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "rust",
         callback = function(args)
-          vim.lsp.start({ name = "rust_analyzer", bufnr = args.buf })
+          local config = vim.lsp.config.rust_analyzer
+          if config and config.cmd then
+            vim.lsp.start({ name = "rust_analyzer", bufnr = args.buf })
+          end
         end,
       })
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "html",
         callback = function(args)
-          vim.lsp.start({ name = "html", bufnr = args.buf })
+          local config = vim.lsp.config.html
+          if config and config.cmd then
+            vim.lsp.start({ name = "html", bufnr = args.buf })
+          end
         end,
       })
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "css",
         callback = function(args)
-          vim.lsp.start({ name = "cssls", bufnr = args.buf })
+          local config = vim.lsp.config.cssls
+          if config and config.cmd then
+            vim.lsp.start({ name = "cssls", bufnr = args.buf })
+          end
         end,
       })
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "json",
         callback = function(args)
-          vim.lsp.start({ name = "jsonls", bufnr = args.buf })
+          local config = vim.lsp.config.jsonls
+          if config and config.cmd then
+            vim.lsp.start({ name = "jsonls", bufnr = args.buf })
+          end
         end,
       })
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "python",
         callback = function(args)
-          vim.lsp.start({ name = "pyright", bufnr = args.buf })
+          local config = vim.lsp.config.pyright
+          if config and config.cmd then
+            vim.lsp.start({ name = "pyright", bufnr = args.buf })
+          end
         end,
       })
 
