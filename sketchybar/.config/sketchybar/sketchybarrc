@@ -11,30 +11,36 @@ export ORANGE=0xfffab387
 export MAGENTA=0xffcba6f7
 export GREY=0xff6c7086
 export TRANSPARENT=0x00000000
+export BLUE_TRANSPARENT=0x8089b4fa
+
+export ITEM_HEIGHT=26
+export ITEM_CORNER_RADIUS=13
+export ITEM_BORDER_WIDTH=2
+export ITEM_PADDING=10
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
-# Bar Appearance
-sketchybar --bar height=32 \
-                 blur_radius=30 \
+sketchybar --bar height=30 \
+                 blur_radius=0 \
                  position=top \
-                 padding_left=10 \
-                 padding_right=10 \
-                 color=$BLACK \
-                 notch_width=200
+                 sticky=on \
+                 padding_left=6 \
+                 padding_right=6 \
+                 margin=8 \
+                 corner_radius=0 \
+                 y_offset=0 \
+                 color=$TRANSPARENT
 
 # Default values
 sketchybar --default updates=when_shown \
-                     icon.font="MesloLGS Nerd Font:Bold:14.0" \
+                     icon.font="MesloLGS Nerd Font:Bold:13.5" \
                      icon.color=$WHITE \
-                     label.font="MesloLGS Nerd Font:Bold:14.0" \
+                     label.font="MesloLGS Nerd Font:Bold:13.0" \
                      label.color=$WHITE \
-                     padding_left=5 \
-                     padding_right=5 \
-                     label.padding_left=4 \
-                     label.padding_right=4 \
-                     icon.padding_left=4 \
-                     icon.padding_right=4
+                     icon.padding_left=$ITEM_PADDING \
+                     icon.padding_right=$ITEM_PADDING \
+                     label.padding_left=$ITEM_PADDING \
+                     label.padding_right=$ITEM_PADDING
 
 # Add aerospace workspace change event
 sketchybar --add event aerospace_workspace_change
@@ -44,11 +50,9 @@ for sid in 1 2 3 4 5; do
   sketchybar --add item space.$sid left \
              --set space.$sid \
                    icon=$sid \
+                   icon.color=$GREY \
                    icon.padding_left=10 \
                    icon.padding_right=10 \
-                   background.color=$GREY \
-                   background.corner_radius=5 \
-                   background.height=24 \
                    background.drawing=off \
                    label.drawing=off \
                    click_script="aerospace workspace $sid" \
@@ -56,29 +60,82 @@ for sid in 1 2 3 4 5; do
              --subscribe space.$sid aerospace_workspace_change
 done
 
-# Spotify (left of notch)
-sketchybar --add event spotify_change "com.spotify.client.PlaybackStateChanged" \
-           --add item spotify q \
-           --set spotify script="$PLUGIN_DIR/spotify.sh" \
-                         drawing=off \
-           --subscribe spotify spotify_change
+sketchybar --add bracket spaces '/space\..*/' \
+           --set spaces background.color=$TRANSPARENT \
+                         background.height=$ITEM_HEIGHT \
+                         background.corner_radius=$ITEM_CORNER_RADIUS \
+                         background.border_width=$ITEM_BORDER_WIDTH \
+                         background.border_color=$RED \
+                         background.padding_left=6 \
+                         background.padding_right=6 \
+                         background.drawing=on
 
-# Clock (right of notch)
-sketchybar --add item clock e \
-           --set clock update_freq=10 \
-                       icon= \
-                       script="$PLUGIN_DIR/clock.sh"
+# Spotify playback updates need to be registered before we add the item
+sketchybar --add event spotify_change "com.spotify.client.PlaybackStateChanged"
 
-# Right side items
-
-sketchybar --add item volume right \
-           --set volume script="$PLUGIN_DIR/volume.sh" \
-           --subscribe volume volume_change
+# Right side items (capsule look per item)
 
 sketchybar --add item battery right \
            --set battery update_freq=120 \
+                         icon.color=$YELLOW \
+                         label.color=$YELLOW \
+                         background.height=$ITEM_HEIGHT \
+                         background.corner_radius=$ITEM_CORNER_RADIUS \
+                         background.padding_left=6 \
+                         background.padding_right=6 \
+                         background.border_width=$ITEM_BORDER_WIDTH \
+                         background.border_color=$YELLOW \
+                         background.color=$TRANSPARENT \
+                         background.drawing=on \
                          script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
+
+sketchybar --add item clock right \
+           --set clock update_freq=10 \
+                       icon="" \
+                       icon.color=$MAGENTA \
+                       label.color=$MAGENTA \
+                       background.height=$ITEM_HEIGHT \
+                       background.corner_radius=$ITEM_CORNER_RADIUS \
+                       background.padding_left=6 \
+                       background.padding_right=6 \
+                       background.border_width=$ITEM_BORDER_WIDTH \
+                       background.border_color=$MAGENTA \
+                       background.color=$TRANSPARENT \
+                       background.drawing=on \
+                       script="$PLUGIN_DIR/clock.sh"
+
+sketchybar --add item volume right \
+           --set volume script="$PLUGIN_DIR/volume.sh" \
+                         icon.color=$GREEN \
+                         label.color=$GREEN \
+                         background.height=$ITEM_HEIGHT \
+                         background.corner_radius=$ITEM_CORNER_RADIUS \
+                         background.padding_left=6 \
+                         background.padding_right=6 \
+                         background.border_width=$ITEM_BORDER_WIDTH \
+                         background.border_color=$GREEN \
+                         background.color=$TRANSPARENT \
+                         background.drawing=on \
+           --subscribe volume volume_change
+
+# Keep spotify updates running while hidden, so the script can toggle drawing on.
+sketchybar --add item spotify right \
+           --set spotify script="$PLUGIN_DIR/spotify.sh" \
+                         icon=󰎆 \
+                         icon.color=$BLUE \
+                         label.color=$BLUE \
+                         label.max_chars=28 \
+                         background.height=$ITEM_HEIGHT \
+                         background.corner_radius=$ITEM_CORNER_RADIUS \
+                         background.padding_left=6 \
+                         background.padding_right=6 \
+                         background.border_width=$ITEM_BORDER_WIDTH \
+                         background.border_color=$BLUE \
+                         background.color=$TRANSPARENT \
+                         drawing=off \
+                         updates=on \
+           --subscribe spotify spotify_change
 
 # Finalize
 sketchybar --update

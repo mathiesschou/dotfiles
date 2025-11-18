@@ -3,12 +3,12 @@
 # Get the current focused workspace from aerospace
 FOCUSED=$(aerospace list-workspaces --focused)
 
-BLUE=0xff89b4fa
-GREY=0xff6c7086
+ACTIVE_COLOR=${WHITE:-0xffcdd6f4}
+INACTIVE_COLOR=${GREY:-0xff6c7086}
 
 # $1 is the workspace number passed from sketchybarrc
 if [ "$1" = "$FOCUSED" ]; then
-  sketchybar --set $NAME background.drawing=on background.color=$BLUE
+  sketchybar --animate tanh 5 --set "$NAME" icon.color=$ACTIVE_COLOR
 else
-  sketchybar --set $NAME background.drawing=off
+  sketchybar --animate tanh 5 --set "$NAME" icon.color=$INACTIVE_COLOR
 fi

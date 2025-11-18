@@ -132,24 +132,26 @@
     /usr/bin/sudo -u mathies /bin/bash -c '
       export HOME=/Users/mathies
       export PATH="$HOME/.npm-global/bin:/opt/homebrew/bin:${pkgs.nodejs_20}/bin:$PATH"
+      MARKER_FILE="$HOME/.claude-mcp-setup-done"
 
-      # Check if MCP servers are already configured
-      if ! claude mcp list 2>/dev/null | grep -q "serena"; then
+      # Check if MCP servers are already configured using marker file
+      # This avoids running "claude mcp list" which starts the servers and triggers Safari
+      if [ ! -f "$MARKER_FILE" ]; then
         echo "Installing Serena MCP server..."
-        claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server
-      fi
+        claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server || true
 
-      if ! claude mcp list 2>/dev/null | grep -q "sequential-thinking"; then
         echo "Installing Sequential Thinking MCP server..."
-        claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
-      fi
+        claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking || true
 
-      if ! claude mcp list 2>/dev/null | grep -q "context7"; then
         echo "Installing Context7 MCP server..."
-        claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp
-      fi
+        claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp || true
 
-      echo "✓ Claude Code MCP servers configured"
+        # Create marker file to indicate setup is complete
+        touch "$MARKER_FILE"
+        echo "✓ Claude Code MCP servers configured"
+      else
+        echo "✓ Claude Code MCP servers already configured (skipping)"
+      fi
     ' || true
 
     # Setup Codex MCP servers
@@ -157,24 +159,26 @@
     /usr/bin/sudo -u mathies /bin/bash -c '
       export HOME=/Users/mathies
       export PATH="$HOME/.npm-global/bin:/opt/homebrew/bin:${pkgs.nodejs_20}/bin:$PATH"
+      MARKER_FILE="$HOME/.codex-mcp-setup-done"
 
-      # Check if MCP servers are already configured
-      if ! grep -q "mcp_servers.serena" $HOME/.codex/config.toml 2>/dev/null; then
+      # Check if MCP servers are already configured using marker file
+      # This provides a more reliable check without potentially starting servers
+      if [ ! -f "$MARKER_FILE" ]; then
         echo "Installing Serena MCP server..."
-        codex mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server
-      fi
+        codex mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server || true
 
-      if ! grep -q "mcp_servers.sequential-thinking" $HOME/.codex/config.toml 2>/dev/null; then
         echo "Installing Sequential Thinking MCP server..."
-        codex mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
-      fi
+        codex mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking || true
 
-      if ! grep -q "mcp_servers.context7" $HOME/.codex/config.toml 2>/dev/null; then
         echo "Installing Context7 MCP server..."
-        codex mcp add context7 -- npx -y @upstash/context7-mcp
-      fi
+        codex mcp add context7 -- npx -y @upstash/context7-mcp || true
 
-      echo "✓ Codex MCP servers configured"
+        # Create marker file to indicate setup is complete
+        touch "$MARKER_FILE"
+        echo "✓ Codex MCP servers configured"
+      else
+        echo "✓ Codex MCP servers already configured (skipping)"
+      fi
     ' || true
 
     # Restart SystemUIServer to apply menubar changes

@@ -16,7 +16,7 @@ if pgrep -x "Spotify" > /dev/null; then
         DISPLAY="${DISPLAY:0:$MAX_LENGTH}..."
       fi
 
-      sketchybar --set "$NAME" icon=" " label="$DISPLAY" drawing=on
+      sketchybar --set "$NAME" icon="󰎆" label="$DISPLAY" drawing=on
     else
       sketchybar --set "$NAME" drawing=off
     fi
