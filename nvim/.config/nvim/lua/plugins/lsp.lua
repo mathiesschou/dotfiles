@@ -2,29 +2,11 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
     config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "clangd",
-          "ts_ls",
-          "rust_analyzer",
-          "html",
-          "cssls",
-          "jsonls",
-          "pyright",
-        },
-      })
+      local lspconfig = require("lspconfig")
 
-      -- Use vim.lsp.config instead of lspconfig
-      vim.lsp.config("lua_ls", {
-        cmd = { "lua-language-server" },
-        root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git" },
+      -- Configure Lua
+      lspconfig.lua_ls.setup({
         settings = {
           Lua = {
             diagnostics = {
@@ -41,45 +23,25 @@ return {
       })
 
       -- Configure C/C++
-      vim.lsp.config("clangd", {
-        cmd = { "clangd" },
-        root_markers = { "compile_commands.json", ".git", "Makefile" },
-      })
+      lspconfig.clangd.setup({})
 
       -- Configure TypeScript/JavaScript
-      vim.lsp.config("ts_ls", {
-        cmd = { "typescript-language-server", "--stdio" },
-        root_markers = { "package.json", "tsconfig.json", ".git" },
-      })
+      lspconfig.ts_ls.setup({})
 
       -- Configure Rust
-      vim.lsp.config("rust_analyzer", {
-        cmd = { "rust-analyzer" },
-        root_markers = { "Cargo.toml", ".git" },
-      })
+      lspconfig.rust_analyzer.setup({})
 
       -- Configure HTML
-      vim.lsp.config("html", {
-        cmd = { "vscode-html-language-server", "--stdio" },
-        root_markers = { ".git" },
-      })
+      lspconfig.html.setup({})
 
       -- Configure CSS
-      vim.lsp.config("cssls", {
-        cmd = { "vscode-css-language-server", "--stdio" },
-        root_markers = { ".git" },
-      })
+      lspconfig.cssls.setup({})
 
       -- Configure JSON
-      vim.lsp.config("jsonls", {
-        cmd = { "vscode-json-language-server", "--stdio" },
-        root_markers = { ".git" },
-      })
+      lspconfig.jsonls.setup({})
 
       -- Configure Python
-      vim.lsp.config("pyright", {
-        cmd = { "pyright-langserver", "--stdio" },
-        root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" },
+      lspconfig.pyright.setup({
         settings = {
           python = {
             analysis = {
@@ -89,87 +51,6 @@ return {
             },
           },
         },
-      })
-
-      -- Auto-start LSP on relevant filetypes
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "lua",
-        callback = function(args)
-          local config = vim.lsp.config.lua_ls
-          if config and config.cmd then
-            vim.lsp.start({ name = "lua_ls", bufnr = args.buf })
-          end
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "c", "cpp", "objc", "objcpp" },
-        callback = function(args)
-          local config = vim.lsp.config.clangd
-          if config and config.cmd then
-            vim.lsp.start({ name = "clangd", bufnr = args.buf })
-          end
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-        callback = function(args)
-          local config = vim.lsp.config.ts_ls
-          if config and config.cmd then
-            vim.lsp.start({ name = "ts_ls", bufnr = args.buf })
-          end
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "rust",
-        callback = function(args)
-          local config = vim.lsp.config.rust_analyzer
-          if config and config.cmd then
-            vim.lsp.start({ name = "rust_analyzer", bufnr = args.buf })
-          end
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "html",
-        callback = function(args)
-          local config = vim.lsp.config.html
-          if config and config.cmd then
-            vim.lsp.start({ name = "html", bufnr = args.buf })
-          end
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "css",
-        callback = function(args)
-          local config = vim.lsp.config.cssls
-          if config and config.cmd then
-            vim.lsp.start({ name = "cssls", bufnr = args.buf })
-          end
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "json",
-        callback = function(args)
-          local config = vim.lsp.config.jsonls
-          if config and config.cmd then
-            vim.lsp.start({ name = "jsonls", bufnr = args.buf })
-          end
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "python",
-        callback = function(args)
-          local config = vim.lsp.config.pyright
-          if config and config.cmd then
-            vim.lsp.start({ name = "pyright", bufnr = args.buf })
-          end
-        end,
       })
 
       -- Keymaps when LSP attaches
