@@ -32,6 +32,9 @@
     ];
 
     extraConfig = ''
+      # Automatically renumber windows when one is closed
+      set -g renumber-windows on
+
       # Reload config with prefix + r
       unbind r
       bind r source-file ~/.config/tmux/tmux.conf \; display "Config reloaded!"
