@@ -19,8 +19,6 @@
     packages = with pkgs; [
       stow
       zsh-powerlevel10k
-      direnv
-      nix-direnv
     ];
 
     sessionVariables = {
