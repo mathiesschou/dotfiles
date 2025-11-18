@@ -27,6 +27,9 @@
       rust-analyzer
       nodePackages.vscode-langservers-extracted  # html, css, json
       pyright
+
+      # Formatters
+      nodePackages.prettier
     ];
 
     sessionVariables = {

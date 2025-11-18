@@ -22,29 +22,29 @@ return {
       cpp = { "clang_format" },
 
       -- TypeScript/JavaScript (ts_ls)
-      javascript = { { "prettierd", "prettier" } },
-      typescript = { { "prettierd", "prettier" } },
-      javascriptreact = { { "prettierd", "prettier" } },
-      typescriptreact = { { "prettierd", "prettier" } },
+      javascript = { "prettierd", "prettier" },
+      typescript = { "prettierd", "prettier" },
+      javascriptreact = { "prettierd", "prettier" },
+      typescriptreact = { "prettierd", "prettier" },
 
       -- Rust (rust_analyzer)
       rust = { "rustfmt" },
 
       -- HTML (html)
-      html = { { "prettierd", "prettier" } },
+      html = { "prettierd", "prettier" },
 
       -- CSS (cssls)
-      css = { { "prettierd", "prettier" } },
+      css = { "prettierd", "prettier" },
 
       -- JSON (jsonls)
-      json = { { "prettierd", "prettier" } },
+      json = { "prettierd", "prettier" },
 
       -- Python (pyright)
       python = { "isort", "black" },
 
       -- Extra
-      markdown = { { "prettierd", "prettier" } },
-      yaml = { { "prettierd", "prettier" } },
+      markdown = { "prettierd", "prettier" },
+      yaml = { "prettierd", "prettier" },
     },
     format_on_save = {
       timeout_ms = 500,
