@@ -61,6 +61,12 @@ return {
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+          
+          -- Diagnostic keymaps
+          vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, opts)
+          vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, opts)
+          vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float, opts)
+          vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, opts)
         end,
       })
     end,
