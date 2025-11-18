@@ -3,56 +3,6 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-      local lspconfig = require("lspconfig")
-
-      -- Configure Lua
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              checkThirdParty = false,
-            },
-            telemetry = {
-              enable = false,
-            },
-          },
-        },
-      })
-
-      -- Configure C/C++
-      lspconfig.clangd.setup({})
-
-      -- Configure TypeScript/JavaScript
-      lspconfig.ts_ls.setup({})
-
-      -- Configure Rust
-      lspconfig.rust_analyzer.setup({})
-
-      -- Configure HTML
-      lspconfig.html.setup({})
-
-      -- Configure CSS
-      lspconfig.cssls.setup({})
-
-      -- Configure JSON
-      lspconfig.jsonls.setup({})
-
-      -- Configure Python
-      lspconfig.pyright.setup({
-        settings = {
-          python = {
-            analysis = {
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-              diagnosticMode = "workspace",
-            },
-          },
-        },
-      })
-
       -- Keymaps when LSP attaches
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(ev)
@@ -61,7 +11,7 @@ return {
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-          
+
           -- Diagnostic keymaps
           vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, opts)
           vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, opts)
@@ -69,6 +19,48 @@ return {
           vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, opts)
         end,
       })
+
+      -- Configure LSP servers using the new API
+      local servers = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim" },
+              },
+              workspace = {
+                checkThirdParty = false,
+              },
+              telemetry = {
+                enable = false,
+              },
+            },
+          },
+        },
+        clangd = {},
+        ts_ls = {},
+        rust_analyzer = {},
+        html = {},
+        cssls = {},
+        jsonls = {},
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "workspace",
+              },
+            },
+          },
+        },
+      }
+
+      -- Setup all servers
+      for server, config in pairs(servers) do
+        vim.lsp.config[server] = config
+        vim.lsp.enable(server)
+      end
     end,
   },
 }
