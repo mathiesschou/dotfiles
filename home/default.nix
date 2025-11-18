@@ -29,6 +29,12 @@
     sessionPath = [
       "$HOME/.npm-global/bin"
     ];
+
+    # Deploy tmux startup script
+    file.".config/tmux/startup.sh" = {
+      source = ./scripts/tmux-startup.sh;
+      executable = true;
+    };
   };
 
   programs.home-manager.enable = true;

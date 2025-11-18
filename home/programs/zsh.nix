@@ -44,6 +44,7 @@
         # Aliases
         alias ll='ls -lah'
         alias la='ls -a'
+        alias start='~/.config/tmux/startup.sh'
 
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
