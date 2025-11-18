@@ -1,4 +1,0 @@
-- Repository stores declarative macOS setup built with a Nix flake that combines nix-darwin (system layer) and home-manager (user layer).
-- Entry point `flake.nix` wires `darwin/` modules for system defaults/homebrew/scripts and `home/` modules for user programs, dotfiles, and services.
-- App-specific configs live alongside the flake (e.g., `aerospace/.config`, `sketchybar/.config`, `ghostty/.config`, `nvim/.config`, `zsh/`). These directories are linked into `$HOME` via `home.file` declarations.
-- Managed tools include AeroSpace, SketchyBar, Ghostty, Neovim, zsh + powerlevel10k, various CLI utilities (ripgrep, fd, fzf, lazygit), and AI CLIs (claude-code, codex, context7).

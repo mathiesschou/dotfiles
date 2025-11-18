@@ -1,2 +1,0 @@
-- After changing configs/dotfiles, stage the files in git and run `dr` (or `sudo darwin-rebuild switch --flake .#mathies-macos`) to deploy.
-- No automated tests/lints exist; manual verification is by reloading the respective app/service (e.g., SketchyBar restarts via rebuild hooks).

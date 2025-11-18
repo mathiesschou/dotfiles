@@ -15,6 +15,7 @@ debug.log
 
 # Claude Code
 .claude/
+.serena/
 
 # Documentation
 OVERVIEW.md

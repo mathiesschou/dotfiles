@@ -1,4 +1,0 @@
-- `dr` – alias for `darwin-rebuild switch --flake ~/dotfiles`, applies both nix-darwin and home-manager changes.
-- `sudo darwin-rebuild switch --flake .#mathies-macos` – explicit rebuild command from repo root.
-- `direnv allow` – load per-project Nix environments when entering directories containing `.envrc` with `use flake`.
-- `git add <path>` before rebuilding to ensure home-manager copies files from the git store.

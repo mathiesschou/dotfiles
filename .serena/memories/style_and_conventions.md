@@ -1,4 +1,0 @@
-- Configurations are mostly in Nix modules (flake inputs, nix-darwin/home-manager) plus shell/Lua/app-specific dotfiles; keep additions declarative when possible.
-- Every dotfile copied by home-manager must be tracked in git; avoid leaving required files untracked or they will not deploy.
-- Shell scripts (e.g., SketchyBar plugins) follow POSIX/bash style with exported color constants and small helper scripts; keep them executable and concise.
-- Prefer Catppuccin Mocha color palette already defined in SketchyBar configs if adding UI elements.
