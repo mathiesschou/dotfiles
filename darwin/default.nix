@@ -101,6 +101,17 @@
       /usr/bin/xattr -cr /Applications/Sioyek.app 2>/dev/null || true
     fi
 
+    # Remove quarantine from f.lux and ensure it's in Login Items
+    if [[ -d "/Applications/Flux.app" ]]; then
+      echo "Removing quarantine from f.lux..."
+      /usr/bin/xattr -cr /Applications/Flux.app 2>/dev/null || true
+      
+      # Add f.lux to Login Items if not already there
+      /usr/bin/sudo -u mathies /usr/bin/osascript -e 'tell application "System Events" to delete login item "Flux"' 2>/dev/null || true
+      /usr/bin/sudo -u mathies /usr/bin/osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Flux.app", hidden:false}' 2>/dev/null || true
+      echo "✓ f.lux added to Login Items"
+    fi
+
     # Set Sioyek as default PDF viewer
     if [[ -d "/Applications/Sioyek.app" ]]; then
       echo "Setting Sioyek as default PDF viewer..."

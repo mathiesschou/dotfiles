@@ -14,6 +14,7 @@
       "nikitabobko/tap/aerospace"
       "spotify"
       "adguard"
+      "flux"
     ];
 
     taps = [
