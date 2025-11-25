@@ -27,6 +27,10 @@
       "felixkratz/formulae/sketchybar"
       "direnv"
       "uv"
+      "minikube"
+      "kubectl"
+      "docker"
+      "colima"
     ];
 
     onActivation = {
