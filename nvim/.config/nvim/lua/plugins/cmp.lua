@@ -54,6 +54,12 @@ return {
             end
           end, { "i", "s" }),
         }),
+        window = {
+          completion = {
+            max_height = 12,
+            max_width = 50,
+          },
+        },
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
