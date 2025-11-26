@@ -11,6 +11,7 @@
       "sioyek"
       "microsoft-outlook"
       "microsoft-powerpoint"
+      "microsoft-word"
       "nikitabobko/tap/aerospace"
       "spotify"
       "adguard"
