@@ -195,6 +195,10 @@
     # Restart SystemUIServer to apply menubar changes
     /usr/bin/killall SystemUIServer 2>/dev/null || true
 
+    # Clear Neovim cache to ensure fresh plugin configuration
+    echo "Clearing Neovim cache..."
+    /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./scripts/clear-nvim-cache.sh}
+
     # Set random wallpaper
     echo "Setting random wallpaper..."
     /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./scripts/set-random-wallpaper.sh}
