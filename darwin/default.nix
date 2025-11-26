@@ -194,6 +194,10 @@
 
     # Restart SystemUIServer to apply menubar changes
     /usr/bin/killall SystemUIServer 2>/dev/null || true
+
+    # Set random wallpaper
+    echo "Setting random wallpaper..."
+    /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./scripts/set-random-wallpaper.sh}
   '';
 
   nixpkgs.hostPlatform = "aarch64-darwin";
