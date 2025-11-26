@@ -2,7 +2,7 @@ theme = "Gruvbox Dark"
 
 # Font
 font-family = "MesloLGS NF"
-font-size = 20
+font-size = 14 
 
 # Cursor
 cursor-style = block
