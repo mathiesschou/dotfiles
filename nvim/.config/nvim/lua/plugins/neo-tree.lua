@@ -7,8 +7,8 @@ return {
     "MunifTanjim/nui.nvim",
   },
   keys = {
-    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Neo-tree" },
-    { "<leader>E", "<cmd>Neotree reveal<cr>", desc = "Reveal in Neo-tree" },
+    { "<leader>n", "<cmd>Neotree toggle<cr>", desc = "Toggle Neo-tree" },
+    { "<leader>N", "<cmd>Neotree reveal<cr>", desc = "Reveal in Neo-tree" },
   },
   opts = {
     close_if_last_window = true,
