@@ -16,6 +16,7 @@
       "spotify"
       "adguard"
       "flux"
+      "todoist"
     ];
 
     taps = [

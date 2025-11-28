@@ -55,7 +55,9 @@
       # Pane borders
       set -g pane-border-lines heavy
       set -g popup-border-lines rounded
-      set -g pane-border-indicators arrows
+      set -g pane-border-indicators both
+      set -g pane-active-border-style "fg=#fabd2f,bold"
+      set -g pane-border-style "fg=#504945"
 
       # Ensure UTF-8 support for borders
       set -gq utf8 on

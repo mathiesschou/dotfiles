@@ -7,7 +7,7 @@ return {
     keys = {
       { "<leader>tn", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
       { "<leader>tp", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Search todos" },
+      { "<leader>st", "<cmd>TodoTelescope<cr>",                            desc = "Search todos" },
     },
   },
 }
