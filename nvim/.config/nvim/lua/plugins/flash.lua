@@ -32,7 +32,7 @@ return {
     },
     keys = {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash jump to character" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash jump to treesitter node" },
+      { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = "Flash jump to treesitter node" },
       { "r", mode = "o", function() require("flash").remote() end, desc = "Flash remote operation" },
       { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Flash treesitter search" },
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle flash search in command mode" },

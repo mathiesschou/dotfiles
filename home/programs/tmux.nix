@@ -19,14 +19,9 @@
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
       {
-        plugin = catppuccin;
+        plugin = gruvbox;
         extraConfig = ''
-          # Catppuccin theme settings (must be set BEFORE plugin loads)
-          set -g @catppuccin_flavour "macchiato"
-          set -g @catppuccin_window_status_style "rounded"
-          set -g @catppuccin_status_background "default"
-          set -g @catppuccin_window_current_fill "number"
-          set -g @catppuccin_window_current_text "#W"
+          set -g @tmux-gruvbox "dark"
         '';
       }
     ];
@@ -48,19 +43,19 @@
       bind-key k select-pane -U
       bind-key l select-pane -R
 
+      # Pane resizing med Alt + h/j/k/l
+      bind -n M-h resize-pane -L 5
+      bind -n M-j resize-pane -D 5
+      bind -n M-k resize-pane -U 5
+      bind -n M-l resize-pane -R 5
+
       # Status bar at top
       set-option -g status-position top
 
-      # Transparent background (must be set after plugin loads)
-      set -g status-style bg=default
-
-      # Custom status bar content
-      set -g status-left ""
-      set -g status-right "#{E:@catppuccin_status_application} #{E:@catppuccin_status_session}"
-
-      # Pane borders (must be set after theme)
+      # Pane borders
       set -g pane-border-lines heavy
       set -g popup-border-lines rounded
+      set -g pane-border-indicators arrows
 
       # Ensure UTF-8 support for borders
       set -gq utf8 on

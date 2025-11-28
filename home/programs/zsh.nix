@@ -49,6 +49,10 @@
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
 
+        # Docker/Colima configuration
+        unset DOCKER_HOST
+        export DOCKER_CONTEXT=colima
+
         # Load Context7 API key from macOS Keychain
         if command -v security &> /dev/null; then
           CONTEXT7_KEY=$(security find-generic-password -a "$USER" -s "context7-api-key" -w 2>/dev/null || echo "")

@@ -28,9 +28,8 @@
       "felixkratz/formulae/sketchybar"
       "direnv"
       "uv"
-      "minikube"
-      "kubectl"
       "docker"
+      "kubectl"
       "colima"
     ];
 
