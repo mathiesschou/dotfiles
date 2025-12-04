@@ -14,6 +14,7 @@ window-padding-y = 10
 window-decoration = true
 
 # Other
+macos-option-as-alt = false 
 confirm-close-surface = false
 shell-integration-features = no-cursor
 keybind = shift+enter=text:\x1b\r

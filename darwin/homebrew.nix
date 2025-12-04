@@ -8,6 +8,7 @@
       "ghostty"
       "zoom"
       "font-meslo-lg-nerd-font"
+      "font-ia-writer-quattro"
       "sioyek"
       "microsoft-outlook"
       "microsoft-powerpoint"

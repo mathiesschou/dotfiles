@@ -17,6 +17,8 @@
     nodejs_20
     lazygit
     fzf
+    nil
+    nixpkgs-fmt
   ];
 
   environment.variables = {

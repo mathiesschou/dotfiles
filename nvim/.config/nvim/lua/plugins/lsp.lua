@@ -59,6 +59,15 @@ return {
             },
           },
         },
+        nil_ls = {
+          settings = {
+            ["nil"] = {
+              formatting = {
+                command = { "nixpkgs-fmt" },
+              },
+            },
+          },
+        },
       }
 
       -- Setup all servers

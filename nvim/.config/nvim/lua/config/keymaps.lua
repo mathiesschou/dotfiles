@@ -43,5 +43,6 @@ map("n", "<leader>sx", "<cmd>close<cr>", { desc = "Close current split" })
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
+map("n", "<leader>u", "<cmd>checktime | bufdo e<cr>", { desc = "Reload all buffers" })
 
 -- Which-key group labels will be registered in the which-key plugin config

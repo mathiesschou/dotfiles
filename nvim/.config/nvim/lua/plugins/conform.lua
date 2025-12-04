@@ -22,29 +22,37 @@ return {
       cpp = { "clang_format" },
 
       -- TypeScript/JavaScript (ts_ls)
-      javascript = { "prettierd", "prettier" },
-      typescript = { "prettierd", "prettier" },
-      javascriptreact = { "prettierd", "prettier" },
-      typescriptreact = { "prettierd", "prettier" },
+      javascript = { "prettier", "prettierd" },
+      typescript = { "prettier", "prettierd" },
+      javascriptreact = { "prettier", "prettierd" },
+      typescriptreact = { "prettier", "prettierd" },
 
       -- Rust (rust_analyzer)
       rust = { "rustfmt" },
 
       -- HTML (html)
-      html = { "prettierd", "prettier" },
+      html = { "prettier", "prettierd" },
 
       -- CSS (cssls)
-      css = { "prettierd", "prettier" },
+      css = { "prettier", "prettierd" },
 
       -- JSON (jsonls)
-      json = { "prettierd", "prettier" },
+      json = { "prettier", "prettierd" },
 
       -- Python (pyright)
       python = { "isort", "black" },
 
+      -- Nix (nil_ls)
+      nix = { "nixpkgs-fmt" },
+
       -- Extra
-      markdown = { "prettierd", "prettier" },
-      yaml = { "prettierd", "prettier" },
+      markdown = { "prettier", "prettierd" },
+      yaml = { "prettier", "prettierd" },
+    },
+    formatters = {
+      prettier = {
+        prepend_args = { "--print-width", "80" },
+      },
     },
     format_on_save = {
       timeout_ms = 500,
