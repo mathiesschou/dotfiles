@@ -3,6 +3,21 @@ set -euo pipefail
 
 echo "Running Rust system setup..."
 
+# Ensure Nix profile binaries are on PATH when run via sudo
+USER_NAME=${USER:-$(id -un)}
+NIX_PATHS=(
+  "/run/current-system/sw/bin"
+  "/nix/var/nix/profiles/default/bin"
+  "/nix/var/nix/profiles/per-user/${USER_NAME}/profile/bin"
+  "$HOME/.nix-profile/bin"
+)
+for path_dir in "${NIX_PATHS[@]}"; do
+  if [ -d "$path_dir" ] && [[ ":$PATH:" != *":$path_dir:"* ]]; then
+    PATH="$path_dir:$PATH"
+  fi
+done
+export PATH
+
 # Detect binaries (installed via Nix)
 RUSTC_PATH=$(command -v rustc || true)
 CARGO_PATH=$(command -v cargo || true)
@@ -49,13 +64,5 @@ rustc --version || true
 cargo --version || true
 rust-analyzer --version || true
 
-# --- Optional: create a global workspace directory ---
-DEV="$HOME/dev/rust"
-if [ ! -d "$DEV" ]; then
-  echo "Creating Rust dev workspace at $DEV"
-  mkdir -p "$DEV"
-fi
-
 echo "✓ Rust environment looks good!"
 exit 0
-
