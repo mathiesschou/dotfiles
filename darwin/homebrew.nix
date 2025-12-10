@@ -7,6 +7,7 @@
     casks = [
       "ghostty"
       "zoom"
+      "anki"
       "font-meslo-lg-nerd-font"
       "font-ia-writer-quattro"
       "sioyek"
@@ -18,6 +19,7 @@
       "adguard"
       "flux"
       "todoist"
+      "obsidian"
     ];
 
     taps = [
@@ -36,7 +38,7 @@
     ];
 
     onActivation = {
-      cleanup = "zap";
+      cleanup = "uninstall"; # Bruger 'uninstall' i stedet for 'zap' - mere stabil
       autoUpdate = true;
       upgrade = true;
     };
