@@ -26,6 +26,13 @@
     rustfmt
     clippy
     rust-analyzer
+    libiconv
+  ];
+
+  nixpkgs.config.darwin.apple_sdk.frameworks = [
+    "Security"
+    "CoreFoundation"
+    "Foundation"
   ];
 
   environment.variables = {
