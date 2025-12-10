@@ -19,6 +19,7 @@
     fzf
     nil
     nixpkgs-fmt
+    clang
 
     # Rust
     rustc
@@ -37,6 +38,13 @@
 
   environment.variables = {
     NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+
+    # IMPORTANT: make Rust use Nix toolchain
+    CC = "${pkgs.clang}/bin/clang";
+    CXX = "${pkgs.clang}/bin/clang++";
+    AR = "${pkgs.llvm}/bin/llvm-ar";
+    CFLAGS = "-I${pkgs.libiconv}/include";
+    LDFLAGS = "-L${pkgs.libiconv}/lib";
   };
 
   # System defaults
