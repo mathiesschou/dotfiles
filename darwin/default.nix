@@ -19,6 +19,13 @@
     fzf
     nil
     nixpkgs-fmt
+
+    # Rust
+    rustc
+    cargo
+    rustfmt
+    clippy
+    rust-analyzer
   ];
 
   environment.variables = {
@@ -196,6 +203,10 @@
 
     # Restart SystemUIServer to apply menubar changes
     /usr/bin/killall SystemUIServer 2>/dev/null || true
+
+    # Setup Rust tools system-wide
+    echo "Running Rust setup..."
+    /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./scripts/setup-rust.sh}
 
     # Clear Neovim cache to ensure fresh plugin configuration
     echo "Clearing Neovim cache..."

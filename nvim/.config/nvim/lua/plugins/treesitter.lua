@@ -11,6 +11,7 @@ return {
         "bash",
         "markdown",
         "markdown_inline",
+        "rust",
       },
       highlight = { enable = true },
       indent = { enable = true },
