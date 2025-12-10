@@ -34,6 +34,8 @@
 
     sessionVariables = {
       EDITOR = "nvim";
+      CC = "/usr/bin/cc";
+      CXX = "/usr/bin/c++";
     };
 
     # Session path
