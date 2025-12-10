@@ -7,8 +7,8 @@
     ./programs/tmux.nix
     ./programs/neovim.nix
     ./programs/ghostty.nix
-    ./programs/aerospace.nix
-    ./programs/sketchybar.nix
+    # ./programs/aerospace.nix
+    # ./programs/sketchybar.nix
   ];
 
   home = {
