@@ -78,23 +78,6 @@ sketchybar --add event spotify_change "com.spotify.client.PlaybackStateChanged"
 
 # Right side items (capsule look per item)
 
-sketchybar --add item pomodoro right \
-           --set pomodoro update_freq=1 \
-                         icon="🍅" \
-                         icon.color=$GREY \
-                         label="Ready" \
-                         label.color=$GREY \
-                         background.height=$ITEM_HEIGHT \
-                         background.corner_radius=$ITEM_CORNER_RADIUS \
-                         background.padding_left=6 \
-                         background.padding_right=6 \
-                         background.border_width=$ITEM_BORDER_WIDTH \
-                         background.border_color=$GREY \
-                         background.color=$BLUE_BG \
-                         background.drawing=on \
-                         script="$PLUGIN_DIR/pomodoro.sh" \
-           --subscribe pomodoro mouse.clicked mouse.clicked.right
-
 sketchybar --add item battery right \
            --set battery update_freq=120 \
                          icon.color=$BLUE \

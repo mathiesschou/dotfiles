@@ -1,3 +1,0 @@
-#!/bin/bash
-echo "running:300:break" > /tmp/sketchybar_pomodoro_state
-sketchybar --trigger mouse.clicked

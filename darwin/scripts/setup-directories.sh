@@ -7,13 +7,9 @@ echo "Setting up development directories..."
 
 # Base directories
 DIRS=(
-  "$HOME/work"
-  "$HOME/work/uni"
-  "$HOME/work/company"
+  "$HOME"
+  "$HOME/uni"
   "$HOME/projects"
-  "$HOME/projects/web"
-  "$HOME/projects/tools"
-  "$HOME/projects/learning"
 )
 
 # Create directories if they don't exist

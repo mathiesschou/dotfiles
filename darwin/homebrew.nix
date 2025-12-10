@@ -20,6 +20,8 @@
       "flux"
       "todoist"
       "obsidian"
+      "zed"
+      "font-ia-writer-quattro"
     ];
 
     taps = [
@@ -32,13 +34,10 @@
       "felixkratz/formulae/sketchybar"
       "direnv"
       "uv"
-      "docker"
-      "kubectl"
-      "colima"
     ];
 
     onActivation = {
-      cleanup = "uninstall"; # Bruger 'uninstall' i stedet for 'zap' - mere stabil
+      cleanup = "uninstall";
       autoUpdate = true;
       upgrade = true;
     };
