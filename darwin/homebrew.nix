@@ -22,6 +22,7 @@
       "obsidian"
       "zed"
       "font-ia-writer-quattro"
+      "font-zed-mono-nerd-font"
     ];
 
     taps = [

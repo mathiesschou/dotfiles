@@ -49,6 +49,13 @@
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
 
+        # Prefer Apple toolchain for builds to ensure macOS SDK libs (e.g., libiconv) are found
+        if command -v xcrun &> /dev/null; then
+          export CC="$(xcrun --find clang)"
+          export SDKROOT="$(xcrun --show-sdk-path)"
+          export LIBRARY_PATH="$SDKROOT/usr/lib"
+        fi
+
         # Docker/Colima configuration
         unset DOCKER_HOST
         export DOCKER_CONTEXT=colima

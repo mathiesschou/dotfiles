@@ -49,6 +49,12 @@
       bind -n M-k resize-pane -U 5
       bind -n M-l resize-pane -R 5
 
+      # Alternativ: hold prefix og tryk H/J/K/L for gentagen resize (repeatable)
+      bind -r H resize-pane -L 3
+      bind -r J resize-pane -D 3
+      bind -r K resize-pane -U 3
+      bind -r L resize-pane -R 3
+
       # Status bar at top
       set-option -g status-position top
 

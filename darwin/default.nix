@@ -50,7 +50,7 @@
   # System defaults
   system.defaults = {
     NSGlobalDomain = {
-      _HIHideMenuBar = true;
+      _HIHideMenuBar = false;
     };
 
     finder = {
