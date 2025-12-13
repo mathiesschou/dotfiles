@@ -21,8 +21,4 @@ vim.keymap.set("n", "<leader>lp", function()
   end
 end, vim.tbl_extend("force", opts, { desc = "Preview PDF" }))
 
--- Build/Export PDF (tinymist handles this automatically on save if configured)
-vim.keymap.set("n", "<leader>lb", function()
-  vim.cmd("write")
-  vim.notify("Typst: Saving triggers automatic PDF export", vim.log.levels.INFO)
-end, vim.tbl_extend("force", opts, { desc = "Build PDF" }))
+
