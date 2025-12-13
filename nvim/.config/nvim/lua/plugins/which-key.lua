@@ -48,6 +48,7 @@ return {
         { "<leader>d", group = "Diagnostics" },
         { "<leader>c", group = "Code" },
         { "<leader>r", group = "Refactor" },
+        { "<leader>l", group = "LaTeX/Typst" },
         { "g", group = "Go to" },
       })
     end,

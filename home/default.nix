@@ -28,12 +28,16 @@
       nodePackages.vscode-langservers-extracted # html, css, json
       pyright
       texlab # LaTeX LSP
+      tinymist # Typst LSP
 
       # Formatters
       nodePackages.prettier
 
       # LaTeX
       texlive.combined.scheme-medium
+
+      # Typst
+      typst
     ];
 
     sessionVariables = {

@@ -83,6 +83,12 @@ return {
             },
           },
         },
+        tinymist = {
+          settings = {
+            exportPdf = "onSave",
+            formatterMode = "typstyle",
+          },
+        },
       }
 
       -- Setup all servers
