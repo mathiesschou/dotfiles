@@ -43,17 +43,21 @@
       bind-key k select-pane -U
       bind-key l select-pane -R
 
-      # Pane resizing med Alt + h/j/k/l
-      bind -n M-h resize-pane -L 5
-      bind -n M-j resize-pane -D 5
-      bind -n M-k resize-pane -U 5
-      bind -n M-l resize-pane -R 5
+      # Pane resizing med prefix + h/j/k/l (repeatable)
+      unbind -n M-h
+      unbind -n M-j
+      unbind -n M-k
+      unbind -n M-l
+      bind -r h resize-pane -L 3
+      bind -r j resize-pane -D 3
+      bind -r k resize-pane -U 3
+      bind -r l resize-pane -R 3
 
-      # Alternativ: hold prefix og tryk H/J/K/L for gentagen resize (repeatable)
-      bind -r H resize-pane -L 3
-      bind -r J resize-pane -D 3
-      bind -r K resize-pane -U 3
-      bind -r L resize-pane -R 3
+      # Alternativ: hold prefix og tryk H/J/K/L for grovere resize (repeatable)
+      bind -r H resize-pane -L 6
+      bind -r J resize-pane -D 6
+      bind -r K resize-pane -U 6
+      bind -r L resize-pane -R 6
 
       # Status bar at top
       set-option -g status-position top

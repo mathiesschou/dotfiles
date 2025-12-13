@@ -27,9 +27,13 @@
       rust-analyzer
       nodePackages.vscode-langservers-extracted # html, css, json
       pyright
+      texlab # LaTeX LSP
 
       # Formatters
       nodePackages.prettier
+
+      # LaTeX
+      texlive.combined.scheme-medium
     ];
 
     sessionVariables = {

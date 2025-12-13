@@ -68,6 +68,21 @@ return {
             },
           },
         },
+        texlab = {
+          settings = {
+            texlab = {
+              build = {
+                executable = "latexmk",
+                args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                onSave = true,
+              },
+              forwardSearch = {
+                executable = "sioyek",
+                args = { "--reuse-window", "--forward-search-file", "%f", "--forward-search-line", "%l", "%p" },
+              },
+            },
+          },
+        },
       }
 
       -- Setup all servers
