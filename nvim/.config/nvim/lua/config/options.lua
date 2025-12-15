@@ -19,3 +19,6 @@ opt.signcolumn = "yes"
 opt.clipboard = "unnamedplus"
 opt.undofile = true
 opt.swapfile = false
+opt.shortmess:append("I") -- Disable intro message
+opt.shortmess:append("c") -- Don't show completion messages
+opt.shortmess:append("F") -- Don't show file info when editing

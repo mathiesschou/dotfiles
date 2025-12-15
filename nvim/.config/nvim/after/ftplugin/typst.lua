@@ -4,9 +4,9 @@ vim.opt_local.shiftwidth = 2
 vim.opt_local.softtabstop = 2
 vim.opt_local.expandtab = true
 
--- Enable spell checking for Typst
-vim.opt_local.spell = true
-vim.opt_local.spelllang = "en_us,da"
+-- Disable spell checking
+vim.opt_local.spell = false
+vim.opt_local.spelllang = "none"
 
 -- Keymaps for Typst
 local opts = { buffer = true, silent = true }
@@ -20,5 +20,4 @@ vim.keymap.set("n", "<leader>lp", function()
     vim.notify("PDF not found: " .. pdf, vim.log.levels.WARN)
   end
 end, vim.tbl_extend("force", opts, { desc = "Preview PDF" }))
-
 

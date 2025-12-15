@@ -6,6 +6,7 @@
 
     casks = [
       "ghostty"
+      "rectangle"
       "zoom"
       "anki"
       "font-meslo-lg-nerd-font"
