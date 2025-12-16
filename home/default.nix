@@ -8,8 +8,8 @@
     ./programs/neovim.nix
     ./programs/ghostty.nix
     ./programs/zed.nix
-    # ./programs/aerospace.nix
-    # ./programs/sketchybar.nix
+    # ./programs/aerospace.nix # not used currently
+    # ./programs/sketchybar.nix # not used currently
   ];
 
   home = {
@@ -45,18 +45,12 @@
       EDITOR = "nvim";
       CC = "/usr/bin/cc";
       CXX = "/usr/bin/c++";
-    };
+    }; # for rust linking
 
     # Session path
     sessionPath = [
       "$HOME/.npm-global/bin"
     ];
-
-    # Deploy tmux startup script
-    file.".config/tmux/startup.sh" = {
-      source = ./scripts/tmux-startup.sh;
-      executable = true;
-    };
   };
 
   programs.home-manager.enable = true;

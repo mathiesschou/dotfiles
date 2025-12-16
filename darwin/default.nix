@@ -133,7 +133,7 @@
       # Add f.lux to Login Items if not already there
       /usr/bin/sudo -u mathies /usr/bin/osascript -e 'tell application "System Events" to delete login item "Flux"' 2>/dev/null || true
       /usr/bin/sudo -u mathies /usr/bin/osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Flux.app", hidden:false}' 2>/dev/null || true
-      echo "✓ f.lux added to Login Items"
+      echo "f.lux added to Login Items"
     fi
 
     # Set Sioyek as default PDF viewer
@@ -142,7 +142,7 @@
       BUNDLE_ID=$(/usr/bin/mdls -name kMDItemCFBundleIdentifier -r "/Applications/Sioyek.app" 2>/dev/null || echo "")
       if [[ -n "$BUNDLE_ID" ]]; then
         /usr/bin/sudo -u mathies ${pkgs.duti}/bin/duti -s "$BUNDLE_ID" .pdf all 2>/dev/null || true
-        echo "✓ Sioyek set as default PDF viewer"
+        echo "Sioyek set as default PDF viewer"
       fi
     fi
 
@@ -183,9 +183,9 @@
 
         # Create marker file to indicate setup is complete
         touch "$MARKER_FILE"
-        echo "✓ Claude Code MCP servers configured"
+        echo "Claude Code MCP servers configured"
       else
-        echo "✓ Claude Code MCP servers already configured (skipping)"
+        echo "Claude Code MCP servers already configured (skipping)"
       fi
     ' || true
 
@@ -210,9 +210,9 @@
 
         # Create marker file to indicate setup is complete
         touch "$MARKER_FILE"
-        echo "✓ Codex MCP servers configured"
+        echo "Codex MCP servers configured"
       else
-        echo "✓ Codex MCP servers already configured (skipping)"
+        echo "Codex MCP servers already configured (skipping)"
       fi
     ' || true
 

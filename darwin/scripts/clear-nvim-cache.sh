@@ -12,4 +12,4 @@ rm -rf "$NVIM_SHARE/lazy" 2>/dev/null
 rm -rf "$NVIM_STATE/lazy" 2>/dev/null
 rm -rf "$NVIM_CACHE" 2>/dev/null
 
-echo "✓ Neovim cache cleared (lazy.nvim will reinstall plugins on next launch)"
+echo "Neovim cache cleared (lazy.nvim will reinstall plugins on next launch)"

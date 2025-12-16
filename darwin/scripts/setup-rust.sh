@@ -25,26 +25,26 @@ ANALYZER_PATH=$(command -v rust-analyzer || true)
 
 # --- Validate that Nix packages were installed ---
 if [ -z "$RUSTC_PATH" ]; then
-  echo "❌ rustc not found in PATH"
+  echo "rustc not found in PATH"
   echo "Make sure you've added rustc to environment.systemPackages"
   exit 0
 fi
 
 if [ -z "$CARGO_PATH" ]; then
-  echo "❌ cargo not found in PATH"
+  echo "cargo not found in PATH"
   echo "Make sure cargo is installed system-wide via Nix"
   exit 0
 fi
 
 if [ -z "$ANALYZER_PATH" ]; then
-  echo "❌ rust-analyzer not found"
+  echo "rust-analyzer not found"
   echo "Add `rust-analyzer` to systemPackages"
   exit 0
 fi
 
-echo "✓ Rust compiler: $RUSTC_PATH"
-echo "✓ Cargo: $CARGO_PATH"
-echo "✓ Rust Analyzer: $ANALYZER_PATH"
+echo "Rust compiler: $RUSTC_PATH"
+echo "Cargo: $CARGO_PATH"
+echo "Rust Analyzer: $ANALYZER_PATH"
 
 # --- Create a default cargo home if missing ---
 if [ ! -d "$HOME/.cargo" ]; then
@@ -64,5 +64,5 @@ rustc --version || true
 cargo --version || true
 rust-analyzer --version || true
 
-echo "✓ Rust environment looks good!"
+echo "Rust environment looks good!"
 exit 0

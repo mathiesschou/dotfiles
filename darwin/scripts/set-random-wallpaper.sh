@@ -10,7 +10,7 @@ if [[ -d "$WALLPAPER_DIR" ]]; then
     if [[ -n "$WALLPAPER" ]]; then
         echo "Setting wallpaper: $(basename "$WALLPAPER")"
         /usr/bin/osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$WALLPAPER\""
-        echo "✓ Wallpaper set successfully"
+        echo "Wallpaper set successfully"
     else
         echo "No wallpapers found in $WALLPAPER_DIR"
     fi

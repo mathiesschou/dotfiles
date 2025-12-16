@@ -16,9 +16,9 @@ DIRS=(
 for dir in "${DIRS[@]}"; do
   if [ ! -d "$dir" ]; then
     mkdir -p "$dir"
-    echo "✓ Created: $dir"
+    echo "Created: $dir"
   else
-    echo "→ Already exists: $dir"
+    echo "Already exists: $dir"
   fi
 done
 
