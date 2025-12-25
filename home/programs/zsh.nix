@@ -49,6 +49,7 @@
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
 
+        # FVM is managed by Home Manager; avoid shell integration writing to ~/.zshrc
         # Prefer Apple toolchain for builds to ensure macOS SDK libs (e.g., libiconv) are found
         if command -v xcrun &> /dev/null; then
           export CC="$(xcrun --find clang)"

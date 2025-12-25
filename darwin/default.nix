@@ -98,6 +98,20 @@
 
   # Activation scripts
   system.activationScripts.extraActivation.text = ''
+    # Configure keyboard input sources (English US and Danish)
+    echo "Configuring keyboard input sources..."
+    /usr/bin/sudo -u mathies /usr/bin/defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '{
+      "InputSourceKind" = "Keyboard Layout";
+      "KeyboardLayout ID" = 0;
+      "KeyboardLayout Name" = "U.S.";
+    }'
+    /usr/bin/sudo -u mathies /usr/bin/defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '{
+      "InputSourceKind" = "Keyboard Layout";
+      "KeyboardLayout ID" = 9;
+      "KeyboardLayout Name" = "Danish";
+    }'
+    echo "Keyboard input sources configured (English US and Danish)"
+
     # Apply settings immediately
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 

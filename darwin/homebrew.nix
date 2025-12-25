@@ -14,6 +14,7 @@
       "sioyek"
       "microsoft-outlook"
       "microsoft-powerpoint"
+      "google-chrome"
       "microsoft-word"
       "nikitabobko/tap/aerospace"
       "spotify"
@@ -24,6 +25,7 @@
       "zed"
       "font-ia-writer-quattro"
       "font-zed-mono-nerd-font"
+      "flutter"
     ];
 
     taps = [
