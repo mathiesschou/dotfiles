@@ -17,6 +17,7 @@
     nodejs_20
     lazygit
     fzf
+    tree-sitter
     nil
     nixpkgs-fmt
     clang
