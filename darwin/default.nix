@@ -100,17 +100,18 @@
   system.activationScripts.extraActivation.text = ''
     # Configure keyboard input sources (English US and Danish)
     echo "Configuring keyboard input sources..."
-    /usr/bin/sudo -u mathies /usr/bin/defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '{
-      "InputSourceKind" = "Keyboard Layout";
-      "KeyboardLayout ID" = 0;
-      "KeyboardLayout Name" = "U.S.";
-    }'
-    /usr/bin/sudo -u mathies /usr/bin/defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '{
-      "InputSourceKind" = "Keyboard Layout";
-      "KeyboardLayout ID" = 9;
-      "KeyboardLayout Name" = "Danish";
-    }'
-    echo "Keyboard input sources configured (English US and Danish)"
+    /usr/bin/sudo -u mathies /bin/bash -c '
+      # Add English (US) input source
+      /usr/bin/defaults write com.apple.HIToolbox AppleEnabledInputSources -array \
+        "<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>0</integer><key>KeyboardLayout Name</key><string>U.S.</string></dict>" \
+        "<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>9</integer><key>KeyboardLayout Name</key><string>Danish</string></dict>"
+    ' || true
+    
+    # Set keyboard shortcut to switch between input sources (Control+Space)
+    /usr/bin/sudo -u mathies /usr/bin/defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>262144</integer></array><key>type</key><string>standard</string></dict></dict>" || true
+    /usr/bin/sudo -u mathies /usr/bin/defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 61 "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>786432</integer></array><key>type</key><string>standard</string></dict></dict>" || true
+    
+    echo "Keyboard input sources configured (English US and Danish with Control+Space to switch)"
 
     # Apply settings immediately
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u

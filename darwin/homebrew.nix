@@ -7,6 +7,7 @@
     casks = [
       "ghostty"
       "rectangle"
+      "readdle-spark"
       "zoom"
       "anki"
       "font-meslo-lg-nerd-font"
