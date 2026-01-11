@@ -15,6 +15,7 @@
       "sioyek"
       "microsoft-outlook"
       "microsoft-powerpoint"
+      "microsoft-onenote"
       "google-chrome"
       "microsoft-word"
       "nikitabobko/tap/aerospace"
