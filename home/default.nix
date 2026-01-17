@@ -8,8 +8,6 @@
     ./programs/neovim.nix
     ./programs/ghostty.nix
     ./programs/zed.nix
-    # ./programs/aerospace.nix # not used currently
-    # ./programs/sketchybar.nix # not used currently
   ];
 
   home = {

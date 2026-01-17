@@ -131,10 +131,6 @@
     echo "Checking SSH setup.."
     /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./scripts/setup-ssh.sh}
 
-    # Setup development directories
-    echo "Setting up development directories..."
-    /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./scripts/setup-directories.sh}
-
     # Remove quarantine from Sioyek
     if [[ -d "/Applications/Sioyek.app" ]]; then
       echo "Removing quarantine from Sioyek..."
@@ -161,10 +157,6 @@
         echo "Sioyek set as default PDF viewer"
       fi
     fi
-
-    # Start sketchybar service
-    echo "Ensuring sketchybar service..."
-    /usr/bin/sudo -u mathies /opt/homebrew/bin/brew services restart sketchybar 2>/dev/null || true
 
     # Setup npm global directory and install AI tools
     echo "Setting up AI CLI tools..."
