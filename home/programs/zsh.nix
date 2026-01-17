@@ -15,7 +15,6 @@
     initContent = lib.mkMerge [
       (lib.mkBefore ''
         # direnv hook (auto-load Nix environments)
-        # Must be loaded before instant prompt to avoid console output warnings
         if command -v direnv &> /dev/null; then
           export DIRENV_LOG_FORMAT=""
           eval "$(direnv hook zsh)"
@@ -27,7 +26,7 @@
         fi
       '')
       ''
-        # Load p10k configuration if it exists
+        # Load p10k configuration
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
         # History configuration
@@ -35,22 +34,20 @@
         SAVEHIST=10000
         HISTFILE=~/.zsh_history
 
-        # Nix-darwin function (rebuilds and reloads shell)
+        # Aliases
+        alias ll='ls -lah'
+        alias la='ls -a'
+
+        # Add npm global bin to PATH
+        export PATH="$HOME/.npm-global/bin:$PATH"
+
+        # Nix-darwin rebuild function
         unalias dr 2>/dev/null || true
         dr() {
           sudo darwin-rebuild switch --flake ~/dotfiles && exec zsh
         }
 
-        # Aliases
-        alias ll='ls -lah'
-        alias la='ls -a'
-        alias start='~/.config/tmux/startup.sh'
-
-        # Add npm global bin to PATH
-        export PATH="$HOME/.npm-global/bin:$PATH"
-
-        # FVM is managed by Home Manager; avoid shell integration writing to ~/.zshrc
-        # Prefer Apple toolchain for builds to ensure macOS SDK libs (e.g., libiconv) are found
+        # Prefer Apple toolchain for builds
         if command -v xcrun &> /dev/null; then
           export CC="$(xcrun --find clang)"
           export SDKROOT="$(xcrun --show-sdk-path)"
@@ -66,9 +63,6 @@
           CONTEXT7_KEY=$(security find-generic-password -a "$USER" -s "context7-api-key" -w 2>/dev/null || echo "")
           if [[ -n "$CONTEXT7_KEY" ]]; then
             export CONTEXT7_API_KEY="$CONTEXT7_KEY"
-          else
-            echo "WARNING: Context7 API key not found in Keychain"
-            echo "Add it with: security add-generic-password -a \"\$USER\" -s \"context7-api-key\" -w \"YOUR_API_KEY\""
           fi
         fi
       ''

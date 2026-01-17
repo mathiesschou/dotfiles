@@ -20,8 +20,6 @@
       "spotify"
       "adguard"
       "flux-app"
-      "font-ia-writer-quattro"
-      "font-zed-mono-nerd-font"
     ];
 
     taps = [

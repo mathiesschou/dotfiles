@@ -89,18 +89,7 @@ return {
             formatterMode = "typstyle",
           },
         },
-        dartls = {},
         svelte = {},
-        metals = {
-          settings = {
-            metals = {
-              serverVersion = "latest.snapshot",
-              showImplicitArguments = true,
-              showInferredType = true,
-              superMethodLensesEnabled = true,
-            },
-          },
-        },
       }
 
       -- Setup all servers

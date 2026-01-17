@@ -42,9 +42,6 @@ return {
       -- Python (pyright)
       python = { "isort", "black" },
 
-      -- Dart/Flutter (dartls)
-      dart = { "dart_format" },
-
       -- Nix (nil_ls)
       nix = { "nixpkgs-fmt" },
 
