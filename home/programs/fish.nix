@@ -21,6 +21,7 @@
       # Add npm global bin to PATH
       fish_add_path $HOME/.npm-global/bin
 
+      fish_add_path $HOME/.local/bin
       # Load Context7 API key from file
       if test -f ~/.context7-api-key
         set -gx CONTEXT7_API_KEY (cat ~/.context7-api-key)

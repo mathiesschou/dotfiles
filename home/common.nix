@@ -10,7 +10,6 @@
 
   home = {
     packages = with pkgs; [
-      stow
       zsh-powerlevel10k
 
       # Language servers
@@ -34,6 +33,7 @@
     };
 
     sessionPath = [
+      "$HOME/.local/bin"
       "$HOME/.npm-global/bin"
     ];
   };

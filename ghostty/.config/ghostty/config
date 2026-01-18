@@ -1,7 +1,7 @@
 theme = "Gruvbox Dark"
 
 # Font
-font-family = "MesloLGS NF"
+font-family = "JetBrainsMono Nerd Font"
 font-size = 18 
 
 # Cursor
