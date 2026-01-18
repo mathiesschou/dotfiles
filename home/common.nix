@@ -26,6 +26,9 @@
 
       # Formatters
       nodePackages.prettier
+
+      # Dev tools
+      pnpm
     ];
 
     sessionVariables = {

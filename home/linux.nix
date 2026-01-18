@@ -31,6 +31,13 @@
       noctalia-shell
       sddm-sugar-dark
       ttf-jetbrains-mono-nerd
+      spotify
+      python-dbus  # Required for Aarhus University eduroam setup
+
+      # Tauri dependencies
+      webkit2gtk-4.1
+      libsoup3
+      librsvg
     )
 
     MISSING=()
