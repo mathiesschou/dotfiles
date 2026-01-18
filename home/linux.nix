@@ -24,7 +24,6 @@
     fi
 
     PACKAGES=(
-      adguard
       ghostty
       swaybg
       rofi-wayland
