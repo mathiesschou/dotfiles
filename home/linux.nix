@@ -26,6 +26,7 @@
     PACKAGES=(
       ghostty
       swaybg
+      swaylock
       rofi-wayland
       quickshell
       noctalia-shell
