@@ -22,6 +22,10 @@
     # Helper function for home-manager standalone (Linux)
     mkHome = system: home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = {
+        isLinux = true;
+        isDarwin = false;
+      };
       modules = [ ./home ];
     };
   in
@@ -50,6 +54,10 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "backup";
+            extraSpecialArgs = {
+              isLinux = false;
+              isDarwin = true;
+            };
             users.mathies = import ./home;
           };
         }

@@ -1,14 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, isLinux, isDarwin, ... }:
 
-let
-  isDarwin = pkgs.stdenv.isDarwin;
-  isLinux = pkgs.stdenv.isLinux;
-in
 {
   imports = [
     ./common.nix
   ]
-  ++ (if isDarwin then [ ./darwin.nix ./programs/zsh.nix ] else [ ./linux.nix ./programs/fish.nix ]);
+  ++ (if isDarwin then [ ./darwin.nix ./programs/zsh.nix ] else [ ./linux.nix ./programs/fish.nix ./programs/niri.nix ]);
 
   home = {
     username = "mathies";
