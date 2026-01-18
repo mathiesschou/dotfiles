@@ -27,8 +27,8 @@
       ghostty
       swaybg
       rofi-wayland
-      quickshell-git
-      noctalia-shell-git
+      quickshell
+      noctalia-shell
       sddm-sugar-dark
       ttf-jetbrains-mono-nerd
     )
