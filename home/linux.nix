@@ -4,7 +4,25 @@
   # Packages to install via pacman (CachyOS/Arch)
   # Run: pacman-install (after home-manager switch)
   home.activation.bootstrap = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    # Install AUR packages if not already installed
+    export PATH="/usr/bin:$PATH"
+
+    # Install yay if no AUR helper found
+    if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
+      echo "==> Installing yay..."
+      sudo pacman -S --needed --noconfirm git base-devel
+      TEMP_DIR=$(mktemp -d)
+      git clone https://aur.archlinux.org/yay.git "$TEMP_DIR/yay"
+      (cd "$TEMP_DIR/yay" && makepkg -si --noconfirm)
+      rm -rf "$TEMP_DIR"
+    fi
+
+    # Prefer yay, fallback to paru
+    if command -v yay &>/dev/null; then
+      AUR_HELPER="yay"
+    else
+      AUR_HELPER="paru"
+    fi
+
     PACKAGES=(
       adguard
       ghostty
@@ -25,10 +43,9 @@
 
     if [ ''${#MISSING[@]} -gt 0 ]; then
       echo "==> Installing missing packages: ''${MISSING[*]}"
-      yay -S --needed "''${MISSING[@]}"
+      $AUR_HELPER -S --needed --noconfirm "''${MISSING[@]}"
     fi
 
-    # Configure SDDM if not already done
     if [ ! -f /etc/sddm.conf.d/hide-nix.conf ]; then
       echo "==> Configuring SDDM..."
       sudo mkdir -p /etc/sddm.conf.d
