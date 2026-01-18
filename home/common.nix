@@ -29,6 +29,7 @@
 
       # Dev tools
       pnpm
+      direnv
     ];
 
     sessionVariables = {

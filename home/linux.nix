@@ -104,12 +104,19 @@
       # Nix tools
       nil
       nixpkgs-fmt
+
+      # Apps
+      anki
     ];
 
     sessionVariables = {
       # Linux-specific environment variables
       CC = "gcc";
       CXX = "g++";
+
+      # Firefox Wayland + GPU acceleration
+      MOZ_ENABLE_WAYLAND = "1";
+      MOZ_WEBRENDER = "1";
     };
   };
 }
