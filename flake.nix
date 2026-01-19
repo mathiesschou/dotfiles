@@ -1,5 +1,5 @@
 {
-  description = "Cross-platform dotfiles with nix-darwin and home-manager";
+  description = "macOS dotfiles with nix-darwin and home-manager";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -19,12 +19,6 @@
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew }:
   let
-    # Helper function for home-manager standalone (Linux)
-    mkHome = system: home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./home/linux ];
-    };
-
     # Overlay to fix direnv build on darwin (fish tests are broken)
     darwinOverlay = final: prev: {
       direnv = prev.direnv.overrideAttrs (old: {
@@ -66,11 +60,5 @@
       ];
     };
 
-    # Linux configuration (home-manager standalone)
-    # For CachyOS: nix run home-manager -- switch --flake .#mathies-linux
-    homeConfigurations."mathies-linux" = mkHome "x86_64-linux";
-
-    # Also support aarch64 Linux (e.g., Raspberry Pi, ARM laptops)
-    homeConfigurations."mathies-linux-arm" = mkHome "aarch64-linux";
   };
 }
