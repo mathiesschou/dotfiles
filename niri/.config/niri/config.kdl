@@ -10,7 +10,7 @@ input {
     keyboard {
         xkb {
             layout "us,dk"
-            options "grp:alt_shift_toggle"
+            options "grp:ctrl_space_toggle"
         }
     }
 }

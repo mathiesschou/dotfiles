@@ -48,11 +48,11 @@
     };
   };
 
-  # Keyboard - US and DK layouts, switch with Alt+Shift
+  # Keyboard - US and DK layouts, switch with Ctrl+Space
   services.xserver.xkb = {
     layout = "us,dk";
     variant = "";
-    options = "grp:alt_shift_toggle";
+    options = "grp:ctrl_space_toggle";
   };
 
   # Sound
