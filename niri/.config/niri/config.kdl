@@ -67,6 +67,13 @@ binds {
     Alt+Shift+J { move-column-to-workspace-down; }
     Alt+Shift+K { move-column-to-workspace-up; }
 
+    // Move window to workspace
+    Alt+Shift+1 { move-column-to-workspace 1; }
+    Alt+Shift+2 { move-column-to-workspace 2; }
+    Alt+Shift+3 { move-column-to-workspace 3; }
+    Alt+Shift+4 { move-column-to-workspace 4; }
+    Alt+Shift+5 { move-column-to-workspace 5; }
+
     // Layout
     Alt+F { maximize-column; }
     Alt+Shift+F { fullscreen-window; }
