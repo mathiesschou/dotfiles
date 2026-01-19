@@ -69,6 +69,7 @@
       persistent-apps = [
         "/Applications/Ghostty.app"
         "/System/Cryptexes/App/System/Applications/Safari.app"
+        "/Applications/Anki.app"
       ];
 
       persistent-others = [
