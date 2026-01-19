@@ -72,6 +72,7 @@
         "/System/Cryptexes/App/System/Applications/Safari.app"
         "/Applications/Anki.app"
         "/Applications/Microsoft OneNote.app"
+        "/Applications/Microsoft Outlook.app"
       ];
 
       persistent-others = [
