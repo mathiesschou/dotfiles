@@ -1,15 +1,57 @@
-{ config, pkgs, lib, isLinux, isDarwin, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    ./common.nix
-  ]
-  ++ lib.optionals isDarwin [ ./darwin.nix ./programs/zsh.nix ]
-  ++ lib.optionals isLinux [ ./linux.nix ./programs/fish.nix ./programs/niri.nix ];
+    ./programs/git.nix
+    ./programs/tmux.nix
+    ./programs/neovim.nix
+    ./programs/ghostty.nix
+    ./programs/zed.nix
+    ./programs/zsh.nix
+  ];
 
   home = {
     username = "mathies";
-    homeDirectory = if isDarwin then "/Users/mathies" else "/home/mathies";
+    homeDirectory = "/Users/mathies";
     stateVersion = "24.05";
+
+    packages = with pkgs; [
+      zsh-powerlevel10k
+
+      # Language servers
+      clang-tools # includes clangd
+      lua-language-server
+      nodePackages.typescript-language-server
+      nodePackages.svelte-language-server
+      nodePackages.vscode-langservers-extracted # html, css, json
+      pyright
+      texlab # LaTeX LSP
+      texlive.combined.scheme-medium
+      tinymist # Typst LSP
+      typst
+
+      # Formatters
+      nodePackages.prettier
+
+      # Dev tools
+      pnpm
+      direnv
+    ];
+
+    sessionVariables = {
+      EDITOR = "nvim";
+      # Use Apple toolchain for Rust linking on macOS
+      CC = "/usr/bin/cc";
+      CXX = "/usr/bin/c++";
+    };
+
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/.npm-global/bin"
+    ];
   };
+
+  programs.home-manager.enable = true;
+
+  news.display = "silent";
 }

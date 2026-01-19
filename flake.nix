@@ -35,7 +35,7 @@
         { nixpkgs.overlays = [ darwinOverlay ]; }
 
         # nix-darwin configuration
-        ./system/darwin
+        ./system
 
         # nix-homebrew
         nix-homebrew.darwinModules.nix-homebrew
@@ -54,7 +54,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "backup";
-            users.mathies = import ./home/darwin;
+            users.mathies = import ./home;
           };
         }
       ];
