@@ -86,7 +86,6 @@
     wget
     firefox
     ghostty
-    foot
     noctalia-shell
   ];
 
