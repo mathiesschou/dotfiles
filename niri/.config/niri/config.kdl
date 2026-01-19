@@ -8,10 +8,10 @@ output "Virtual-1" {
 // Window appearance
 layout {
     focus-ring {
-        width 2
+        width 1.5
     }
     border {
-        width 2
+        width 1.5
     }
 }
 
