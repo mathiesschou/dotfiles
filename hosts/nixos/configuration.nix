@@ -34,9 +34,6 @@
   # Niri compositor
   programs.niri.enable = true;
 
-  # Noctalia shell
-  programs.noctalia.enable = true;
-
   # Login manager
   services.greetd = {
     enable = true;
@@ -90,7 +87,7 @@
     firefox
     ghostty
     foot
-    quickshell  # for noctalia shell later
+    noctalia-shell
   ];
 
   system.stateVersion = "25.11";
