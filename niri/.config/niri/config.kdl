@@ -1,7 +1,6 @@
 // Niri configuration
 
 // Startup
-spawn-at-startup "sh" "-c" "~/dotfiles/scripts/random-wallpaper.sh"
 spawn-at-startup "noctalia-shell"
 
 // Output/display settings
