@@ -60,6 +60,9 @@
   # Link niri configuration
   home.file.".config/niri".source = ../niri/.config/niri;
 
+  # Symlink to shared folder
+  home.file."shared".source = config.lib.file.mkOutOfStoreSymlink "/mnt/shared";
+
   programs.home-manager.enable = true;
 
   news.display = "silent";
