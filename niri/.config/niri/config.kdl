@@ -41,6 +41,7 @@ input {
 binds {
     // Help
     Alt+Shift+Slash { show-hotkey-overlay; }
+    Super+O { show-hotkey-overlay; }
 
     // Terminal
     Alt+Return { spawn "ghostty"; }
