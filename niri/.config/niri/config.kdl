@@ -1,7 +1,8 @@
 // Niri configuration
 
-// Startup - random wallpaper
+// Startup
 spawn-at-startup "swaybg" "-m" "fill" "-i" "$(find ~/dotfiles/wallpapers -type f | shuf -n 1)"
+spawn-at-startup "noctalia-shell"
 
 // Output/display settings
 output "Virtual-1" {
