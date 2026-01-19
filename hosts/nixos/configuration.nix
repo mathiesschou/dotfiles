@@ -34,25 +34,13 @@
   # Niri compositor
   programs.niri.enable = true;
 
-  # Login manager with ReGreet (clean GTK greeter)
+  # Login manager
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.regreet}/bin/regreet";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
         user = "greeter";
-      };
-    };
-  };
-
-  programs.regreet = {
-    enable = true;
-    settings = {
-      background = {
-        fit = "Cover";
-      };
-      GTK = {
-        application_prefer_dark_theme = true;
       };
     };
   };
