@@ -29,6 +29,8 @@ input {
         xkb {
             layout "us"
         }
+        repeat-delay 200
+        repeat-rate 35
     }
 }
 
