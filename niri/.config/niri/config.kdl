@@ -66,10 +66,10 @@ binds {
     Alt+Shift+L { move-column-right; }
 
     // Workspaces
-    Ctrl+J { focus-workspace-down; }
-    Ctrl+K { focus-workspace-up; }
-    Ctrl+Shift+J { move-column-to-workspace-down; }
-    Ctrl+Shift+K { move-column-to-workspace-up; }
+    Super+J { focus-workspace-down; }
+    Super+K { focus-workspace-up; }
+    Super+Shift+J { move-column-to-workspace-down; }
+    Super+Shift+K { move-column-to-workspace-up; }
 
     // Layout
     Alt+F { maximize-column; }
