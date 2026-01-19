@@ -34,13 +34,25 @@
   # Niri compositor
   programs.niri.enable = true;
 
-  # Login manager
+  # Login manager with clean GTK greeter
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session";
+        command = "${pkgs.greetd.regreet}/bin/regreet";
         user = "greeter";
+      };
+    };
+  };
+
+  programs.regreet = {
+    enable = true;
+    settings = {
+      background = {
+        fit = "Cover";
+      };
+      GTK = {
+        application_prefer_dark_theme = true;
       };
     };
   };
@@ -85,7 +97,8 @@
     wget
     firefox
     ghostty
-    foot  # backup terminal
+    foot
+    quickshell  # for noctalia shell later
   ];
 
   system.stateVersion = "25.11";
