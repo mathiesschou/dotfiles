@@ -56,7 +56,7 @@
 
     finder = {
       AppleShowAllExtensions = true;
-      NewWindowTarget = "PfHm"; # Home directory
+      NewWindowTarget = "Home";
     };
 
     dock = {
