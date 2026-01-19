@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, noctalia, ... }:
 
 {
   imports = [
@@ -33,9 +33,6 @@
 
   # Niri compositor
   programs.niri.enable = true;
-
-  # Noctalia shell
-  services.noctalia-shell.enable = true;
 
   # Login manager
   services.greetd = {
@@ -88,7 +85,8 @@
     wget
     firefox
     ghostty
-    noctalia-shell
+  ] ++ [
+    noctalia.packages.aarch64-linux.default
   ];
 
   system.stateVersion = "25.11";
