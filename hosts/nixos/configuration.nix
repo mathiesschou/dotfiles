@@ -45,11 +45,10 @@
     };
   };
 
-  # Keyboard - US and DK layouts, switch with Ctrl+Space
+  # Keyboard - US layout
   services.xserver.xkb = {
-    layout = "us,dk";
+    layout = "us";
     variant = "";
-    options = "grp:ctrl_space_toggle";
   };
 
   # Sound

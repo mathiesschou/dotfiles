@@ -24,8 +24,7 @@ window-rule {
 input {
     keyboard {
         xkb {
-            layout "us,dk"
-            options "grp:ctrl_space_toggle"
+            layout "us"
         }
     }
 }
