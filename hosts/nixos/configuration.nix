@@ -34,6 +34,9 @@
   # Niri compositor
   programs.niri.enable = true;
 
+  # Noctalia shell
+  services.noctalia-shell.enable = true;
+
   # Login manager
   services.greetd = {
     enable = true;

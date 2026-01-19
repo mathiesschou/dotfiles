@@ -38,10 +38,11 @@
       modules = [
         ./hosts/nixos/configuration.nix
 
-        # Add noctalia overlay
+        # Noctalia overlay and module
         {
           nixpkgs.overlays = [ noctalia.overlays.default ];
         }
+        noctalia.nixosModules.default
 
         home-manager.nixosModules.home-manager
         {
