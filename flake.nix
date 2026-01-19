@@ -27,6 +27,24 @@
     };
   in
   {
+    # NixOS configuration (VM)
+    nixosConfigurations."nixos-vm" = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [
+        ./hosts/nixos/configuration.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "backup";
+            users.mathies = import ./home/nixos.nix;
+          };
+        }
+      ];
+    };
+
     # macOS configuration (nix-darwin + home-manager)
     darwinConfigurations."mathies-macos" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
