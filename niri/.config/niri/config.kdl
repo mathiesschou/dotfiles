@@ -38,40 +38,40 @@ input {
     }
 }
 
-// Keybindings - using Mod (Super/Cmd) as modifier
+// Keybindings - using Alt (Option key) as modifier
 binds {
     // Help & Overview
-    Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+O { toggle-overview; }
+    Alt+Shift+Slash { show-hotkey-overlay; }
+    Alt+O { toggle-overview; }
 
     // Terminal
-    Mod+Return { spawn "ghostty"; }
-    Mod+T { spawn "ghostty"; }
+    Alt+Return { spawn "ghostty"; }
+    Alt+T { spawn "ghostty"; }
 
     // App launcher
-    Mod+D { spawn "fuzzel"; }
+    Alt+D { spawn "fuzzel"; }
 
     // Close window
-    Mod+Q { close-window; }
+    Alt+Q { close-window; }
 
     // Focus windows
-    Mod+H { focus-column-left; }
-    Mod+L { focus-column-right; }
+    Alt+H { focus-column-left; }
+    Alt+L { focus-column-right; }
 
     // Move windows
-    Mod+Shift+H { move-column-left; }
-    Mod+Shift+L { move-column-right; }
+    Alt+Shift+H { move-column-left; }
+    Alt+Shift+L { move-column-right; }
 
     // Workspaces
-    Mod+J { focus-workspace-down; }
-    Mod+K { focus-workspace-up; }
-    Mod+Shift+J { move-column-to-workspace-down; }
-    Mod+Shift+K { move-column-to-workspace-up; }
+    Alt+J { focus-workspace-down; }
+    Alt+K { focus-workspace-up; }
+    Alt+Shift+J { move-column-to-workspace-down; }
+    Alt+Shift+K { move-column-to-workspace-up; }
 
     // Layout
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Alt+F { maximize-column; }
+    Alt+Shift+F { fullscreen-window; }
 
     // Exit
-    Mod+Shift+E { quit; }
+    Alt+Shift+E { quit; }
 }
