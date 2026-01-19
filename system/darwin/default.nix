@@ -52,6 +52,8 @@
   system.defaults = {
     NSGlobalDomain = {
       _HIHideMenuBar = false;
+      KeyRepeat = 2;
+      InitialKeyRepeat = 15;
     };
 
     finder = {
