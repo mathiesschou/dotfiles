@@ -1,4 +1,10 @@
 {
+  "features": {
+    "copilot": false
+  },
+  "assistant": {
+    "enabled": false
+  },
   "theme": "Gruvbox Dark",
   "vim_mode": true,
   "ui_font_size": 16,
