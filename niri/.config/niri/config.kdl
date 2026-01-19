@@ -9,7 +9,8 @@ output "Virtual-1" {
 input {
     keyboard {
         xkb {
-            layout "dk"
+            layout "us,dk"
+            options "grp:alt_shift_toggle"
         }
     }
 }

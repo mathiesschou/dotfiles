@@ -34,6 +34,9 @@
   # Niri compositor
   programs.niri.enable = true;
 
+  # Noctalia shell
+  programs.noctalia.enable = true;
+
   # Login manager
   services.greetd = {
     enable = true;
@@ -45,10 +48,11 @@
     };
   };
 
-  # Keyboard
+  # Keyboard - US and DK layouts, switch with Alt+Shift
   services.xserver.xkb = {
-    layout = "dk";
+    layout = "us,dk";
     variant = "";
+    options = "grp:alt_shift_toggle";
   };
 
   # Sound

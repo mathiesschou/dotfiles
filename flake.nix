@@ -15,9 +15,14 @@
     };
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, noctalia }:
   let
     # Overlay to fix direnv build on darwin (fish tests are broken)
     darwinOverlay = final: prev: {
@@ -32,6 +37,9 @@
       system = "aarch64-linux";
       modules = [
         ./hosts/nixos/configuration.nix
+
+        # Noctalia shell
+        noctalia.nixosModules.default
 
         home-manager.nixosModules.home-manager
         {
