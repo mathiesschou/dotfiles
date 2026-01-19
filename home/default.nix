@@ -4,7 +4,8 @@
   imports = [
     ./common.nix
   ]
-  ++ (if isDarwin then [ ./darwin.nix ./programs/zsh.nix ] else [ ./linux.nix ./programs/fish.nix ./programs/niri.nix ]);
+  ++ lib.optionals isDarwin [ ./darwin.nix ./programs/zsh.nix ]
+  ++ lib.optionals isLinux [ ./linux.nix ./programs/fish.nix ./programs/niri.nix ];
 
   home = {
     username = "mathies";

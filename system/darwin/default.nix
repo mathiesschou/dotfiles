@@ -66,8 +66,6 @@
       persistent-apps = [
         "/Applications/Ghostty.app"
         "/System/Cryptexes/App/System/Applications/Safari.app"
-        "/System/Applications/Mail.app"
-        "/System/Applications/Calendar.app"
       ];
 
       persistent-others = [
