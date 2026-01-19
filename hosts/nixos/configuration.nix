@@ -84,6 +84,8 @@
     vim
     wget
     firefox
+    ghostty
+    foot  # backup terminal
   ];
 
   system.stateVersion = "25.11";

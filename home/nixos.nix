@@ -56,6 +56,9 @@
     ];
   };
 
+  # Link niri configuration
+  home.file.".config/niri".source = ../niri/.config/niri;
+
   programs.home-manager.enable = true;
 
   news.display = "silent";
