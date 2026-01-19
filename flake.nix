@@ -24,12 +24,22 @@
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [ ./home/linux ];
     };
+
+    # Overlay to fix direnv build on darwin (fish tests are broken)
+    darwinOverlay = final: prev: {
+      direnv = prev.direnv.overrideAttrs (old: {
+        doCheck = false;
+      });
+    };
   in
   {
     # macOS configuration (nix-darwin + home-manager)
     darwinConfigurations."mathies-macos" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
+        # Apply overlay to fix direnv
+        { nixpkgs.overlays = [ darwinOverlay ]; }
+
         # nix-darwin configuration
         ./system/darwin
 
