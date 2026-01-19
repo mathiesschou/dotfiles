@@ -31,6 +31,13 @@
   # VMware guest support
   virtualisation.vmware.guest.enable = true;
 
+  # Mount VMware shared folders
+  fileSystems."/mnt/shared" = {
+    device = ".host:/";
+    fsType = "fuse./run/current-system/sw/bin/vmhgfs-fuse";
+    options = [ "allow_other" "defaults" "uid=1000" "gid=100" ];
+  };
+
   # Niri compositor
   programs.niri.enable = true;
 
