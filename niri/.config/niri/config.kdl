@@ -34,6 +34,9 @@ input {
 
 // Keybindings - using Alt as modifier to avoid Cmd conflicts
 binds {
+    // Help
+    Alt+Shift+Slash { show-hotkey-overlay; }
+
     // Terminal
     Alt+Return { spawn "ghostty"; }
     Alt+T { spawn "ghostty"; }
