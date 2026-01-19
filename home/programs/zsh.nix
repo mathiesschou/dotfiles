@@ -41,28 +41,41 @@
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
 
-        # Nix-darwin rebuild function
+        # Rebuild functions
         unalias dr 2>/dev/null || true
-        dr() {
-          sudo darwin-rebuild switch --flake ~/dotfiles && exec zsh
-        }
+        unalias nr 2>/dev/null || true
 
-        # Prefer Apple toolchain for builds
-        if command -v xcrun &> /dev/null; then
-          export CC="$(xcrun --find clang)"
-          export SDKROOT="$(xcrun --show-sdk-path)"
-          export LIBRARY_PATH="$SDKROOT/usr/lib"
+        if [[ "$(uname)" == "Darwin" ]]; then
+          # macOS: darwin-rebuild
+          dr() {
+            sudo darwin-rebuild switch --flake ~/dotfiles && exec zsh
+          }
+        else
+          # NixOS: nixos-rebuild
+          dr() {
+            sudo nixos-rebuild switch --flake ~/dotfiles#nixos-vm && exec zsh
+          }
         fi
 
-        # Docker/Colima configuration
-        unset DOCKER_HOST
-        export DOCKER_CONTEXT=colima
+        # macOS-specific configuration
+        if [[ "$(uname)" == "Darwin" ]]; then
+          # Prefer Apple toolchain for builds
+          if command -v xcrun &> /dev/null; then
+            export CC="$(xcrun --find clang)"
+            export SDKROOT="$(xcrun --show-sdk-path)"
+            export LIBRARY_PATH="$SDKROOT/usr/lib"
+          fi
 
-        # Load Context7 API key from macOS Keychain
-        if command -v security &> /dev/null; then
-          CONTEXT7_KEY=$(security find-generic-password -a "$USER" -s "context7-api-key" -w 2>/dev/null || echo "")
-          if [[ -n "$CONTEXT7_KEY" ]]; then
-            export CONTEXT7_API_KEY="$CONTEXT7_KEY"
+          # Docker/Colima configuration
+          unset DOCKER_HOST
+          export DOCKER_CONTEXT=colima
+
+          # Load Context7 API key from macOS Keychain
+          if command -v security &> /dev/null; then
+            CONTEXT7_KEY=$(security find-generic-password -a "$USER" -s "context7-api-key" -w 2>/dev/null || echo "")
+            if [[ -n "$CONTEXT7_KEY" ]]; then
+              export CONTEXT7_API_KEY="$CONTEXT7_KEY"
+            fi
           fi
         fi
       ''
