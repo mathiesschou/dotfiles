@@ -1,5 +1,8 @@
 // Niri configuration
 
+// Startup - random wallpaper
+spawn-at-startup "swaybg" "-m" "fill" "-i" "$(find ~/dotfiles/wallpapers -type f | shuf -n 1)"
+
 // Output/display settings
 output "Virtual-1" {
     scale 2.0
@@ -62,10 +65,10 @@ binds {
     Alt+Shift+L { move-column-right; }
 
     // Workspaces
-    Super+J { focus-workspace-down; }
-    Super+K { focus-workspace-up; }
-    Super+Shift+J { move-column-to-workspace-down; }
-    Super+Shift+K { move-column-to-workspace-up; }
+    Ctrl+J { focus-workspace-down; }
+    Ctrl+K { focus-workspace-up; }
+    Ctrl+Shift+J { move-column-to-workspace-down; }
+    Ctrl+Shift+K { move-column-to-workspace-up; }
 
     // Layout
     Alt+F { maximize-column; }

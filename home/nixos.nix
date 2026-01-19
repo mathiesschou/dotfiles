@@ -42,6 +42,7 @@
       mako
       wl-clipboard
       swaylock
+      swaybg
       grim
       slurp
     ];
