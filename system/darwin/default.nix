@@ -65,6 +65,7 @@
       autohide = true;
       show-recents = false;
       tilesize = 48;
+      mru-spaces = false;
 
       persistent-apps = [
         "/Applications/Ghostty.app"
@@ -239,6 +240,24 @@
     # Clear Neovim cache to ensure fresh plugin configuration
     echo "Clearing Neovim cache..."
     /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./scripts/clear-nvim-cache.sh}
+
+    # Install PaperWM.spoon for Hammerspoon
+    echo "Setting up PaperWM.spoon..."
+    /usr/bin/sudo -u mathies /bin/bash -c '
+      export HOME=/Users/mathies
+      SPOONS_DIR="$HOME/.hammerspoon/Spoons"
+      PAPERWM_DIR="$SPOONS_DIR/PaperWM.spoon"
+
+      mkdir -p "$SPOONS_DIR"
+
+      if [ ! -d "$PAPERWM_DIR" ]; then
+        echo "Cloning PaperWM.spoon..."
+        git clone https://github.com/mogenson/PaperWM.spoon "$PAPERWM_DIR"
+      else
+        echo "PaperWM.spoon already installed, updating..."
+        cd "$PAPERWM_DIR" && git pull
+      fi
+    ' || true
 
     # Set random wallpaper
     echo "Setting random wallpaper..."

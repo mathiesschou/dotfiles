@@ -6,6 +6,7 @@
 
     casks = [
       "ghostty"
+      "hammerspoon"
       "rectangle"
       "zoom"
       "anki"

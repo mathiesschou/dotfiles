@@ -4,7 +4,7 @@
   imports = [
     ./common.nix
   ]
-  ++ lib.optionals isDarwin [ ./darwin.nix ./programs/zsh.nix ]
+  ++ lib.optionals isDarwin [ ./darwin.nix ./programs/zsh.nix ./programs/hammerspoon.nix ]
   ++ lib.optionals isLinux [ ./linux.nix ./programs/fish.nix ./programs/niri.nix ];
 
   home = {

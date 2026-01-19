@@ -2,7 +2,7 @@ theme = "Gruvbox Dark"
 
 # Font
 font-family = "JetBrainsMono Nerd Font"
-font-size = 16
+font-size = 18 
 
 # Cursor
 cursor-style = block
