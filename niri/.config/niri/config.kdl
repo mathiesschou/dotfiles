@@ -40,9 +40,9 @@ input {
 
 // Keybindings - using Mod (Super/Cmd) as modifier
 binds {
-    // Help
+    // Help & Overview
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+O { show-hotkey-overlay; }
+    Mod+O { toggle-overview; }
 
     // Terminal
     Mod+Return { spawn "ghostty"; }
