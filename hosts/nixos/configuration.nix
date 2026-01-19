@@ -92,6 +92,7 @@
     wget
     firefox
     ghostty
+    nautilus
   ] ++ [
     noctalia.packages.aarch64-linux.default
   ];

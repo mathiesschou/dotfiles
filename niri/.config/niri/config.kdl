@@ -48,10 +48,13 @@ binds {
     Alt+T { spawn "ghostty"; }
 
     // App launcher (noctalia)
-    Alt+D { spawn "noctalia-shell" "--launcher"; }
+    Alt+D { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
 
     // Browser
     Alt+B { spawn "firefox"; }
+
+    // File manager
+    Alt+E { spawn "nautilus"; }
 
     // Close window
     Alt+Q { close-window; }
