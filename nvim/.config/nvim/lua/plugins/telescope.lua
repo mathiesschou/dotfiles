@@ -9,6 +9,7 @@ return {
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
       { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects" },
+      { "<leader>ft", "<cmd>Telescope colorscheme<cr>", desc = "Themes" },
     },
     opts = {
       defaults = {

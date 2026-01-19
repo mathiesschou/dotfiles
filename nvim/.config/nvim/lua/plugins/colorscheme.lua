@@ -35,7 +35,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    lazy = true, -- not loaded by default now
+    lazy = true,
     opts = {
       flavour = "mocha",
       transparent_background = false,
@@ -62,6 +62,11 @@ return {
         },
       },
     },
+  },
+  {
+    "ishan9299/nvim-solarized-lua",
+    lazy = true,
+    priority = 1000,
   },
 }
 
