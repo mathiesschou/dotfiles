@@ -47,8 +47,11 @@ binds {
     Alt+Return { spawn "ghostty"; }
     Alt+T { spawn "ghostty"; }
 
-    // App launcher
-    Alt+D { spawn "fuzzel"; }
+    // App launcher (noctalia)
+    Alt+D { spawn "noctalia-shell" "--launcher"; }
+
+    // Browser
+    Alt+B { spawn "firefox"; }
 
     // Close window
     Alt+Q { close-window; }
