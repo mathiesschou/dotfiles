@@ -4,6 +4,17 @@
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "ghostty"
 
+// Disable hotkey overlay on startup
+hotkey-overlay {
+    skip-at-startup
+}
+
+// Ghostty opens maximized
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    open-maximized true
+}
+
 // Output/display settings
 output "Virtual-1" {
     scale 2.0

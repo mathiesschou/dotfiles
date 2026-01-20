@@ -3,6 +3,15 @@
 let
   # Skift mellem "networkmanager" og "shared" (simpel DHCP)
   networkMode = "shared";
+
+  # SDDM tema uden blur
+  sddm-astronaut-noblur = pkgs.sddm-astronaut.override {
+    themeConfig = {
+      FullBlur = "false";
+      PartialBlur = "false";
+      BlurRadius = "0";
+    };
+  };
 in
 {
   imports = [
@@ -46,12 +55,12 @@ in
   # Default: Niri compositor
   programs.niri.enable = true;
 
-  # SDDM login manager med astronaut tema
+  # SDDM login manager med astronaut tema (ingen blur)
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
     theme = "sddm-astronaut-theme";
-    extraPackages = [ pkgs.sddm-astronaut ];
+    extraPackages = [ sddm-astronaut-noblur ];
   };
 
   # Keyboard - US layout
@@ -94,7 +103,7 @@ in
     firefox
     ghostty
     nautilus
-    sddm-astronaut
+    sddm-astronaut-noblur
 
     # Rust development
     rustc
