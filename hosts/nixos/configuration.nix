@@ -44,6 +44,25 @@ in
   # VMware guest support
   virtualisation.vmware.guest.enable = true;
 
+  # Persistent VMware shared folder mount
+  systemd.services.mount-vmware-shared = {
+    description = "Mount VMware shared folders";
+    after = [ "vmware-vmblock-fuse.service" ];
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.coreutils pkgs.open-vm-tools pkgs.util-linux ];
+    script = ''
+      mkdir -p /mnt/shared
+      USER_UID=$(id -u mathies)
+      USER_GID=$(id -g mathies)
+      vmhgfs-fuse -o allow_other,uid=$USER_UID,gid=$USER_GID .host:/ /mnt/shared
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "${pkgs.util-linux}/bin/umount /mnt/shared";
+    };
+  };
+
 
   # Default: Niri compositor
   programs.niri.enable = true;
