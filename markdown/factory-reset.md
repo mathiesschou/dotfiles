@@ -47,3 +47,15 @@ sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
 ```bash
 sudo nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake ~/dotfiles#mathies-macos
 ```
+
+---
+
+# For NixOs-vm dev environment
+
+1. After the first flake
+
+```bash
+sudo mount-shared
+```
+
+- Can be run from anywhere.
