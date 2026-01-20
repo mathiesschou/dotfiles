@@ -61,6 +61,11 @@ in
     wayland.enable = true;
     theme = "sddm-astronaut-theme";
     extraPackages = [ sddm-astronaut-noblur ];
+    settings = {
+      General = {
+        GreeterEnvironment = "QT_SCREEN_SCALE_FACTORS=2";
+      };
+    };
   };
 
   # Keyboard - US layout
