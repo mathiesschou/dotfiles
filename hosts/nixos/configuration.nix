@@ -144,9 +144,63 @@ in
 
     # Markdown
     marksman             # markdown LSP
+
+    # For AI tools
+    nodejs_20
+    python3
+    python3Packages.pip
   ] ++ [
     noctalia.packages.aarch64-linux.default
   ];
+
+  # Setup AI CLI tools (Claude, Codex)
+  system.activationScripts.aiTools.text = ''
+    echo "Setting up AI CLI tools..."
+    sudo -u mathies bash -c '
+      export HOME=/home/mathies
+      export PATH="${pkgs.nodejs_20}/bin:$HOME/.npm-global/bin:$PATH"
+      mkdir -p $HOME/.npm-global
+      echo "prefix=$HOME/.npm-global" > $HOME/.npmrc
+
+      MARKER_FILE="$HOME/.ai-tools-setup-done"
+      if [ ! -f "$MARKER_FILE" ]; then
+        npm install -g @anthropic-ai/claude-code || true
+        npm install -g @openai/codex || true
+        npm install -g context7 || true
+        touch "$MARKER_FILE"
+        echo "AI tools installed"
+      else
+        echo "AI tools already installed (skipping)"
+      fi
+    ' || true
+  '';
+
+  # Setup MCP servers for Claude and Codex
+  system.activationScripts.mcpServers.text = ''
+    echo "Setting up MCP servers..."
+    sudo -u mathies bash -c '
+      export HOME=/home/mathies
+      export PATH="${pkgs.nodejs_20}/bin:$HOME/.npm-global/bin:$PATH"
+
+      CLAUDE_MARKER="$HOME/.claude-mcp-setup-done"
+      if [ ! -f "$CLAUDE_MARKER" ] && command -v claude &> /dev/null; then
+        claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server || true
+        claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking || true
+        claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp || true
+        touch "$CLAUDE_MARKER"
+        echo "Claude MCP servers configured"
+      fi
+
+      CODEX_MARKER="$HOME/.codex-mcp-setup-done"
+      if [ ! -f "$CODEX_MARKER" ] && command -v codex &> /dev/null; then
+        codex mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server || true
+        codex mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking || true
+        codex mcp add context7 -- npx -y @upstash/context7-mcp || true
+        touch "$CODEX_MARKER"
+        echo "Codex MCP servers configured"
+      fi
+    ' || true
+  '';
 
   system.stateVersion = "25.11";
 }
