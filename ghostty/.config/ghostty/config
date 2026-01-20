@@ -1,4 +1,4 @@
-theme = "Gruvbox Dark"
+theme = "gruvbox-dark"
 
 # Font
 font-family = "JetBrainsMono Nerd Font"
