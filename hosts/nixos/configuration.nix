@@ -45,21 +45,18 @@ in
 
   # Default: Niri compositor
   programs.niri.enable = true;
-  services.greetd = {
+
+  # SDDM login manager
+  services.displayManager.sddm = {
     enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
-        user = "greeter";
-      };
-    };
+    wayland.enable = true;
   };
 
   # Boot menu: terminal-only option
   specialisation.terminal.configuration = {
     system.nixos.tags = [ "terminal" ];
     programs.niri.enable = pkgs.lib.mkForce false;
-    services.greetd.enable = pkgs.lib.mkForce false;
+    services.displayManager.sddm.enable = pkgs.lib.mkForce false;
     services.getty.autologinUser = "mathies";
   };
 
