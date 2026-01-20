@@ -47,6 +47,7 @@ input {
         repeat-delay 200
         repeat-rate 35
     }
+    focus-follows-mouse
 }
 
 // Keybindings - using Alt (Option key) as modifier
