@@ -54,14 +54,6 @@ in
     extraPackages = [ pkgs.sddm-astronaut ];
   };
 
-  # Boot menu: terminal-only option
-  specialisation.terminal.configuration = {
-    system.nixos.tags = [ "terminal" ];
-    programs.niri.enable = pkgs.lib.mkForce false;
-    services.displayManager.sddm.enable = pkgs.lib.mkForce false;
-    services.getty.autologinUser = "mathies";
-  };
-
   # Keyboard - US layout
   services.xserver.xkb = {
     layout = "us";
