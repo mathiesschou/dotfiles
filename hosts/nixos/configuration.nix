@@ -1,9 +1,6 @@
 { config, pkgs, noctalia, ... }:
 
 let
-  # Skift mellem "networkmanager" og "shared" (simpel DHCP)
-  networkMode = "shared";
-
   # SDDM tema uden blur
   sddm-astronaut-noblur = pkgs.sddm-astronaut.override {
     themeConfig = {
@@ -24,8 +21,7 @@ in
 
   # Networking
   networking.hostName = "nixos-vm";
-  networking.networkmanager.enable = (networkMode == "networkmanager");
-  networking.useDHCP = (networkMode == "shared");
+  networking.networkmanager.enable = true;
 
   # Timezone and locale
   time.timeZone = "Europe/Copenhagen";
