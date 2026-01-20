@@ -4,7 +4,6 @@
   # Install neovim directly without wrapper
   home.packages = with pkgs; [
     neovim
-    neovim-qt  # gvim alternative
   ];
 
   home.sessionVariables = {

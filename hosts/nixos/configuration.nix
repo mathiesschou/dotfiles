@@ -1,5 +1,9 @@
 { config, pkgs, noctalia, ... }:
 
+let
+  # Skift mellem "networkmanager" og "shared" (simpel DHCP)
+  networkMode = "shared";
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -11,7 +15,8 @@
 
   # Networking
   networking.hostName = "nixos-vm";
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = (networkMode == "networkmanager");
+  networking.useDHCP = (networkMode == "shared");
 
   # Timezone and locale
   time.timeZone = "Europe/Copenhagen";
@@ -88,11 +93,52 @@
   # System packages
   environment.systemPackages = with pkgs; [
     git
-    vim
     wget
     firefox
     ghostty
     nautilus
+
+    # Rust development
+    rustc
+    cargo
+    rustfmt
+    rust-analyzer
+
+    # Neovim dependencies
+    ripgrep              # telescope live_grep og find_files
+    lazygit              # lazygit.nvim
+
+    # LSP servers
+    lua-language-server  # lua_ls
+    clang-tools          # clangd + clang-format
+    typescript-language-server  # ts_ls
+    vscode-langservers-extracted  # html, cssls, jsonls
+    pyright              # python
+    nil                  # nix (nil_ls)
+    texlab               # latex
+    tinymist             # typst
+    svelte-language-server  # svelte
+
+    # Formatters
+    stylua               # lua
+    nodePackages.prettier  # js/ts/html/css/json/markdown/yaml
+    black                # python
+    isort                # python imports
+    nixpkgs-fmt          # nix
+
+    # LaTeX
+    texlive.combined.scheme-full  # latexmk + alle LaTeX pakker
+    zathura              # PDF viewer (vim keybindings)
+
+    # Typst
+    typst
+    typstyle             # formatter
+
+    # Lua
+    lua                  # lua runtime
+
+    # Markdown
+    marksman             # markdown LSP
   ] ++ [
     noctalia.packages.aarch64-linux.default
   ];
