@@ -59,7 +59,7 @@
   home.file.".config/niri".source = ../niri/.config/niri;
 
   # Symlink to shared folder
-  home.file."shared".source = config.lib.file.mkOutOfStoreSymlink "/mnt/shared";
+  home.file."shared".source = config.lib.file.mkOutOfStoreSymlink "/mnt/shared/mathies/projects";
 
   programs.home-manager.enable = true;
 
