@@ -4,7 +4,6 @@
   imports = [
     ./programs/git.nix
     ./programs/tmux.nix
-    ./programs/ghostty.nix
     ./programs/zed.nix
     ./programs/zsh.nix
   ];
