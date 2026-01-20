@@ -46,10 +46,12 @@ in
   # Default: Niri compositor
   programs.niri.enable = true;
 
-  # SDDM login manager
+  # SDDM login manager med astronaut tema
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
+    theme = "sddm-astronaut-theme";
+    extraPackages = [ pkgs.sddm-astronaut ];
   };
 
   # Boot menu: terminal-only option
