@@ -75,6 +75,7 @@
         "/Applications/Anki.app"
         "/Applications/Microsoft OneNote.app"
         "/Applications/Microsoft Outlook.app"
+        "/Applications/Things3.app"
       ];
 
       persistent-others = [
