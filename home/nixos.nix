@@ -24,8 +24,6 @@
       nodePackages.svelte-language-server
       nodePackages.vscode-langservers-extracted
       pyright
-      texlab
-      texlive.combined.scheme-medium
       tinymist
       typst
 
