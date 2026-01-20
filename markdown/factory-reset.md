@@ -55,7 +55,8 @@ sudo nix --extra-experimental-features "nix-command flakes" run nix-darwin -- sw
 1. After the first flake
 
 ```bash
-sudo mount-shared
+enable-shared-mount
 ```
 
-- Can be run from anywhere.
+- Enables persistent VMware shared folder mounting at `/mnt/shared`
+- Only needs to be run once, mounts automatically on future reboots

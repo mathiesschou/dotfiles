@@ -44,13 +44,17 @@ in
   # VMware guest support
   virtualisation.vmware.guest.enable = true;
 
-  # Persistent VMware shared folder mount
+  # VMware shared folder mount service (not auto-started)
   systemd.services.mount-vmware-shared = {
     description = "Mount VMware shared folders";
     after = [ "vmware-vmblock-fuse.service" ];
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.coreutils pkgs.open-vm-tools pkgs.util-linux ];
+    # No wantedBy - must be enabled manually with enable-shared-mount
+    path = [ pkgs.coreutils pkgs.open-vm-tools pkgs.util-linux pkgs.fuse ];
     script = ''
+      # Clean up stale mount if exists
+      if mountpoint -q /mnt/shared 2>/dev/null || [ -d /mnt/shared ]; then
+        umount -l /mnt/shared 2>/dev/null || fusermount -uz /mnt/shared 2>/dev/null || true
+      fi
       mkdir -p /mnt/shared
       USER_UID=$(id -u mathies)
       USER_GID=$(id -g mathies)
@@ -123,11 +127,18 @@ in
     nautilus
     sddm-astronaut-noblur
 
-    # VMware shared folder mount script
+    # VMware shared folder mount script (one-time manual use)
     (writeShellScriptBin "mount-shared" ''
       sudo mkdir -p /mnt/shared
       sudo vmhgfs-fuse -o allow_other,uid=1000,gid=100 .host:/ /mnt/shared
       echo "Mounted VMware shared folders at /mnt/shared"
+    '')
+
+    # Run once after first flake to enable persistent mounting
+    (writeShellScriptBin "enable-shared-mount" ''
+      sudo systemctl enable mount-vmware-shared.service
+      sudo systemctl start mount-vmware-shared.service
+      echo "Shared folder mounting is now persistent across reboots"
     '')
 
     # Rust development
