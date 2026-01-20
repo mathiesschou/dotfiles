@@ -2,6 +2,7 @@
 
 // Startup
 spawn-at-startup "noctalia-shell"
+spawn-at-startup "ghostty"
 
 // Output/display settings
 output "Virtual-1" {
