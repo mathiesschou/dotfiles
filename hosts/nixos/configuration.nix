@@ -43,25 +43,24 @@ in
     options = [ "allow_other" "defaults" "uid=1000" "gid=100" ];
   };
 
-  # Boot menu specialisations
-  specialisation = {
-    graphical.configuration = {
-      system.nixos.tags = [ "graphical" ];
-      programs.niri.enable = true;
-      services.greetd = {
-        enable = true;
-        settings = {
-          default_session = {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
-            user = "greeter";
-          };
-        };
+  # Default: Niri compositor
+  programs.niri.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
+        user = "greeter";
       };
     };
-    terminal.configuration = {
-      system.nixos.tags = [ "terminal" ];
-      services.getty.autologinUser = "mathies";
-    };
+  };
+
+  # Boot menu: terminal-only option
+  specialisation.terminal.configuration = {
+    system.nixos.tags = [ "terminal" ];
+    programs.niri.enable = pkgs.lib.mkForce false;
+    services.greetd.enable = pkgs.lib.mkForce false;
+    services.getty.autologinUser = "mathies";
   };
 
   # Keyboard - US layout
