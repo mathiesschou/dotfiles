@@ -5,6 +5,7 @@
     enable = true;
 
     casks = [
+      "vmware-fusion"
       "ghostty"
       "rectangle"
       "zoom"
