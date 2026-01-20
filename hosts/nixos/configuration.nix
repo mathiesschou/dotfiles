@@ -44,12 +44,6 @@ in
   # VMware guest support
   virtualisation.vmware.guest.enable = true;
 
-  # Mount VMware shared folders
-  fileSystems."/mnt/shared" = {
-    device = ".host:/";
-    fsType = "fuse./run/current-system/sw/bin/vmhgfs-fuse";
-    options = [ "allow_other" "defaults" "uid=1000" "gid=100" "nofail" "x-systemd.automount" ];
-  };
 
   # Default: Niri compositor
   programs.niri.enable = true;
@@ -108,6 +102,13 @@ in
     ghostty
     nautilus
     sddm-astronaut-noblur
+
+    # VMware shared folder mount script
+    (writeShellScriptBin "mount-shared" ''
+      sudo mkdir -p /mnt/shared
+      sudo vmhgfs-fuse -o allow_other,uid=1000,gid=100 .host:/ /mnt/shared
+      echo "Mounted VMware shared folders at /mnt/shared"
+    '')
 
     # Rust development
     rustc

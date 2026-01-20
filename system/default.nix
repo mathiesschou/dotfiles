@@ -68,7 +68,6 @@
       mru-spaces = false;
 
       persistent-apps = [
-        "/Applications/VMware Fusion.app"
         "/Applications/Ghostty.app"
         "/Applications/Zed.app"
         "/System/Cryptexes/App/System/Applications/Safari.app"
