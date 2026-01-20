@@ -51,11 +51,7 @@ in
     enable = true;
     wayland.enable = true;
     theme = "sddm-astronaut-theme";
-    extraPackages = with pkgs; [
-      sddm-astronaut
-      kdePackages.qtgraphicaleffects
-      kdePackages.qtsvg
-    ];
+    extraPackages = [ pkgs.sddm-astronaut ];
   };
 
   # Boot menu: terminal-only option
