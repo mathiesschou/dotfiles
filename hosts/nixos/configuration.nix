@@ -94,6 +94,7 @@ in
     firefox
     ghostty
     nautilus
+    sddm-astronaut
 
     # Rust development
     rustc
