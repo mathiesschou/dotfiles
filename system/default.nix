@@ -246,6 +246,12 @@
     # Set random wallpaper
     echo "Setting random wallpaper..."
     /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./scripts/set-random-wallpaper.sh}
+
+    # Create projects folder if it doesn't exist
+    if [[ ! -d "/Users/mathies/projects" ]]; then
+      echo "Creating projects folder..."
+      /usr/bin/sudo -u mathies mkdir -p /Users/mathies/projects
+    fi
   '';
 
   nixpkgs.hostPlatform = "aarch64-darwin";
