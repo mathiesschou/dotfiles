@@ -122,7 +122,6 @@ in
     vscode-langservers-extracted  # html, cssls, jsonls
     pyright              # python
     nil                  # nix (nil_ls)
-    texlab               # latex
     tinymist             # typst
     svelte-language-server  # svelte
 
@@ -133,13 +132,10 @@ in
     isort                # python imports
     nixpkgs-fmt          # nix
 
-    # LaTeX
-    texlive.combined.scheme-full  # latexmk + alle LaTeX pakker
-    zathura              # PDF viewer (vim keybindings)
-
     # Typst
     typst
     typstyle             # formatter
+    zathura              # PDF viewer
 
     # Lua
     lua                  # lua runtime
