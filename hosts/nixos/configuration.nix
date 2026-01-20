@@ -97,6 +97,7 @@ in
   # System packages
   environment.systemPackages = with pkgs; [
     git
+    gh
     wget
     firefox
     ghostty
