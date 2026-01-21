@@ -44,9 +44,6 @@
       grim
       slurp
 
-      # TEMPORARY: i3 utilities for performance comparison
-      dmenu
-      i3status
     ];
 
     sessionVariables = {
@@ -61,9 +58,6 @@
 
   # Link niri configuration
   home.file.".config/niri".source = ../niri/.config/niri;
-
-  # TEMPORARY: i3 config for performance comparison
-  home.file.".config/i3".source = ../i3/.config/i3;
 
   # Symlink to shared folder
   home.file."projects".source = config.lib.file.mkOutOfStoreSymlink "/mnt/shared/mathies/projects";

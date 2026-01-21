@@ -89,12 +89,6 @@ in
   # Window managers / compositors
   programs.niri.enable = true;
 
-  # TEMPORARY: i3 for performance comparison with Niri
-  services.xserver = {
-    enable = true;
-    windowManager.i3.enable = true;
-  };
-
   # SDDM login manager med astronaut tema (ingen blur)
   services.displayManager.sddm = {
     enable = true;
