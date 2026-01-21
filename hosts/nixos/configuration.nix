@@ -44,6 +44,9 @@ in
   # VMware guest support
   virtualisation.vmware.guest.enable = true;
 
+  # Hardware acceleration
+  hardware.graphics.enable = true;
+
   # VMware shared folder mount service (not auto-started)
   systemd.services.mount-vmware-shared = {
     description = "Mount VMware shared folders";
@@ -68,8 +71,12 @@ in
   };
 
 
-  # Default: Niri compositor
+  # Window managers / compositors
   programs.niri.enable = true;
+  services.xserver = {
+    enable = true;
+    windowManager.i3.enable = true;
+  };
 
   # SDDM login manager med astronaut tema (ingen blur)
   services.displayManager.sddm = {
