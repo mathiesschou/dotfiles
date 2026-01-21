@@ -77,6 +77,8 @@ binds {
     // Focus windows
     Alt+H { focus-column-left; }
     Alt+L { focus-column-right; }
+    Alt+N { focus-window-down; }
+    Alt+P { focus-window-up; }
 
     // Move windows
     Alt+Shift+H { move-column-left; }
@@ -100,6 +102,10 @@ binds {
     Alt+Shift+F { fullscreen-window; }
     Alt+C { consume-window-into-column; }
     Alt+Shift+C { expel-window-from-column; }
+
+    // Screenshots
+    Alt+S { screenshot; }
+    Alt+Shift+S { screenshot-window; }
 
     // Exit
     Alt+Shift+E { quit; }
