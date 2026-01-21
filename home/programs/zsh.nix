@@ -58,7 +58,7 @@
         else
           # NixOS: nixos-rebuild
           dr() {
-            sudo nixos-rebuild switch --flake ~/dotfiles#nixos --impure && exec zsh
+            sudo nixos-rebuild switch --flake ~/dotfiles#nixos-dev --impure && exec zsh
           }
         fi
 
