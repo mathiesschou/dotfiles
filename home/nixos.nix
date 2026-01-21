@@ -59,8 +59,8 @@
   # Link niri configuration
   home.file.".config/niri".source = ../niri/.config/niri;
 
-  # Symlink to shared folder
-  home.file."projects".source = config.lib.file.mkOutOfStoreSymlink "/mnt/shared/mathies/projects";
+  # Link noctalia configuration (mkOutOfStoreSymlink so noctalia can write to it)
+  home.file.".config/noctalia".source = config.lib.file.mkOutOfStoreSymlink "/home/mathies/dotfiles/noctalia/.config/noctalia";
 
   programs.home-manager.enable = true;
 

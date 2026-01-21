@@ -20,7 +20,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
-  networking.hostName = "nixos-vm";
+  networking.hostName = "nixos-dev";
   networking.networkmanager = {
     enable = true;
     insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
@@ -155,7 +155,9 @@ in
     (writeShellScriptBin "enable-shared-mount" ''
       sudo systemctl enable mount-vmware-shared.service
       sudo systemctl start mount-vmware-shared.service
+      ln -sfn /mnt/shared/mathies/projects ~/projects
       echo "Shared folder mounting is now persistent across reboots"
+      echo "Created ~/projects symlink"
     '')
 
     # Rust development
@@ -163,6 +165,7 @@ in
     cargo
     rustfmt
     rust-analyzer
+    gcc  # C linker required by rustc
 
     # Neovim dependencies
     ripgrep              # telescope live_grep og find_files
