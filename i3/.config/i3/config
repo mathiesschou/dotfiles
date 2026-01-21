@@ -1,0 +1,111 @@
+# TEMPORARY: i3 config for performance comparison with Niri
+# Delete this folder when done testing
+
+# Alt som modifier (som i niri)
+set $mod Mod1
+
+# Font
+font pango:monospace 10
+
+# Terminal
+bindsym $mod+Return exec ghostty
+bindsym $mod+t exec ghostty
+
+# App launcher (dmenu - noctalia er Wayland-only)
+bindsym $mod+d exec --no-startup-id dmenu_run
+
+# Browser
+bindsym $mod+b exec firefox
+
+# File manager
+bindsym $mod+e exec nautilus
+
+# Close window
+bindsym $mod+q kill
+
+# Focus windows
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+
+# Move windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+# Switch workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+# Move to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+# Layout
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
+
+# Split direction
+bindsym $mod+v split v
+bindsym $mod+Shift+v split h
+
+# Toggle tiling/floating
+bindsym $mod+Shift+space floating toggle
+
+# Exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+
+# Reload/restart
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# Resize mode
+mode "resize" {
+    bindsym h resize shrink width 10 px
+    bindsym l resize grow width 10 px
+    bindsym j resize grow height 10 px
+    bindsym k resize shrink height 10 px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Gaps og udseende (minimal)
+gaps inner 8
+gaps outer 4
+
+# Border
+default_border pixel 2
+default_floating_border pixel 2
+
+# Farver (subtle)
+client.focused          #5c6370 #5c6370 #ffffff #5c6370
+client.unfocused        #282c34 #282c34 #666666 #282c34
+
+# Start ghostty on workspace 1
+exec --no-startup-id ghostty
+
+# i3bar (minimal)
+bar {
+    status_command i3status
+    position top
+    colors {
+        background #282c34
+        statusline #abb2bf
+    }
+}

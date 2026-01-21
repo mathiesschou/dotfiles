@@ -47,6 +47,21 @@ in
   # Hardware acceleration
   hardware.graphics.enable = true;
 
+  # Firefox/Wayland environment
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    MOZ_USE_XINPUT2 = "1";
+  };
+
+  # Firefox med smooth scrolling
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "gfx.webrender.all" = true;
+      "widget.wayland-vsync.enabled" = true;
+    };
+  };
+
   # VMware shared folder mount service (not auto-started)
   systemd.services.mount-vmware-shared = {
     description = "Mount VMware shared folders";
@@ -73,6 +88,8 @@ in
 
   # Window managers / compositors
   programs.niri.enable = true;
+
+  # TEMPORARY: i3 for performance comparison with Niri
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
@@ -129,7 +146,6 @@ in
     git
     gh
     wget
-    firefox
     ghostty
     nautilus
     sddm-astronaut-noblur
