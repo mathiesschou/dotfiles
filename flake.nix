@@ -39,7 +39,7 @@
     in
     {
       # NixOS configuration (VM)
-      nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations."nixos-dev" = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = { inherit noctalia; };
         modules = [
