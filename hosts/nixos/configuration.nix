@@ -21,10 +21,7 @@ in
 
   # Networking
   networking.hostName = "nixos-dev";
-  networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
   networking.networkmanager.enable = true;
-  services.resolved.enable = false; # Forhindrer at DNS bliver overskrevet
-  networking.networkmanager.dns = "default";
 
   # Timezone and locale
   time.timeZone = "Europe/Copenhagen";
@@ -144,6 +141,7 @@ in
     git
     gh
     wget
+    dnsutils  # nslookup, dig, host
     ghostty
     nautilus
     sddm-astronaut-noblur
@@ -218,7 +216,7 @@ in
 
   # Systemd service til at installere AI tools efter netværk er oppe
   systemd.services.setup-ai-tools = {
-    description = "Install Claude and Codex CLI tools";
+    description = "Install Codex CLI tool and setup MCP servers";
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
@@ -236,18 +234,17 @@ in
 
       MARKER_FILE="$HOME/.ai-tools-setup-done"
       if [ ! -f "$MARKER_FILE" ]; then
-        npm install -g @anthropic-ai/claude-code || true
         npm install -g @openai/codex || true
         npm install -g context7 || true
         touch "$MARKER_FILE"
       fi
 
-      # Setup MCP servers for Claude
+      # Setup MCP servers for Claude (native install)
       CLAUDE_MARKER="$HOME/.claude-mcp-setup-done"
       if [ ! -f "$CLAUDE_MARKER" ]; then
-        $HOME/.npm-global/bin/claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server || true
-        $HOME/.npm-global/bin/claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking || true
-        $HOME/.npm-global/bin/claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp || true
+        claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server || true
+        claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking || true
+        claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp || true
         touch "$CLAUDE_MARKER"
       fi
 

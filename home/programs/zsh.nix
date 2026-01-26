@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -9,14 +8,6 @@
   programs.zsh = {
     enable = true;
 
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-    ];
-
     initContent = lib.mkMerge [
       (lib.mkBefore ''
         # direnv hook (auto-load Nix environments)
@@ -24,15 +15,10 @@
           export DIRENV_LOG_FORMAT=""
           eval "$(direnv hook zsh)"
         fi
-
-        # Enable Powerlevel10k instant prompt
-        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-        fi
       '')
       ''
-        # Load p10k configuration
-        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+        # Simple prompt
+        PROMPT='%~ %# '
 
         # History configuration
         HISTSIZE=10000
@@ -42,6 +28,11 @@
         # Aliases
         alias ll='ls -lah'
         alias la='ls -a'
+
+        # tmux
+        alias tn='tmux new-session -s'
+        alias tl='tmux list-sessions'
+        alias ta='tmux attach-session'
 
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
@@ -87,6 +78,4 @@
     ];
   };
 
-  # Link p10k configuration
-  home.file.".p10k.zsh".source = ../../p10k/.p10k.zsh;
 }

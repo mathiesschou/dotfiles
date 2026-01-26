@@ -18,15 +18,12 @@
     # Plugins
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
-      {
-        plugin = gruvbox;
-        extraConfig = ''
-          set -g @tmux-gruvbox "dark"
-        '';
-      }
     ];
 
     extraConfig = ''
+      # Faster escape for vim
+      set -g escape-time 0
+
       # Automatically renumber windows when one is closed
       set -g renumber-windows on
 
@@ -59,18 +56,36 @@
       bind -r K resize-pane -U 6
       bind -r L resize-pane -R 6
 
-      # Status bar at top
-      set-option -g status-position top
+      # Theme: borders
+      set -g pane-border-lines simple
+      set -g pane-border-style fg=black,bright
+      set -g pane-active-border-style fg=magenta
 
-      # Pane borders
-      set -g pane-border-lines heavy
-      set -g popup-border-lines rounded
-      set -g pane-border-indicators both
-      set -g pane-active-border-style "fg=#fabd2f,bold"
-      set -g pane-border-style "fg=#504945"
+      # Theme: status
+      set -g status-style bg=default,fg=black,bright
+      set -g status-left ""
+      set -g status-right "#[fg=black,bright]#S"
 
-      # Ensure UTF-8 support for borders
-      set -gq utf8 on
+      # Theme: status (windows)
+      set -g window-status-format "●"
+      set -g window-status-current-format "●"
+      set -g window-status-current-style "#{?window_zoomed_flag,fg=yellow,fg=magenta,nobold}"
+      set -g window-status-bell-style "fg=red,nobold"
+
+      # Window navigation: Ctrl+Tab
+      bind -n C-Tab next-window
+      bind -n C-S-Tab previous-window
+
+      # Window navigation: Alt+1-9
+      bind -n M-1 select-window -t :1
+      bind -n M-2 select-window -t :2
+      bind -n M-3 select-window -t :3
+      bind -n M-4 select-window -t :4
+      bind -n M-5 select-window -t :5
+      bind -n M-6 select-window -t :6
+      bind -n M-7 select-window -t :7
+      bind -n M-8 select-window -t :8
+      bind -n M-9 select-window -t :9
     '';
   };
 }

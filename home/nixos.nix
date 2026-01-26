@@ -15,8 +15,6 @@
     stateVersion = "24.05";
 
     packages = with pkgs; [
-      zsh-powerlevel10k
-
       # Language servers
       clang-tools
       lua-language-server
@@ -53,6 +51,7 @@
     sessionPath = [
       "$HOME/.local/bin"
       "$HOME/.npm-global/bin"
+      "$HOME/.claude/local"
     ];
   };
 
