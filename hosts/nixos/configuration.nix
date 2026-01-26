@@ -21,10 +21,8 @@ in
 
   # Networking
   networking.hostName = "nixos-dev";
-  networking.networkmanager = {
-    enable = true;
-    insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
-  };
+  networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
+  networking.networkmanager.enable = true;
 
   # Timezone and locale
   time.timeZone = "Europe/Copenhagen";
