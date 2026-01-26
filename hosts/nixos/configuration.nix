@@ -54,6 +54,7 @@ in
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_USE_XINPUT2 = "1";
+    RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
   };
 
   # Firefox med smooth scrolling
@@ -168,6 +169,7 @@ in
     cargo
     rustfmt
     rust-analyzer
+    rustPlatform.rustLibSrc # rust-src for rust-analyzer stdlib navigation
     gcc # C linker required by rustc
 
     # Neovim dependencies
@@ -203,8 +205,7 @@ in
     marksman # markdown LSP
 
     # .NET Development
-    dotnet-sdk_8 # .NET 8 LTS SDK (C#, F#, runtime, build tools)
-    dotnet-runtime_9 # .NET 9 runtime (required by csharp-ls)
+    dotnet-sdk_9 # .NET 9 SDK (includes runtime, backwards compatible with .NET 8 projects)
     csharp-ls # C# language server for Neovim
 
     # For AI tools
