@@ -204,6 +204,7 @@ in
 
     # .NET Development
     dotnet-sdk_8 # .NET 8 LTS SDK (C#, F#, runtime, build tools)
+    dotnet-runtime_9 # .NET 9 runtime (required by csharp-ls)
     csharp-ls # C# language server for Neovim
 
     # For AI tools
