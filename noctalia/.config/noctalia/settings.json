@@ -32,7 +32,7 @@
     "bar": {
         "backgroundOpacity": 0.93,
         "capsuleOpacity": 1,
-        "density": "mini",
+        "density": "default",
         "exclusive": true,
         "floating": true,
         "hideOnOverview": false,
