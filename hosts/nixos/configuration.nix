@@ -23,8 +23,8 @@ in
   networking.hostName = "nixos-dev";
   networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
   networking.networkmanager.enable = true;
-  networking.networkmanager.dns = "none";  # Ignorer DHCP DNS fra eduroam
-  services.resolved.enable = false;  # Forhindrer at DNS bliver overskrevet
+  services.resolved.enable = false; # Forhindrer at DNS bliver overskrevet
+  networking.networkmanager.dns = "default";
 
   # Timezone and locale
   time.timeZone = "Europe/Copenhagen";
@@ -165,39 +165,39 @@ in
     cargo
     rustfmt
     rust-analyzer
-    gcc  # C linker required by rustc
+    gcc # C linker required by rustc
 
     # Neovim dependencies
-    ripgrep              # telescope live_grep og find_files
-    lazygit              # lazygit.nvim
+    ripgrep # telescope live_grep og find_files
+    lazygit # lazygit.nvim
 
     # LSP servers
-    lua-language-server  # lua_ls
-    clang-tools          # clangd + clang-format
-    typescript-language-server  # ts_ls
-    vscode-langservers-extracted  # html, cssls, jsonls
-    pyright              # python
-    nil                  # nix (nil_ls)
-    tinymist             # typst
-    svelte-language-server  # svelte
+    lua-language-server # lua_ls
+    clang-tools # clangd + clang-format
+    typescript-language-server # ts_ls
+    vscode-langservers-extracted # html, cssls, jsonls
+    pyright # python
+    nil # nix (nil_ls)
+    tinymist # typst
+    svelte-language-server # svelte
 
     # Formatters
-    stylua               # lua
-    nodePackages.prettier  # js/ts/html/css/json/markdown/yaml
-    black                # python
-    isort                # python imports
-    nixpkgs-fmt          # nix
+    stylua # lua
+    nodePackages.prettier # js/ts/html/css/json/markdown/yaml
+    black # python
+    isort # python imports
+    nixpkgs-fmt # nix
 
     # Typst
     typst
-    typstyle             # formatter
-    zathura              # PDF viewer
+    typstyle # formatter
+    zathura # PDF viewer
 
     # Lua
-    lua                  # lua runtime
+    lua # lua runtime
 
     # Markdown
-    marksman             # markdown LSP
+    marksman # markdown LSP
 
     # For AI tools
     nodejs_20
