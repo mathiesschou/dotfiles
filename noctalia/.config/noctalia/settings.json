@@ -41,7 +41,7 @@
         "monitors": [
         ],
         "outerCorners": true,
-        "position": "bottom",
+        "position": "top",
         "screenOverrides": [
         ],
         "showCapsule": true,
