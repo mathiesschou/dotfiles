@@ -5,6 +5,30 @@
 }:
 
 {
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      format = "$directory$git_branch$git_status$character";
+      directory = {
+        style = "blue";
+        truncation_length = 3;
+      };
+      git_branch = {
+        style = "purple";
+        format = "[$branch]($style) ";
+      };
+      git_status = {
+        style = "red";
+        format = "[$all_status$ahead_behind]($style) ";
+      };
+      character = {
+        success_symbol = "[❯](green)";
+        error_symbol = "[❯](red)";
+      };
+    };
+  };
+
   programs.zsh = {
     enable = true;
 
@@ -17,9 +41,6 @@
         fi
       '')
       ''
-        # Simple prompt
-        PROMPT='%~ %# '
-
         # History configuration
         HISTSIZE=10000
         SAVEHIST=10000
