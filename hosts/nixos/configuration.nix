@@ -24,6 +24,7 @@ in
   networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
   networking.networkmanager.enable = true;
   networking.networkmanager.dns = "none";  # Ignorer DHCP DNS fra eduroam
+  services.resolved.enable = false;  # Forhindrer at DNS bliver overskrevet
 
   # Timezone and locale
   time.timeZone = "Europe/Copenhagen";
