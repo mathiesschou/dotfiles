@@ -56,6 +56,9 @@
       bind -r K resize-pane -U 6
       bind -r L resize-pane -R 6
 
+      # Status bar at top
+      set -g status-position top
+
       # Theme: borders
       set -g pane-border-lines simple
       set -g pane-border-style fg=black,bright

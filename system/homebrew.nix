@@ -26,7 +26,13 @@
     brews = [
       "direnv"
       "uv"
+      "mas"
     ];
+
+    masApps = {
+      "Things 3" = 904280696;
+      "Flow" = 1423210932;
+    };
 
     onActivation = {
       cleanup = "uninstall";
