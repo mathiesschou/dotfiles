@@ -90,6 +90,7 @@ return {
           },
         },
         svelte = {},
+        csharp_ls = {},
       }
 
       -- Setup all servers

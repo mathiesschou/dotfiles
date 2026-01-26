@@ -44,6 +44,9 @@ in
   # VMware guest support
   virtualisation.vmware.guest.enable = true;
 
+  # Docker
+  virtualisation.docker.enable = true;
+
   # Hardware acceleration
   hardware.graphics.enable = true;
 
@@ -122,7 +125,7 @@ in
   users.users.mathies = {
     isNormalUser = true;
     description = "mathies schou";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -198,6 +201,10 @@ in
 
     # Markdown
     marksman # markdown LSP
+
+    # .NET Development
+    dotnet-sdk_8 # .NET 8 LTS SDK (C#, F#, runtime, build tools)
+    csharp-ls # C# language server for Neovim
 
     # For AI tools
     nodejs_20
