@@ -130,6 +130,9 @@ in
   # Enable zsh
   programs.zsh.enable = true;
 
+  # Allow dynamically linked binaries (e.g. claude-code)
+  programs.nix-ld.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

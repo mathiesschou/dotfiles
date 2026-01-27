@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Install neovim directly without wrapper
@@ -11,9 +11,6 @@
   };
 
   # Link neovim configuration directory
-  home.file.".config/nvim" = {
-    source = ../../nvim/.config/nvim;
-    recursive = true;
-    force = true;
-  };
+  home.file.".config/nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim/.config/nvim";
 }
