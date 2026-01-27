@@ -206,7 +206,8 @@ in
     dotnet-sdk_9 # .NET 9 SDK (includes runtime, backwards compatible with .NET 8 projects)
     csharp-ls # C# language server for Neovim
 
-    # For AI tools
+    # AI tools
+    claude-code
     nodejs_20
     python3
     python3Packages.pip

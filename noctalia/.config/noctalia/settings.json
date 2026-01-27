@@ -193,12 +193,12 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": false,
+        "darkMode": true,
         "generationMethod": "material",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "predefinedScheme": "Gruvbox",
-        "schedulingMode": "location",
+        "schedulingMode": "manual",
         "useWallpaperColors": false
     },
     "controlCenter": {
