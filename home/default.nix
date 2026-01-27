@@ -15,8 +15,6 @@
     stateVersion = "24.05";
 
     packages = with pkgs; [
-      zsh-powerlevel10k
-
       # Language servers
       clang-tools # includes clangd
       lua-language-server

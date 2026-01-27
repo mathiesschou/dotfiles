@@ -1,6 +1,7 @@
 return {
   {
     "ellisonleao/gruvbox.nvim",
+    lazy = true,
     priority = 1000,
     opts = {
       terminal_colors = true,
@@ -26,18 +27,13 @@ return {
       dim_inactive = false,
       transparent_mode = false,
     },
-    config = function(_, opts)
-      require("gruvbox").setup(opts)
-      vim.cmd.colorscheme("gruvbox")
-    end,
   },
   {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    lazy = true,
     opts = {
-      flavour = "mocha",
+      flavour = "frappe",
       transparent_background = false,
       integrations = {
         bufferline = true,
@@ -62,6 +58,10 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
+      vim.cmd.colorscheme("catppuccin")
+    end,
   },
   {
     "ishan9299/nvim-solarized-lua",

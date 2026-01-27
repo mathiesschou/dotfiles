@@ -40,40 +40,32 @@
       bind-key k select-pane -U
       bind-key l select-pane -R
 
-      # Pane resizing med prefix + h/j/k/l (repeatable)
-      unbind -n M-h
-      unbind -n M-j
-      unbind -n M-k
-      unbind -n M-l
-      bind -r h resize-pane -L 3
-      bind -r j resize-pane -D 3
-      bind -r k resize-pane -U 3
-      bind -r l resize-pane -R 3
-
-      # Alternativ: hold prefix og tryk H/J/K/L for grovere resize (repeatable)
-      bind -r H resize-pane -L 6
-      bind -r J resize-pane -D 6
-      bind -r K resize-pane -U 6
-      bind -r L resize-pane -R 6
+      # Pane resizing med prefix + H/J/K/L (repeatable)
+      bind -r H resize-pane -L 5
+      bind -r J resize-pane -D 5
+      bind -r K resize-pane -U 5
+      bind -r L resize-pane -R 5
 
       # Status bar at top
       set -g status-position top
 
-      # Theme: borders
+      # Theme: Catppuccin Frappé
+      # borders
       set -g pane-border-lines simple
-      set -g pane-border-style fg=black,bright
-      set -g pane-active-border-style fg=magenta
+      set -g pane-border-style "fg=#414559"
+      set -g pane-active-border-style "fg=#ca9ee6"
 
-      # Theme: status
-      set -g status-style bg=default,fg=black,bright
+      # status
+      set -g status-style "bg=default,fg=#a5adce"
       set -g status-left ""
-      set -g status-right "#[fg=black,bright]#S"
+      set -g status-right "#[fg=#a5adce]#S"
 
-      # Theme: status (windows)
-      set -g window-status-format "●"
-      set -g window-status-current-format "●"
-      set -g window-status-current-style "#{?window_zoomed_flag,fg=yellow,fg=magenta,nobold}"
-      set -g window-status-bell-style "fg=red,nobold"
+      # status (windows)
+      set -g window-status-format "•"
+      set -g window-status-style "fg=#737994"
+      set -g window-status-current-format "•"
+      set -g window-status-current-style "#{?window_zoomed_flag,fg=#e5c890,fg=#ca9ee6,nobold}"
+      set -g window-status-bell-style "fg=#e78284,nobold"
 
       # Window navigation: Ctrl+Tab
       bind -n C-Tab next-window
