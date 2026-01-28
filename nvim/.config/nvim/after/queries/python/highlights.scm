@@ -1,0 +1,2 @@
+;; extends
+"->" @conceal (#set! conceal "→")
