@@ -55,6 +55,9 @@
         alias tl='tmux list-sessions'
         alias ta='tmux attach-session'
 
+        # Save clipboard image to file (workaround for Claude Code on Linux)
+        alias cpaste='wl-paste > /tmp/clip.png && echo "/tmp/clip.png"'
+
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
 
