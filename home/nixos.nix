@@ -15,6 +15,9 @@
     stateVersion = "24.05";
 
     packages = with pkgs; [
+      # Fonts
+      nerd-fonts.jetbrains-mono
+
       # Language servers
       clang-tools
       lua-language-server
@@ -62,6 +65,8 @@
   home.file.".config/noctalia".source = config.lib.file.mkOutOfStoreSymlink "/home/mathies/dotfiles/noctalia/.config/noctalia";
 
   programs.home-manager.enable = true;
+
+  fonts.fontconfig.enable = true;
 
   news.display = "silent";
 }
