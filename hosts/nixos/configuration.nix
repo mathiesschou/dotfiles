@@ -22,6 +22,8 @@ in
   # Networking
   networking.hostName = "nixos-dev";
   networking.networkmanager.enable = true;
+  networking.networkmanager.dns = "systemd-resolved";
+  services.resolved.enable = true;
 
   # Timezone and locale
   time.timeZone = "Europe/Copenhagen";
