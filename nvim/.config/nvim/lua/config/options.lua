@@ -16,7 +16,6 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
-opt.conceallevel = 2
 opt.clipboard = "unnamedplus"
 opt.undofile = true
 opt.swapfile = false
