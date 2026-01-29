@@ -1,0 +1,112 @@
+// Niri configuration
+
+// Startup
+spawn-at-startup "noctalia-shell"
+spawn-at-startup "ghostty"
+
+// Disable hotkey overlay on startup
+hotkey-overlay {
+    skip-at-startup
+}
+
+// Ghostty opens maximized
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    open-maximized true
+}
+
+// Output/display settings
+output "Virtual-1" {
+    scale 2.0
+}
+
+// Window appearance
+layout {
+    gaps 4
+
+    focus-ring {
+        width 1.5
+    }
+    border {
+        width 1.5
+    }
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+    draw-border-with-background false
+}
+
+prefer-no-csd
+
+// Input settings
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        repeat-delay 200
+        repeat-rate 35
+    }
+    focus-follows-mouse
+}
+
+// Keybindings - using Alt (Option key) as modifier
+binds {
+    // Help & Overview
+    Alt+Shift+Slash { show-hotkey-overlay; }
+    Alt+O { toggle-overview; }
+
+    // Terminal
+    Alt+Return { spawn "ghostty"; }
+    Alt+T { spawn "ghostty"; }
+
+    // App launcher (noctalia)
+    Alt+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+
+    // Browser
+    Alt+B { spawn "firefox"; }
+
+    // File manager
+    Alt+E { spawn "nautilus"; }
+
+    // Close window
+    Alt+Q { close-window; }
+
+    // Focus windows
+    Alt+H { focus-column-left; }
+    Alt+L { focus-column-right; }
+    Alt+N { focus-window-down; }
+    Alt+P { focus-window-up; }
+
+    // Move windows
+    Alt+Shift+H { move-column-left; }
+    Alt+Shift+L { move-column-right; }
+
+    // Workspaces
+    Alt+J { focus-workspace-down; }
+    Alt+K { focus-workspace-up; }
+    Alt+Shift+J { move-column-to-workspace-down; }
+    Alt+Shift+K { move-column-to-workspace-up; }
+
+    // Move window to workspace
+    Alt+Shift+1 { move-column-to-workspace 1; }
+    Alt+Shift+2 { move-column-to-workspace 2; }
+    Alt+Shift+3 { move-column-to-workspace 3; }
+    Alt+Shift+4 { move-column-to-workspace 4; }
+    Alt+Shift+5 { move-column-to-workspace 5; }
+
+    // Layout
+    Alt+F { maximize-column; }
+    Alt+Shift+F { fullscreen-window; }
+    Alt+C { consume-window-into-column; }
+    Alt+Shift+C { expel-window-from-column; }
+
+    // Screenshots
+    Alt+S { screenshot; }
+    Alt+Shift+S { screenshot-window; }
+
+    // Exit
+    Alt+Shift+E { quit; }
+}
