@@ -165,6 +165,7 @@ in
     rustc
     cargo
     rustfmt
+    clippy
     rust-analyzer
     rustPlatform.rustLibSrc # rust-src for rust-analyzer stdlib navigation
     gcc # C linker required by rustc
