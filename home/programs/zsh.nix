@@ -60,6 +60,9 @@
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
 
+        # Add Cargo bin to PATH (for rustlings)
+        export PATH="$HOME/.cargo/bin:$PATH"
+
         # Rebuild functions
         unalias dr 2>/dev/null || true
         unalias nr 2>/dev/null || true
