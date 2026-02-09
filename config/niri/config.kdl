@@ -103,6 +103,12 @@ binds {
     Alt+C { consume-window-into-column; }
     Alt+Shift+C { expel-window-from-column; }
 
+    // Resize windows
+    Alt+Minus { set-column-width "-10%"; }
+    Alt+Equal { set-column-width "+10%"; }
+    Alt+Shift+Minus { set-window-height "-10%"; }
+    Alt+Shift+Equal { set-window-height "+10%"; }
+
     // Screenshots
     Alt+S { screenshot; }
     Alt+Shift+S { screenshot-window; }
