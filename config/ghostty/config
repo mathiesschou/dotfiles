@@ -2,7 +2,7 @@ theme = "catppuccin-mocha"
 
 # Font
 font-family = "JetBrainsMono Nerd Font"
-font-size = 18
+font-size = 14
 
 # Cursor
 cursor-style = block
