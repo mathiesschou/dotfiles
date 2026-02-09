@@ -195,6 +195,7 @@ in
     typst
     typstyle # formatter
     zathura # PDF viewer
+    websocat # required for typst-preview.nvim cursor sync
 
     # Lua
     lua # lua runtime
