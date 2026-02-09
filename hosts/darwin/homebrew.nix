@@ -18,6 +18,7 @@
       "flux-app"
       "font-jetbrains-mono-nerd-font"
       "zed"
+      "discord"
     ];
 
     taps = [
