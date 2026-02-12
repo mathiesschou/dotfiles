@@ -54,7 +54,7 @@
       _HIHideMenuBar = false;
       KeyRepeat = 2;
       InitialKeyRepeat = 15;
-      "com.apple.trackpad.scaling" = 2.0;
+      "com.apple.trackpad.scaling" = 1.5;
     };
 
     trackpad = {
