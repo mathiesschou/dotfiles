@@ -7,7 +7,7 @@
     (lib.mkIf pkgs.stdenv.isDarwin {
       "Library/Application Support/com.mitchellh.ghostty/config".source =
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/ghostty/config";
-      "Library/Application Support/com.mitchellh.ghostty/themes".source =
+      ".config/ghostty/themes".source =
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/ghostty/themes";
     })
     # Linux: ~/.config/ghostty/
