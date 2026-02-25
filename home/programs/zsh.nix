@@ -73,9 +73,14 @@
             sudo darwin-rebuild switch --flake ~/dotfiles && exec zsh
           }
         else
-          # NixOS: nixos-rebuild
+          # NixOS: nixos-rebuild (auto-detect hostname)
           dr() {
-            sudo nixos-rebuild switch --flake ~/dotfiles#nixos-dev --impure && exec zsh
+            local hostname=$(hostname)
+            if [[ "$hostname" == "thinkpad-p51" ]]; then
+              sudo nixos-rebuild switch --flake ~/dotfiles#thinkpad-p51 --impure && exec zsh
+            else
+              sudo nixos-rebuild switch --flake ~/dotfiles#nixos-dev --impure && exec zsh
+            fi
           }
         fi
 

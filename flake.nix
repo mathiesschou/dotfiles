@@ -38,6 +38,25 @@
       };
     in
     {
+      # NixOS configuration (ThinkPad P51)
+      nixosConfigurations."thinkpad-p51" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit noctalia; };
+        modules = [
+          ./hosts/thinkpad-p51/configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              users.mathies = import ./home/nixos.nix;
+            };
+          }
+        ];
+      };
+
       # NixOS configuration (VM)
       nixosConfigurations."nixos-dev" = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
