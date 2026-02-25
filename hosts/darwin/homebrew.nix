@@ -28,6 +28,7 @@
       "direnv"
       "uv"
       "mas"
+      "syncthing"
     ];
 
     masApps = {

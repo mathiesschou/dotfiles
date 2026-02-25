@@ -52,6 +52,17 @@ in
   # Docker
   virtualisation.docker.enable = true;
 
+  # Syncthing
+  services.syncthing = {
+    enable = true;
+    user = "mathies";
+    dataDir = "/home/mathies";
+    configDir = "/home/mathies/.config/syncthing";
+    overrideDevices = true;
+    overrideFolders = true;
+    openDefaultPorts = true;
+  };
+
   # Hardware acceleration
   hardware.graphics.enable = true;
 
