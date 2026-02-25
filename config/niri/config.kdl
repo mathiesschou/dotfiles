@@ -45,6 +45,7 @@ input {
     keyboard {
         xkb {
             layout "us"
+            options "caps:ctrl_modifier"
         }
         repeat-delay 200
         repeat-rate 35
