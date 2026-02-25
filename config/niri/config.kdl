@@ -52,67 +52,67 @@ input {
     focus-follows-mouse
 }
 
-// Keybindings - using Alt (Option key) as modifier
+// Keybindings - using Super (Windows/Command key) as modifier
 binds {
     // Help & Overview
-    Alt+Shift+Slash { show-hotkey-overlay; }
-    Alt+O { toggle-overview; }
+    Super+Shift+Slash { show-hotkey-overlay; }
+    Super+O { toggle-overview; }
 
     // Terminal
-    Alt+Return { spawn "ghostty"; }
-    Alt+T { spawn "ghostty"; }
+    Super+Return { spawn "ghostty"; }
+    Super+T { spawn "ghostty"; }
 
     // App launcher (noctalia)
-    Alt+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Super+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
 
     // Browser
-    Alt+B { spawn "firefox"; }
+    Super+B { spawn "firefox"; }
 
     // File manager
-    Alt+E { spawn "nautilus"; }
+    Super+E { spawn "nautilus"; }
 
     // Close window
-    Alt+Q { close-window; }
+    Super+Q { close-window; }
 
     // Focus windows
-    Alt+H { focus-column-left; }
-    Alt+L { focus-column-right; }
-    Alt+N { focus-window-down; }
-    Alt+P { focus-window-up; }
+    Super+H { focus-column-left; }
+    Super+L { focus-column-right; }
+    Super+N { focus-window-down; }
+    Super+P { focus-window-up; }
 
     // Move windows
-    Alt+Shift+H { move-column-left; }
-    Alt+Shift+L { move-column-right; }
+    Super+Shift+H { move-column-left; }
+    Super+Shift+L { move-column-right; }
 
     // Workspaces
-    Alt+J { focus-workspace-down; }
-    Alt+K { focus-workspace-up; }
-    Alt+Shift+J { move-column-to-workspace-down; }
-    Alt+Shift+K { move-column-to-workspace-up; }
+    Super+J { focus-workspace-down; }
+    Super+K { focus-workspace-up; }
+    Super+Shift+J { move-column-to-workspace-down; }
+    Super+Shift+K { move-column-to-workspace-up; }
 
     // Move window to workspace
-    Alt+Shift+1 { move-column-to-workspace 1; }
-    Alt+Shift+2 { move-column-to-workspace 2; }
-    Alt+Shift+3 { move-column-to-workspace 3; }
-    Alt+Shift+4 { move-column-to-workspace 4; }
-    Alt+Shift+5 { move-column-to-workspace 5; }
+    Super+Shift+1 { move-column-to-workspace 1; }
+    Super+Shift+2 { move-column-to-workspace 2; }
+    Super+Shift+3 { move-column-to-workspace 3; }
+    Super+Shift+4 { move-column-to-workspace 4; }
+    Super+Shift+5 { move-column-to-workspace 5; }
 
     // Layout
-    Alt+F { maximize-column; }
-    Alt+Shift+F { fullscreen-window; }
-    Alt+C { consume-window-into-column; }
-    Alt+Shift+C { expel-window-from-column; }
+    Super+F { maximize-column; }
+    Super+Shift+F { fullscreen-window; }
+    Super+C { consume-window-into-column; }
+    Super+Shift+C { expel-window-from-column; }
 
     // Resize windows
-    Alt+Minus { set-column-width "-10%"; }
-    Alt+Equal { set-column-width "+10%"; }
-    Alt+Shift+Minus { set-window-height "-10%"; }
-    Alt+Shift+Equal { set-window-height "+10%"; }
+    Super+Minus { set-column-width "-10%"; }
+    Super+Equal { set-column-width "+10%"; }
+    Super+Shift+Minus { set-window-height "-10%"; }
+    Super+Shift+Equal { set-window-height "+10%"; }
 
     // Screenshots
-    Alt+S { screenshot; }
-    Alt+Shift+S { screenshot-window; }
+    Super+S { screenshot; }
+    Super+Shift+S { screenshot-window; }
 
     // Exit
-    Alt+Shift+E { quit; }
+    Super+Shift+E { quit; }
 }
