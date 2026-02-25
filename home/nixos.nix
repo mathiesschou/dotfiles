@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -11,7 +11,7 @@
 
   home = {
     username = "mathies";
-    homeDirectory = "/home/mathies";
+    homeDirectory = lib.mkForce "/home/mathies";
     stateVersion = "24.05";
 
     packages = with pkgs; [
