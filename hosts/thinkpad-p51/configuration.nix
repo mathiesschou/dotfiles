@@ -87,6 +87,11 @@ in
     };
   };
 
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "mathies";
+  };
+
   # Keyboard - US layout
   services.xserver.xkb = {
     layout = "us";
