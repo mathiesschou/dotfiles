@@ -109,6 +109,7 @@ in
     description = "mathies schou";
     extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
     shell = pkgs.zsh;
+    initialPassword = "sofus";
   };
 
   # Enable zsh
