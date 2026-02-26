@@ -76,8 +76,8 @@
           # NixOS: nixos-rebuild (auto-detect hostname)
           dr() {
             local hostname=$(hostname)
-            if [[ "$hostname" == "thinkpad-p51" ]]; then
-              sudo nixos-rebuild switch --flake ~/dotfiles#thinkpad-p51 --impure && exec zsh
+            if [[ "$hostname" == "thinkpad-p50" ]]; then
+              sudo nixos-rebuild switch --flake ~/dotfiles#thinkpad-p50 --impure && exec zsh
             else
               sudo nixos-rebuild switch --flake ~/dotfiles#nixos-dev --impure && exec zsh
             fi

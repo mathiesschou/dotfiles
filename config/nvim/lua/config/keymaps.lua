@@ -39,6 +39,12 @@ map("n", "<leader>sg", "<C-w>s", { desc = "Split window horizontally" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 map("n", "<leader>sx", "<cmd>close<cr>", { desc = "Close current split" })
 
+-- Resize splits
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
 -- Buffer navigation
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })

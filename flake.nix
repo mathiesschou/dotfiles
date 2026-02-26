@@ -38,12 +38,12 @@
       };
     in
     {
-      # NixOS configuration (ThinkPad P51)
-      nixosConfigurations."thinkpad-p51" = nixpkgs.lib.nixosSystem {
+      # NixOS configuration (ThinkPad P50)
+      nixosConfigurations."thinkpad-p50" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit noctalia; };
         modules = [
-          ./hosts/thinkpad-p51/configuration.nix
+          ./hosts/thinkpad-p50/configuration.nix
 
           home-manager.nixosModules.home-manager
           {

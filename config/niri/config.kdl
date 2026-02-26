@@ -16,9 +16,11 @@ window-rule {
 }
 
 // Output/display settings
-output "Virtual-1" {
-    scale 2.0
-}
+// Let niri auto-detect all outputs (including HDMI)
+// Add specific output configurations here if needed, e.g.:
+// output "HDMI-A-1" {
+//     mode "1920x1080@60"
+// }
 
 // Window appearance
 layout {

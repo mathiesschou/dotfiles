@@ -19,7 +19,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
-  networking.hostName = "thinkpad-p51";
+  networking.hostName = "thinkpad-p50";
   networking.networkmanager.enable = true;
   networking.networkmanager.dns = "systemd-resolved";
   services.resolved.enable = true;
@@ -39,7 +39,7 @@ in
     LC_TIME = "da_DK.UTF-8";
   };
 
-  # NVIDIA Quadro M2200 (ThinkPad P51)
+  # NVIDIA Quadro M2200 (ThinkPad P50)
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
