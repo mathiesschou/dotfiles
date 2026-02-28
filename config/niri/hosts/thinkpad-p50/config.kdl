@@ -68,7 +68,7 @@ binds {
     Super+Return { spawn "ghostty"; }
 
     // Theme picker
-    Super+T { spawn "/home/mathies/dotfiles/scripts/pick-theme.sh"; }
+    Super+Shift+T { spawn "/home/mathies/dotfiles/scripts/pick-theme.sh"; }
 
     // App launcher (noctalia)
     Super+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
@@ -138,4 +138,14 @@ binds {
 
     // Exit
     Super+Shift+E { quit; }
+
+    // Brightness control (F5/F6 on ThinkPad P50)
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
+    XF86MonBrightnessUp { spawn "brightnessctl" "set" "5%+"; }
+
+    // Volume control (F1/F2/F3 on ThinkPad P50)
+    XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioMicMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 }

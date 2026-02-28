@@ -1,4 +1,4 @@
-{ config, pkgs, noctalia, ... }:
+{ config, pkgs, noctalia, zen-browser, ... }:
 
 let
   sddm-astronaut-noblur = pkgs.sddm-astronaut.override {
@@ -66,6 +66,11 @@ in
   # Hardware acceleration
   hardware.graphics.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
   # Firefox/Wayland environment
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
@@ -119,6 +124,10 @@ in
     pulse.enable = true;
   };
 
+  # UPower for battery monitoring
+  services.upower.enable = true;
+
+
   # User
   users.users.mathies = {
     isNormalUser = true;
@@ -138,7 +147,21 @@ in
   nixpkgs.config.allowUnfree = true;
 
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    accept-flake-config = true;
+  };
+
+  # Fonts
+  fonts.packages = with pkgs; [
+    lilex
+    nerd-fonts.lilex
+    jetbrains-mono
+    ia-writer-quattro
+    ibm-plex
+    atkinson-hyperlegible
+    merriweather
+  ];
 
   # System packages
   environment.systemPackages = with pkgs; [
@@ -146,9 +169,14 @@ in
     gh
     wget
     dnsutils
+    jq
     ghostty
     nautilus
     sddm-astronaut-noblur
+    obsidian
+    anki
+    brightnessctl  # For brightness control with F-keys
+    xwayland-satellite  # Required for X11 apps in niri
 
     # Rust development
     rustc
@@ -203,6 +231,7 @@ in
     python3Packages.pip
   ] ++ [
     noctalia.packages.x86_64-linux.default
+    zen-browser.packages.x86_64-linux.default
   ];
 
   # Systemd service for AI CLI tools

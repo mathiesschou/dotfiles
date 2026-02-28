@@ -8,8 +8,7 @@
         "enableClipboardHistory": false,
         "iconMode": "tabler",
         "ignoreMouseInput": false,
-        "pinnedApps": [
-        ],
+        "pinnedApps": [],
         "position": "center",
         "screenshotAnnotationTool": "",
         "showCategories": true,
@@ -21,8 +20,7 @@
     },
     "audio": {
         "cavaFrameRate": 30,
-        "mprisBlacklist": [
-        ],
+        "mprisBlacklist": [],
         "preferredPlayer": "",
         "visualizerType": "linear",
         "volumeFeedback": false,
@@ -32,18 +30,16 @@
     "bar": {
         "backgroundOpacity": 0.93,
         "capsuleOpacity": 1,
-        "density": "default",
+        "density": "spacious",
         "exclusive": true,
         "floating": false,
         "hideOnOverview": false,
         "marginHorizontal": 4,
         "marginVertical": 4,
-        "monitors": [
-        ],
+        "monitors": [],
         "outerCorners": true,
         "position": "top",
-        "screenOverrides": [
-        ],
+        "screenOverrides": [],
         "showCapsule": true,
         "showOutline": false,
         "useSeparateOpacity": false,
@@ -125,14 +121,12 @@
             ],
             "right": [
                 {
-                    "blacklist": [
-                    ],
+                    "blacklist": [],
                     "colorizeIcons": false,
                     "drawerEnabled": true,
                     "hidePassive": false,
                     "id": "Tray",
-                    "pinned": [
-                    ]
+                    "pinned": []
                 },
                 {
                     "hideWhenZero": false,
@@ -142,9 +136,9 @@
                 },
                 {
                     "deviceNativePath": "",
-                    "displayMode": "onhover",
+                    "displayMode": "always",
                     "hideIfIdle": false,
-                    "hideIfNotDetected": true,
+                    "hideIfNotDetected": false,
                     "id": "Battery",
                     "showNoctaliaPerformance": false,
                     "showPowerProfiles": false,
@@ -193,7 +187,7 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": true,
+        "darkMode": false,
         "generationMethod": "material",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
@@ -264,8 +258,7 @@
     "desktopWidgets": {
         "enabled": false,
         "gridSnap": false,
-        "monitorWidgets": [
-        ]
+        "monitorWidgets": []
     },
     "dock": {
         "animationSpeed": 1,
@@ -276,13 +269,11 @@
         "enabled": true,
         "floatingRatio": 1,
         "inactiveIndicators": false,
-        "monitors": [
-        ],
+        "monitors": [],
         "onlySameOutput": true,
-        "pinnedApps": [
-        ],
+        "pinnedApps": [],
         "pinnedStatic": false,
-        "position": "bottom",
+        "position": "right",
         "size": 1
     },
     "general": {
@@ -313,8 +304,8 @@
         "telemetryEnabled": false
     },
     "hooks": {
-        "darkModeChange": "",
-        "enabled": false,
+        "darkModeChange": "/home/mathies/dotfiles/scripts/switch-theme.sh",
+        "enabled": true,
         "performanceModeDisabled": "",
         "performanceModeEnabled": "",
         "screenLock": "",
@@ -361,8 +352,7 @@
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
-        "monitors": [
-        ],
+        "monitors": [],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
         "respectExpireTimeout": false,
@@ -391,8 +381,7 @@
             2
         ],
         "location": "top_right",
-        "monitors": [
-        ],
+        "monitors": [],
         "overlayLayer": true
     },
     "sessionMenu": {
@@ -458,17 +447,16 @@
         "warningColor": ""
     },
     "templates": {
-        "activeTemplates": [
-        ],
+        "activeTemplates": [],
         "enableUserTheming": false
     },
     "ui": {
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "boxBorderEnabled": false,
-        "fontDefault": "Sans Serif",
-        "fontDefaultScale": 1,
-        "fontFixed": "monospace",
+        "fontDefault": "IBM Plex Sans",
+        "fontDefaultScale": 1.08,
+        "fontFixed": "Lilex Nerd Font",
         "fontFixedScale": 1,
         "networkPanelView": "wifi",
         "panelBackgroundOpacity": 0.93,
@@ -484,8 +472,7 @@
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": false,
-        "monitorDirectories": [
-        ],
+        "monitorDirectories": [],
         "overviewEnabled": false,
         "panelPosition": "follow_bar",
         "randomEnabled": false,
@@ -497,7 +484,7 @@
         "transitionEdgeSmoothness": 0.05,
         "transitionType": "random",
         "useSolidColor": false,
-        "useWallhaven": false,
+        "useWallhaven": true,
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",

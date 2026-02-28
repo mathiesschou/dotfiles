@@ -49,23 +49,14 @@
       # Status bar at top
       set -g status-position top
 
-      # Theme: Catppuccin Mocha
-      # borders
+      # Theme: Dynamic based on ~/.config/tmux/theme.conf
       set -g pane-border-lines simple
-      set -g pane-border-style "fg=#45475a"
-      set -g pane-active-border-style "fg=#cba6f7"
-
-      # status
-      set -g status-style "bg=default,fg=#bac2de"
       set -g status-left ""
-      set -g status-right "#[fg=#bac2de]#S"
-
-      # status (windows)
       set -g window-status-format "•"
-      set -g window-status-style "fg=#6c7086"
       set -g window-status-current-format "•"
-      set -g window-status-current-style "#{?window_zoomed_flag,fg=#f9e2af,fg=#cba6f7,nobold}"
-      set -g window-status-bell-style "fg=#f38ba8,nobold"
+
+      # Source theme file (will be symlinked by theme switcher)
+      source-file ~/.config/tmux/theme.conf
 
       # Window navigation: Ctrl+Tab
       bind -n C-Tab next-window

@@ -26,9 +26,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.quickshell.follows = "quickshell";
     };
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, quickshell, noctalia }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, quickshell, noctalia, zen-browser }:
     let
       # Overlay to fix direnv build on darwin (fish tests are broken)
       darwinOverlay = final: prev: {
@@ -41,7 +46,7 @@
       # NixOS configuration (ThinkPad P50)
       nixosConfigurations."thinkpad-p50" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit noctalia; };
+        specialArgs = { inherit noctalia zen-browser; };
         modules = [
           ./hosts/thinkpad-p50/configuration.nix
 
@@ -51,6 +56,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
+              extraSpecialArgs = { hostName = "thinkpad-p50"; };
               users.mathies = import ./home/nixos.nix;
             };
           }
@@ -70,6 +76,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
+              extraSpecialArgs = { hostName = "nixos-dev"; };
               users.mathies = import ./home/nixos.nix;
             };
           }
