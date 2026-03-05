@@ -153,15 +153,32 @@ in
   };
 
   # Fonts
-  fonts.packages = with pkgs; [
-    lilex
-    nerd-fonts.lilex
-    jetbrains-mono
-    ia-writer-quattro
-    ibm-plex
-    atkinson-hyperlegible
-    merriweather
-  ];
+  fonts = {
+    packages = with pkgs; [
+      lilex
+      nerd-fonts.lilex
+      jetbrains-mono
+      commit-mono
+      nerd-fonts.commit-mono
+      ia-writer-quattro
+      ibm-plex
+      atkinson-hyperlegible
+      merriweather
+    ];
+
+    # Enable font directory for better compatibility with apps like Obsidian
+    fontDir.enable = true;
+
+    # Enable fontconfig for better font discovery
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "Lilex" "JetBrains Mono" ];
+        sansSerif = [ "IBM Plex Sans" "Atkinson Hyperlegible" ];
+        serif = [ "Merriweather" ];
+      };
+    };
+  };
 
   # System packages
   environment.systemPackages = with pkgs; [
@@ -175,8 +192,13 @@ in
     sddm-astronaut-noblur
     obsidian
     anki
+    pdfarranger
     brightnessctl  # For brightness control with F-keys
     xwayland-satellite  # Required for X11 apps in niri
+    zip
+    unzip
+    drawio
+    mpv  # Video player with hardware acceleration
 
     # Rust development
     rustc
@@ -221,7 +243,7 @@ in
     marksman
 
     # .NET Development
-    dotnet-sdk_9
+    dotnet-sdk_10
     csharp-ls
 
     # AI tools

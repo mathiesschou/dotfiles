@@ -152,6 +152,10 @@ in
     nautilus
     sddm-astronaut-noblur
 
+    # Fonts
+    commit-mono
+    nerd-fonts.commit-mono
+
     # Run once after first flake to enable persistent mounting
     (writeShellScriptBin "enable-shared-mount" ''
       sudo systemctl enable mount-vmware-shared.service

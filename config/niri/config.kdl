@@ -73,8 +73,8 @@ binds {
     // App launcher (noctalia)
     Super+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
 
-    // Browser
-    Super+B { spawn "zen"; }
+    // Browser (host-specific keybinding - see hosts/ directory)
+    // Super+B { spawn "zen"; }
 
     // Notes
     Super+A { spawn "obsidian"; }

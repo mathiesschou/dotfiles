@@ -2,10 +2,7 @@
 
 todo:
 
-- [ ] obsidian theme and zen update on new theme. it doesnt update automatically even though system setting is
-      enabled.
-- [ ] theme switcher picker, is it possible with the keyboard shortcut, so current is cattpuccin light and mocha, for future add ons.
-- [ ] file manager does not have a dark mode either, can it have this on the toggle, or does it need a new one?
+- [ ] nix-shell and direenv learning for nix os (direenv must be installed also)
 
 ## MacOs
 

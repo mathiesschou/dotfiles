@@ -17,6 +17,7 @@
       "adguard"
       "flux-app"
       "font-jetbrains-mono-nerd-font"
+      "font-commit-mono"
       "zed"
       "discord"
     ];

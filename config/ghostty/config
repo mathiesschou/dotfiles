@@ -1,8 +1,9 @@
-theme = "catppuccin-latte"
+theme = "catppuccin-mocha"
 
 # Font
-font-family = "JetBrainsMono Nerd Font"
-font-size = 14
+font-family = "Commit Mono"
+font-style = "Light"
+font-size = 16 
 
 # Cursor
 cursor-style = block

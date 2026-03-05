@@ -2,20 +2,43 @@
 
 let
   # Build all Catppuccin GTK theme variants
-  catppuccin-themes = pkgs.catppuccin-gtk.override {
+  # We need all 4 variants for the theme switcher to work
+  catppuccin-latte = pkgs.catppuccin-gtk.override {
     accents = [ "blue" ];
     size = "standard";
-    # This will build all 4 variants: latte, mocha, frappe, macchiato
+    variant = "latte";
+  };
+  catppuccin-mocha = pkgs.catppuccin-gtk.override {
+    accents = [ "blue" ];
+    size = "standard";
     variant = "mocha";
+  };
+  catppuccin-frappe = pkgs.catppuccin-gtk.override {
+    accents = [ "blue" ];
+    size = "standard";
+    variant = "frappe";
+  };
+  catppuccin-macchiato = pkgs.catppuccin-gtk.override {
+    accents = [ "blue" ];
+    size = "standard";
+    variant = "macchiato";
   };
 in
 {
+  # Install all theme variants so switch-theme.sh can switch between them
+  home.packages = [
+    catppuccin-latte
+    catppuccin-mocha
+    catppuccin-frappe
+    catppuccin-macchiato
+  ];
+
   gtk = {
     enable = true;
 
     theme = {
       name = "catppuccin-mocha-blue-standard+default";
-      package = catppuccin-themes;
+      package = catppuccin-mocha;
     };
 
     iconTheme = {

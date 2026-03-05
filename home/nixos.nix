@@ -16,8 +16,14 @@
     stateVersion = "24.05";
 
     packages = with pkgs; [
-      # Fonts
-      nerd-fonts.jetbrains-mono
+      # Fonts (for apps like Obsidian that need user-level font access)
+      lilex
+      nerd-fonts.lilex
+      jetbrains-mono
+      ia-writer-quattro
+      ibm-plex
+      atkinson-hyperlegible
+      merriweather
 
       # Qt integration with GTK themes (for apps like Anki)
       libsForQt5.qtstyleplugins
@@ -60,11 +66,11 @@
 
     sessionVariables = {
       EDITOR = "nvim";
-      FONTCONFIG_FILE = "${pkgs.fontconfig.out}/etc/fonts/fonts.conf";
-      FONTCONFIG_PATH = "${pkgs.fontconfig.out}/etc/fonts";
       # Qt theme integration for apps like Anki
       QT_QPA_PLATFORMTHEME = "gtk3";
       QT_STYLE_OVERRIDE = "gtk3";
+      # Enable native Wayland support for Electron apps (fixes font issues in Obsidian)
+      NIXOS_OZONE_WL = "1";
     };
 
     sessionPath = [
