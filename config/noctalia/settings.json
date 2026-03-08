@@ -22,8 +22,7 @@
     },
     "audio": {
         "cavaFrameRate": 30,
-        "mprisBlacklist": [
-        ],
+        "mprisBlacklist": [],
         "preferredPlayer": "",
         "visualizerType": "linear",
         "volumeFeedback": false,
@@ -39,12 +38,10 @@
         "hideOnOverview": false,
         "marginHorizontal": 4,
         "marginVertical": 4,
-        "monitors": [
-        ],
+        "monitors": [],
         "outerCorners": true,
         "position": "top",
-        "screenOverrides": [
-        ],
+        "screenOverrides": [],
         "showCapsule": true,
         "showOutline": false,
         "useSeparateOpacity": false,
@@ -126,14 +123,12 @@
             ],
             "right": [
                 {
-                    "blacklist": [
-                    ],
+                    "blacklist": [],
                     "colorizeIcons": false,
                     "drawerEnabled": true,
                     "hidePassive": false,
                     "id": "Tray",
-                    "pinned": [
-                    ]
+                    "pinned": []
                 },
                 {
                     "hideWhenZero": false,
@@ -265,8 +260,7 @@
     "desktopWidgets": {
         "enabled": false,
         "gridSnap": false,
-        "monitorWidgets": [
-        ]
+        "monitorWidgets": []
     },
     "dock": {
         "animationSpeed": 1,
@@ -277,11 +271,9 @@
         "enabled": true,
         "floatingRatio": 1,
         "inactiveIndicators": false,
-        "monitors": [
-        ],
+        "monitors": [],
         "onlySameOutput": true,
-        "pinnedApps": [
-        ],
+        "pinnedApps": [],
         "pinnedStatic": false,
         "position": "right",
         "size": 1
@@ -362,8 +354,7 @@
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
-        "monitors": [
-        ],
+        "monitors": [],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
         "respectExpireTimeout": false,
@@ -392,8 +383,7 @@
             2
         ],
         "location": "top_right",
-        "monitors": [
-        ],
+        "monitors": [],
         "overlayLayer": true
     },
     "sessionMenu": {
@@ -459,8 +449,7 @@
         "warningColor": ""
     },
     "templates": {
-        "activeTemplates": [
-        ],
+        "activeTemplates": [],
         "enableUserTheming": false
     },
     "ui": {
@@ -485,8 +474,7 @@
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": false,
-        "monitorDirectories": [
-        ],
+        "monitorDirectories": [],
         "overviewEnabled": false,
         "panelPosition": "follow_bar",
         "randomEnabled": false,
