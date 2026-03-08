@@ -8,6 +8,7 @@
     ./programs/ghostty.nix
     ./programs/zsh.nix
     ./programs/gtk.nix
+    ./programs/direnv.nix
   ];
 
   home = {
@@ -44,7 +45,6 @@
 
       # Dev tools
       pnpm
-      direnv
 
       # Niri utilities
       waybar
