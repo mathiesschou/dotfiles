@@ -52,6 +52,12 @@ in
   # Docker
   virtualisation.docker.enable = true;
 
+  # PostgreSQL
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_16;
+  };
+
   # Syncthing
   services.syncthing = {
     enable = true;
@@ -199,6 +205,7 @@ in
     unzip
     drawio
     mpv  # Video player with hardware acceleration
+    postgresql  # PostgreSQL client tools (psql, createdb, etc.)
 
     # Rust development
     rustc
