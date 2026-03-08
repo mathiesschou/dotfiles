@@ -96,25 +96,12 @@ in
   # Window managers / compositors
   programs.niri.enable = true;
 
-  # KDE Plasma Desktop Environment
-  services.desktopManager.plasma6.enable = true;
-
   # SDDM login manager w. astronaut theme (no blur)
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
     theme = "sddm-astronaut-theme";
     extraPackages = [ sddm-astronaut-noblur ];
-    settings = {
-      General = {
-        GreeterEnvironment = "QT_SCREEN_SCALE_FACTORS=1";
-      };
-    };
-  };
-
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "mathies";
   };
 
   # Keyboard - US layout
