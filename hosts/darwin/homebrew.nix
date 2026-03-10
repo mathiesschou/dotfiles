@@ -19,6 +19,7 @@
       "font-jetbrains-mono-nerd-font"
       "font-commit-mono"
       "zed"
+      "zen"
       "discord"
     ];
 
