@@ -33,6 +33,7 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
 
   nixpkgs.config.darwin.apple_sdk.frameworks = [
     "Security"
