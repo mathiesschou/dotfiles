@@ -8,19 +8,15 @@
       "ghostty"
       "zoom"
       "anki"
-      "sioyek"
-      "microsoft-outlook"
-      "microsoft-powerpoint"
-      "microsoft-onenote"
       "spotify"
       "adguard"
       "flux-app"
-      "font-jetbrains-mono-nerd-font"
       "font-commit-mono"
       "zed"
       "zen"
       "discord"
       "jordanbaird-ice"
+      "drawio"
     ];
 
     taps = [
@@ -32,6 +28,8 @@
       "mas"
       "syncthing"
       "acsandmann/tap/rift"
+      "colima"
+      "docker"
     ];
 
     masApps = {
