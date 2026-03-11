@@ -30,10 +30,21 @@
       nodePackages.vscode-langservers-extracted # html, css, json
       pyright
       tinymist # Typst LSP
+      nil # Nix LSP
+      rust-analyzer
+      csharp-ls
+
+      # Typst
       typst
 
       # Formatters
       nodePackages.prettier
+      nodePackages.prettierd
+      stylua
+      rustfmt
+      black
+      isort
+      nixpkgs-fmt
 
       # Dev tools
       pnpm
