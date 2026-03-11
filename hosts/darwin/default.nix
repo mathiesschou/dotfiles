@@ -32,6 +32,8 @@
     claude-code
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   nixpkgs.config.darwin.apple_sdk.frameworks = [
     "Security"
     "CoreFoundation"
