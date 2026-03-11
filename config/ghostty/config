@@ -2,7 +2,7 @@ theme = "catppuccin-latte"
 
 # Font
 font-family = "Commit Mono"
-font-size = 16 
+font-size = 20 
 
 # Cursor
 cursor-style = block
