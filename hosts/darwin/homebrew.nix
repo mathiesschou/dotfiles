@@ -15,8 +15,7 @@
       "zed"
       "zen"
       "discord"
-      "jordanbaird-ice"
-      "drawio"
+"drawio"
     ];
 
     taps = [

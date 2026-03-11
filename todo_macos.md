@@ -83,13 +83,10 @@ Go to **System Settings → Extensions** and enable Adguard.
 ## 13. Configure Flow
 Open Flow and configure work/break intervals and appearance manually.
 
-## 14. Configure Ice
-Open Ice and set up menu bar items visibility manually.
-
-## 15. Configure Syncthing
+## 14. Configure Syncthing
 Open http://localhost:8384 and add ThinkPad P50 as a remote device to sync ~/projects.
 
-## 16. Remove system apps (optional)
+## 15. Remove system apps (optional)
 Boot into Recovery (hold power button → Options → Continue → Terminal):
 ```sh
 csrutil disable
@@ -103,7 +100,7 @@ Boot into Recovery again and re-enable SIP:
 csrutil enable
 ```
 
-## 17. Install csharp-ls (TEMPORARY — for C# course)
+## 16. Install csharp-ls (TEMPORARY — for C# course)
 `dotnet` is installed via Homebrew. After `dr`, install the language server globally:
 ```sh
 dotnet tool install --global csharp-ls
@@ -111,6 +108,12 @@ dotnet tool install --global csharp-ls
 Then ensure `~/.dotnet/tools` is in your PATH (already configured in zsh).
 Remove this step and the `dotnet` brew entry in `homebrew.nix` when the course is done.
 
-## 18. Manual System Settings
+## 17. Manual System Settings
 - **Mission Control** → uncheck "Automatically rearrange Spaces based on most recent use" (already set via nix, but verify)
 - **Spaces** → cannot be disabled via nix-darwin, disable manually if desired
+
+## 18. Configure menu bar items
+Manually hide unwanted menu bar icons in each app's settings:
+- **AdGuard** → Preferences → General → uncheck "Show AdGuard in menu bar"
+- **Flow** → Preferences → uncheck menu bar option
+- **Focus** → System Settings → Control Center → Focus → hide from menu bar
