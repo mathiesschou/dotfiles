@@ -39,7 +39,7 @@
 
       # Formatters
       nodePackages.prettier
-      nodePackages.prettierd
+      prettierd
       stylua
       rustfmt
       black
