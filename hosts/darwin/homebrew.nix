@@ -6,7 +6,6 @@
 
     casks = [
       "ghostty"
-      "rectangle"
       "zoom"
       "anki"
       "sioyek"
@@ -21,16 +20,18 @@
       "zed"
       "zen"
       "discord"
+      "jordanbaird-ice"
     ];
 
     taps = [
+      "acsandmann/tap"
     ];
 
     brews = [
-      "direnv"
       "uv"
       "mas"
       "syncthing"
+      "acsandmann/tap/rift"
     ];
 
     masApps = {

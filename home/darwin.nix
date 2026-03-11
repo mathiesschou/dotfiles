@@ -6,6 +6,7 @@
     ./programs/tmux.nix
     ./programs/neovim.nix
     ./programs/ghostty.nix
+    ./programs/rift.nix
     ./programs/zed.nix
     ./programs/zsh.nix
   ];
@@ -14,6 +15,11 @@
     username = "mathies";
     homeDirectory = "/Users/mathies";
     stateVersion = "24.05";
+
+    file = {
+      ".config/tmux/theme.conf".source = ../config/tmux/theme-light.conf;
+      ".config/theme-mode".text = "light\n";
+    };
 
     packages = with pkgs; [
       # Language servers
