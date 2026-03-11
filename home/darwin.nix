@@ -32,7 +32,6 @@
       tinymist # Typst LSP
       nil # Nix LSP
       rust-analyzer
-      csharp-ls
 
       # Typst
       typst

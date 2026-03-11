@@ -103,6 +103,14 @@ Boot into Recovery again and re-enable SIP:
 csrutil enable
 ```
 
-## 17. Manual System Settings
+## 17. Install csharp-ls (TEMPORARY — for C# course)
+`dotnet` is installed via Homebrew. After `dr`, install the language server globally:
+```sh
+dotnet tool install --global csharp-ls
+```
+Then ensure `~/.dotnet/tools` is in your PATH (already configured in zsh).
+Remove this step and the `dotnet` brew entry in `homebrew.nix` when the course is done.
+
+## 18. Manual System Settings
 - **Mission Control** → uncheck "Automatically rearrange Spaces based on most recent use" (already set via nix, but verify)
 - **Spaces** → cannot be disabled via nix-darwin, disable manually if desired

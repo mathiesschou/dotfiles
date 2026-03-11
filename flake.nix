@@ -16,15 +16,9 @@
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
-    quickshell = {
-      url = "github:outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";
     };
 
     zen-browser = {
@@ -33,7 +27,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, quickshell, noctalia, zen-browser }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, noctalia, zen-browser }:
     let
       # Overlay to fix direnv build on darwin (fish tests are broken)
       darwinOverlay = final: prev: {

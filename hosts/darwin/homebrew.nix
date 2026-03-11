@@ -30,6 +30,7 @@
       "acsandmann/tap/rift"
       "colima"
       "docker"
+      "dotnet" # TEMPORARY: needed for C# course — csharp-ls doesn't build on aarch64-darwin via Nix
     ];
 
     masApps = {
