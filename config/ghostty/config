@@ -12,7 +12,7 @@ cursor-style-blink = true
 window-padding-x = 10
 window-padding-y = 10
 window-decoration = true
-background-opacity = 0.9
+background-opacity = 0.85
 background-blur-radius = 20
 
 # Other

@@ -45,7 +45,7 @@ return {
 
       return {
         flavour = flavour,
-        transparent_background = false,
+        transparent_background = true,
         integrations = {
           bufferline = true,
           telescope = true,
