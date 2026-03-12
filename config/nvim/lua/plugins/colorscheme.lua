@@ -73,6 +73,40 @@ return {
     config = function(_, opts)
       require("catppuccin").setup(opts)
       vim.cmd.colorscheme("catppuccin")
+      
+      -- Ensure full transparency for Ghostty opacity/blur
+      local transparent_groups = {
+        "Normal",
+        "NormalFloat",
+        "NormalNC",
+        "SignColumn",
+        -- Bufferline
+        "BufferLineFill",
+        "BufferLineBackground",
+        "BufferLineTab",
+        "BufferLineTabClose",
+        "BufferLineTabSelected",
+        "BufferLineSeparator",
+        "BufferLineSeparatorVisible",
+        "BufferLineSeparatorSelected",
+        -- Neo-tree
+        "NeoTreeNormal",
+        "NeoTreeNormalNC",
+        "NeoTreeEndOfBuffer",
+        -- Telescope
+        "TelescopeNormal",
+        "TelescopeBorder",
+        "TelescopePromptNormal",
+        "TelescopePromptBorder",
+        "TelescopeResultsNormal",
+        "TelescopeResultsBorder",
+        "TelescopePreviewNormal",
+        "TelescopePreviewBorder",
+      }
+      
+      for _, group in ipairs(transparent_groups) do
+        vim.api.nvim_set_hl(0, group, { bg = "NONE" })
+      end
 
       -- Auto-reload when theme file changes
       local theme_file = vim.fn.expand("~/.config/theme-mode")
@@ -88,6 +122,37 @@ return {
               local flavour = theme == "light" and "latte" or "mocha"
               require("catppuccin").setup({ flavour = flavour })
               vim.cmd.colorscheme("catppuccin")
+              
+              -- Reapply transparency
+              local transparent_groups = {
+                "Normal",
+                "NormalFloat",
+                "NormalNC",
+                "SignColumn",
+                "BufferLineFill",
+                "BufferLineBackground",
+                "BufferLineTab",
+                "BufferLineTabClose",
+                "BufferLineTabSelected",
+                "BufferLineSeparator",
+                "BufferLineSeparatorVisible",
+                "BufferLineSeparatorSelected",
+                "NeoTreeNormal",
+                "NeoTreeNormalNC",
+                "NeoTreeEndOfBuffer",
+                "TelescopeNormal",
+                "TelescopeBorder",
+                "TelescopePromptNormal",
+                "TelescopePromptBorder",
+                "TelescopeResultsNormal",
+                "TelescopeResultsBorder",
+                "TelescopePreviewNormal",
+                "TelescopePreviewBorder",
+              }
+              
+              for _, group in ipairs(transparent_groups) do
+                vim.api.nvim_set_hl(0, group, { bg = "NONE" })
+              end
             end
           end
         end
