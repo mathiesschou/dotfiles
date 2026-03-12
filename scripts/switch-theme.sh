@@ -120,9 +120,20 @@ case "$VARIANT" in
 esac
 
 # Switch Ghostty theme
-GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
+# Different paths for macOS vs Linux
+if [[ "$(uname)" == "Darwin" ]]; then
+    GHOSTTY_CONFIG="$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+else
+    GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
+fi
+
 if [ -f "$GHOSTTY_CONFIG" ]; then
-    sed -i "s|^theme = .*|theme = \"$GHOSTTY_THEME\"|" "$GHOSTTY_CONFIG"
+    # macOS requires backup extension for sed -i, Linux doesn't
+    if [[ "$(uname)" == "Darwin" ]]; then
+        sed -i '' "s|^theme = .*|theme = \"$GHOSTTY_THEME\"|" "$GHOSTTY_CONFIG"
+    else
+        sed -i "s|^theme = .*|theme = \"$GHOSTTY_THEME\"|" "$GHOSTTY_CONFIG"
+    fi
 fi
 
 # Switch tmux theme
