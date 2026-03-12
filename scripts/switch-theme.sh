@@ -127,7 +127,12 @@ else
     GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
 fi
 
-if [ -f "$GHOSTTY_CONFIG" ]; then
+if [ -f "$GHOSTTY_CONFIG" ] || [ -L "$GHOSTTY_CONFIG" ]; then
+    # Resolve symlink if needed (macOS Nix setup uses symlinks)
+    if [[ "$(uname)" == "Darwin" ]] && [ -L "$GHOSTTY_CONFIG" ]; then
+        GHOSTTY_CONFIG=$(readlink "$GHOSTTY_CONFIG")
+    fi
+
     # macOS requires backup extension for sed -i, Linux doesn't
     if [[ "$(uname)" == "Darwin" ]]; then
         sed -i '' "s|^theme = .*|theme = \"$GHOSTTY_THEME\"|" "$GHOSTTY_CONFIG"
