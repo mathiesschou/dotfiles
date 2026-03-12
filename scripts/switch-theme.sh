@@ -128,16 +128,58 @@ else
 fi
 
 if [ -f "$GHOSTTY_CONFIG" ] || [ -L "$GHOSTTY_CONFIG" ]; then
-    # Resolve symlink if needed (macOS Nix setup uses symlinks)
-    if [[ "$(uname)" == "Darwin" ]] && [ -L "$GHOSTTY_CONFIG" ]; then
-        GHOSTTY_CONFIG=$(readlink "$GHOSTTY_CONFIG")
+    # For Nix-managed configs, edit the source file in dotfiles instead of the symlink
+    EDIT_TARGET=""
+
+    if [ -L "$GHOSTTY_CONFIG" ]; then
+        # Fully resolve the symlink chain to find the final destination
+        if command -v realpath &> /dev/null; then
+            RESOLVED=$(realpath "$GHOSTTY_CONFIG")
+        elif command -v greadlink &> /dev/null; then
+            # GNU readlink (via coreutils on macOS)
+            RESOLVED=$(greadlink -f "$GHOSTTY_CONFIG")
+        else
+            # Fallback: manually resolve symlink chain
+            RESOLVED="$GHOSTTY_CONFIG"
+            while [ -L "$RESOLVED" ]; do
+                RESOLVED=$(readlink "$RESOLVED")
+                # Handle relative symlinks
+                if [[ "$RESOLVED" != /* ]]; then
+                    RESOLVED="$(dirname "$GHOSTTY_CONFIG")/$RESOLVED"
+                fi
+            done
+        fi
+
+        # Check if the final resolved path is writable
+        if [ -w "$RESOLVED" ]; then
+            EDIT_TARGET="$RESOLVED"
+        else
+            # Read-only target (shouldn't happen with mkOutOfStoreSymlink, but handle it)
+            echo "Warning: Resolved config is read-only: $RESOLVED"
+            # Try dotfiles as fallback
+            DOTFILES_CONFIG="$HOME/dotfiles/config/ghostty/config"
+            if [ -f "$DOTFILES_CONFIG" ] && [ -w "$DOTFILES_CONFIG" ]; then
+                EDIT_TARGET="$DOTFILES_CONFIG"
+                echo "Using dotfiles source instead: $EDIT_TARGET"
+            else
+                echo "Error: Cannot edit Ghostty config (no writable source found)"
+            fi
+        fi
+    else
+        # Not a symlink, use it directly if writable
+        if [ -w "$GHOSTTY_CONFIG" ]; then
+            EDIT_TARGET="$GHOSTTY_CONFIG"
+        fi
     fi
 
-    # macOS requires backup extension for sed -i, Linux doesn't
-    if [[ "$(uname)" == "Darwin" ]]; then
-        sed -i '' "s|^theme = .*|theme = \"$GHOSTTY_THEME\"|" "$GHOSTTY_CONFIG"
-    else
-        sed -i "s|^theme = .*|theme = \"$GHOSTTY_THEME\"|" "$GHOSTTY_CONFIG"
+    if [ -n "$EDIT_TARGET" ]; then
+        # macOS requires backup extension for sed -i, Linux doesn't
+        if [[ "$(uname)" == "Darwin" ]]; then
+            sed -i '' "s|^theme = .*|theme = \"$GHOSTTY_THEME\"|" "$EDIT_TARGET"
+        else
+            sed -i "s|^theme = .*|theme = \"$GHOSTTY_THEME\"|" "$EDIT_TARGET"
+        fi
+        echo "Updated Ghostty theme in: $EDIT_TARGET"
     fi
 fi
 
