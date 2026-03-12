@@ -54,6 +54,10 @@
         alias tl='tmux list-sessions'
         alias ta='tmux attach-session'
 
+        # Theme switching
+        alias light='~/dotfiles/scripts/switch-theme.sh latte'
+        alias dark='~/dotfiles/scripts/switch-theme.sh mocha'
+
         # Save clipboard image to file (workaround for snapshots on Linux)
         alias cpaste='wl-paste > /tmp/clip.png && echo "/tmp/clip.png"'
 

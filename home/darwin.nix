@@ -16,50 +16,27 @@
     homeDirectory = "/Users/mathies";
     stateVersion = "24.05";
 
-    file = {
-      ".config/tmux/theme.conf".source = ../config/tmux/theme-light.conf;
-      ".config/theme-mode".text = "light\n";
-    };
+    # Theme files are now managed by scripts/switch-theme.sh
+    # file = {
+    #   ".config/tmux/theme.conf".source = ../config/tmux/theme-light.conf;
+    #   ".config/theme-mode".text = "light\n";
+    # };
 
     packages = with pkgs; [
-      # Language servers
-      clang-tools # includes clangd
-      lua-language-server
-      nodePackages.typescript-language-server
-      nodePackages.svelte-language-server
-      nodePackages.vscode-langservers-extracted # html, css, json
-      pyright
-      tinymist # Typst LSP
+      # Nix tools (keep globally for editing dotfiles)
       nil # Nix LSP
-      rust-analyzer
-
-      # Typst
-      typst
-
-      # Formatters
-      nodePackages.prettier
-      prettierd
-      stylua
-      rustfmt
-      black
-      isort
       nixpkgs-fmt
 
-      # Dev tools
-      pnpm
+      # Essential tools
       direnv
     ];
 
     sessionVariables = {
       EDITOR = "nvim";
-      # Use Apple toolchain for Rust linking on macOS
-      CC = "/usr/bin/cc";
-      CXX = "/usr/bin/c++";
     };
 
     sessionPath = [
       "$HOME/.local/bin"
-      "$HOME/.npm-global/bin"
     ];
   };
 
