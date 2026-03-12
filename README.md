@@ -1,9 +1,5 @@
 # dotfiles
 
-todo:
-
-- [ ] nix-shell and direenv learning for nix os (direenv must be installed also)
-
 ## MacOs
 
 My personal dotfiles for macOS and a reproducible NixOS dev environment.

@@ -91,6 +91,7 @@ After the first rebuild, initialize the theme system (themes are now managed dyn
 ```
 
 You can quickly switch themes anytime using shell aliases:
+
 - `light` — Switch to Catppuccin Latte (light theme)
 - `dark` — Switch to Catppuccin Mocha (dark theme)
 
@@ -107,7 +108,7 @@ cat ~/.ssh/id_ed25519.pub
 Then switch dotfiles remote to SSH:
 
 ```sh
-cd ~/dotfiles && git remote set-url origin git@github.com:mathies/dotfiles.git
+cd ~/dotfiles && git remote set-url origin git@github.com:mathiesschou/dotfiles.git
 ```
 
 ## 10. Add Context7 API key to Keychain
