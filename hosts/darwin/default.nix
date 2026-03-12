@@ -13,20 +13,15 @@
     ripgrep
     fd
     gcc
-    nodejs_20
+    clang
     lazygit
     fzf
     tree-sitter
     nil
     nixpkgs-fmt
-    clang
 
-    # Rust
-    rustc
-    cargo
-    rustfmt
-    clippy
-    rust-analyzer
+    # Node.js (needed for MCP server setup)
+    nodejs_20
 
     # AI tools
     claude-code
@@ -34,6 +29,7 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnsupportedSystem = true;
+  nix.enable = false;
 
   nixpkgs.config.darwin.apple_sdk.frameworks = [
     "Security"
@@ -43,14 +39,9 @@
   ];
 
   environment.variables = {
-    NPM_CONFIG_PREFIX = "$HOME/.npm-global";
-
-    # IMPORTANT: make Rust use Nix toolchain
+    # Basic C/C++ toolchain (useful for per-project builds)
     CC = "${pkgs.clang}/bin/clang";
     CXX = "${pkgs.clang}/bin/clang++";
-    AR = "${pkgs.llvm}/bin/llvm-ar";
-    CFLAGS = "-I${pkgs.libiconv}/include";
-    LDFLAGS = "-L${pkgs.libiconv}/lib";
   };
 
   # System defaults
@@ -174,29 +165,108 @@
     fi
 
     # Install Codex and setup MCP servers
-    /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies PATH="/run/current-system/sw/bin:/Users/mathies/.npm-global/bin:$PATH" /bin/bash -c '
+    # Note: Requires Node.js to be available (install via project flake or globally if needed)
+    /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash -c '
+      # Setup npm global directory
       mkdir -p $HOME/.npm-global
+      mkdir -p $HOME/.npm-global/lib
+
+      # Configure npm
       echo "prefix=$HOME/.npm-global" > $HOME/.npmrc
+
+      # Ensure config directories exist
+      mkdir -p $HOME/.config/claude
+      mkdir -p $HOME/.config/codex
 
       MARKER="$HOME/.ai-tools-setup-done"
       if [ ! -f "$MARKER" ]; then
-        npm install -g @openai/codex || true
-        touch "$MARKER"
+        echo "Installing Codex..."
+
+        # Use npm from PATH (requires Node.js to be available)
+        if command -v npm >/dev/null 2>&1 && npm install -g @openai/codex 2>&1; then
+          echo "✓ Codex installed successfully"
+          touch "$MARKER"
+        else
+          echo "✗ Codex installation failed"
+          echo "  You may need to run: npm install -g @openai/codex"
+        fi
       fi
 
       CLAUDE_MARKER="$HOME/.claude-mcp-setup-done"
       if [ ! -f "$CLAUDE_MARKER" ]; then
-        claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server || true
-        claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking || true
-        claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp || true
+        echo "Setting up Claude MCP servers..."
+
+        # Add serena
+        OUTPUT=$(${pkgs.claude-code}/bin/claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server 2>&1)
+        if echo "$OUTPUT" | grep -q "already exists"; then
+          echo "✓ Claude: serena (already configured)"
+        elif [ $? -eq 0 ]; then
+          echo "✓ Claude: serena added"
+        else
+          echo "✗ Claude: serena failed"
+        fi
+
+        # Add sequential-thinking
+        OUTPUT=$(${pkgs.claude-code}/bin/claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking 2>&1)
+        if echo "$OUTPUT" | grep -q "already exists"; then
+          echo "✓ Claude: sequential-thinking (already configured)"
+        elif [ $? -eq 0 ]; then
+          echo "✓ Claude: sequential-thinking added"
+        else
+          echo "✗ Claude: sequential-thinking failed"
+        fi
+
+        # Add context7
+        OUTPUT=$(${pkgs.claude-code}/bin/claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp 2>&1)
+        if echo "$OUTPUT" | grep -q "already exists"; then
+          echo "✓ Claude: context7 (already configured)"
+        elif [ $? -eq 0 ]; then
+          echo "✓ Claude: context7 added"
+        else
+          echo "✗ Claude: context7 failed"
+        fi
+
         touch "$CLAUDE_MARKER"
       fi
 
       CODEX_MARKER="$HOME/.codex-mcp-setup-done"
       if [ ! -f "$CODEX_MARKER" ]; then
-        $HOME/.npm-global/bin/codex mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server || true
-        $HOME/.npm-global/bin/codex mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking || true
-        $HOME/.npm-global/bin/codex mcp add context7 -- npx -y @upstash/context7-mcp || true
+        echo "Setting up Codex MCP servers..."
+
+        if [ ! -f "$HOME/.npm-global/bin/codex" ]; then
+          echo "✗ Codex not found at $HOME/.npm-global/bin/codex, skipping MCP setup"
+        else
+          # Add serena
+          OUTPUT=$($HOME/.npm-global/bin/codex mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server 2>&1)
+          if echo "$OUTPUT" | grep -q "already exists"; then
+            echo "✓ Codex: serena (already configured)"
+          elif echo "$OUTPUT" | grep -q "Added"; then
+            echo "✓ Codex: serena added"
+          else
+            echo "✗ Codex: serena failed"
+          fi
+
+          # Add sequential-thinking
+          OUTPUT=$($HOME/.npm-global/bin/codex mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking 2>&1)
+          if echo "$OUTPUT" | grep -q "already exists"; then
+            echo "✓ Codex: sequential-thinking (already configured)"
+          elif echo "$OUTPUT" | grep -q "Added"; then
+            echo "✓ Codex: sequential-thinking added"
+          else
+            echo "✗ Codex: sequential-thinking failed"
+          fi
+
+          # Add context7
+          OUTPUT=$($HOME/.npm-global/bin/codex mcp add context7 -- npx -y @upstash/context7-mcp 2>&1)
+          if echo "$OUTPUT" | grep -q "already exists"; then
+            echo "✓ Codex: context7 (already configured)"
+          elif echo "$OUTPUT" | grep -q "Added"; then
+            echo "✓ Codex: context7 added"
+          else
+            echo "✗ Codex: context7 failed"
+          fi
+        fi
+
         touch "$CODEX_MARKER"
       fi
     ' || true
