@@ -25,6 +25,9 @@
 
     # AI tools
     claude-code
+    
+    # Database tools
+    postgresql
   ];
 
   nixpkgs.config.allowUnfree = true;

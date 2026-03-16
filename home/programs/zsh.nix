@@ -87,6 +87,10 @@ EOF
         # Save clipboard image to file (workaround for snapshots on Linux)
         alias cpaste='wl-paste > /tmp/clip.png && echo "/tmp/clip.png"'
 
+        # Add Homebrew to PATH
+        export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+        export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
 
