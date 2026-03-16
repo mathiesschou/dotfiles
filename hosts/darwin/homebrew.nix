@@ -15,7 +15,9 @@
       "zed"
       "zen"
       "discord"
-"drawio"
+      "drawio"
+      "dotnet-sdk" # .NET 10 SDK for C# course
+      "orbstack" # Docker/container runtime - handles x86 via Rosetta
     ];
 
     taps = [
@@ -27,8 +29,6 @@
       "mas"
       "syncthing"
       "acsandmann/tap/rift"
-      "colima"
-      "docker"
       "dotnet" # TEMPORARY: needed for C# course — csharp-ls doesn't build on aarch64-darwin via Nix
     ];
 

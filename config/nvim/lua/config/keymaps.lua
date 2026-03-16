@@ -51,4 +51,15 @@ map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
 map("n", "<leader>u", "<cmd>checktime | bufdo e<cr>", { desc = "Reload all buffers" })
 
+-- Open Draw.io files
+map("n", "<leader>od", function()
+	local file = vim.fn.expand("%:p")
+	if file:match("%.drawio$") or file:match("%.drawio%..*$") then
+		vim.fn.system("open -a draw.io " .. vim.fn.shellescape(file))
+		vim.notify("Opened " .. vim.fn.expand("%:t") .. " in Draw.io", vim.log.levels.INFO)
+	else
+		vim.notify("Current file is not a Draw.io file", vim.log.levels.WARN)
+	end
+end, { desc = "Open in Draw.io" })
+
 -- Which-key group labels will be registered in the which-key plugin config

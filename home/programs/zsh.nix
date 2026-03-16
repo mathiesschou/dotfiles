@@ -125,7 +125,8 @@ EOF
 
           # Docker/Colima configuration
           unset DOCKER_HOST
-          export DOCKER_CONTEXT=colima
+          # DOCKER_CONTEXT removed - switch contexts manually based on project needs
+          # Use: docker context use colima (ARM) or docker context use colima-x86 (x86_64)
 
           # Load Context7 API key from macOS Keychain
           if command -v security &> /dev/null; then
