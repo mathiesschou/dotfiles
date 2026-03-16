@@ -29,9 +29,6 @@
 
       # Essential tools
       direnv
-
-      # Database
-      postgresql_17
     ];
 
     sessionVariables = {

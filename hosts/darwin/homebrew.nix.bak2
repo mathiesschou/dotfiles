@@ -25,12 +25,14 @@
     ];
 
     brews = [
+    brews = [
       "uv"
       "mas"
       "syncthing"
       "acsandmann/tap/rift"
       "dotnet" # TEMPORARY: needed for C# course — csharp-ls doesn't build on aarch64-darwin via Nix
       "postgresql@17"
+    ];
     ];
 
     masApps = {
