@@ -49,6 +49,32 @@
         alias ll='ls -lah'
         alias la='ls -a'
 
+        mkflake() {
+          cat > flake.nix <<'EOF'
+{
+  description = "Dev shell";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = { nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+          ];
+        };
+      });
+}
+EOF
+
+          echo "Created flake.nix"
+        }
+
         # tmux
         alias tn='tmux new-session -s'
         alias tl='tmux list-sessions'

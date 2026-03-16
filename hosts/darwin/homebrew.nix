@@ -33,9 +33,9 @@
     ];
 
     masApps = {
-      "Things 3" = 904280696;
+      "Bear" = 1091189122;
       "Flow" = 1423210932;
-      "Numbers" = 409203825;
+      "OneDrive" = 823766827;
     };
 
     onActivation = {

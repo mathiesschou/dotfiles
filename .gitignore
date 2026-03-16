@@ -12,3 +12,7 @@ result-*
 # Debug/logs
 *-debug.log
 debug.log
+
+# LLMs'
+.claude
+.serena
