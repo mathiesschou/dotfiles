@@ -18,6 +18,7 @@
       "drawio"
       "dotnet-sdk" # .NET 10 SDK for C# course
       "orbstack" # Docker/container runtime - handles x86 via Rosetta
+      "rectangle" # Window management and layout
     ];
 
     taps = [
@@ -28,7 +29,6 @@
       "uv"
       "mas"
       "syncthing"
-      "acsandmann/tap/rift"
       "dotnet" # TEMPORARY: needed for C# course — csharp-ls doesn't build on aarch64-darwin via Nix
       "postgresql@17"
     ];

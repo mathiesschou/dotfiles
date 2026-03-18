@@ -6,7 +6,6 @@
     ./programs/tmux.nix
     ./programs/neovim.nix
     ./programs/ghostty.nix
-    ./programs/rift.nix
     ./programs/zed.nix
     ./programs/zsh.nix
   ];

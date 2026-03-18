@@ -25,9 +25,14 @@
 
     # AI tools
     claude-code
-    
+
     # Database tools
     postgresql
+
+    # Typst and related tools
+    typst
+    tinymist
+    websocat
   ];
 
   nixpkgs.config.allowUnfree = true;
