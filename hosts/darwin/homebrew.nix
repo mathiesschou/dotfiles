@@ -17,8 +17,10 @@
       "discord"
       "drawio"
       "dotnet-sdk" # .NET 10 SDK for C# course
-      "orbstack" # Docker/container runtime - handles x86 via Rosetta
-      "rectangle" # Window management and layout
+      "orbstack"
+      "flashspace"
+      "rectangle"
+      "raycast"
     ];
 
     taps = [
@@ -37,6 +39,7 @@
       "Bear" = 1091189122;
       "Flow" = 1423210932;
       "OneDrive" = 823766827;
+      "Xcode" = 497799835;
     };
 
     onActivation = {
