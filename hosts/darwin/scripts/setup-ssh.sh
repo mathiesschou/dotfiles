@@ -32,13 +32,13 @@ else
 fi
 
 # Test GitHub connection
-echo "Testing GitHub connection..."
+echo "testing GitHub connection..."
 if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
-  echo "GitHub SSH connection works!"
+  echo "gitHub SSH connection works"
 else
-  echo "GitHub SSH not configured yet."
-  echo "Add your public key to: https://github.com/settings/keys"
+  echo "gitHub SSH not configured yet."
+  echo "add your public key to: https://github.com/settings/keys"
   echo ""
-  echo "Your public key:"
+  echo "your public key:"
   cat "$SSH_PUB"
 fi
