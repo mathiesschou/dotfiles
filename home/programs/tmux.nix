@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
+  # Create default theme symlink (dark theme by default)
+  home.file.".config/tmux/theme.conf".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux/theme-dark.conf";
+
   programs.tmux = {
     enable = true;
 
@@ -56,7 +60,8 @@
       set -g window-status-current-format "•"
 
       # Source theme file (will be symlinked by theme switcher)
-      source-file ~/.config/tmux/theme.conf
+      # -q flag makes it optional (won't error if missing)
+      source-file -q ~/.config/tmux/theme.conf
 
       # Window navigation: Ctrl+Tab
       bind -n C-Tab next-window

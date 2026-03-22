@@ -101,7 +101,7 @@
             nix-homebrew = {
               enable = true;
               enableRosetta = false;
-              user = "mathies";
+              user = "mathiesschou";
             };
           }
 
@@ -112,7 +112,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              users.mathies = import ./home/darwin.nix;
+              users.mathiesschou = import ./home/darwin.nix;
             };
           }
         ];

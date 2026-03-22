@@ -12,7 +12,6 @@
       "adguard"
       "flux-app"
       "font-commit-mono"
-      "zed"
       "zen"
       "discord"
       "drawio"

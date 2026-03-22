@@ -9,13 +9,17 @@ if [ -f "$SSH_KEY" ]; then
   echo "SSH key already exists at $SSH_KEY"
 else
   echo "No SSH key found. Generating new one..."
-  
+
+  # Ensure .ssh directory exists
+  mkdir -p "$HOME/.ssh"
+  chmod 700 "$HOME/.ssh"
+
   # Get email (fallback to git config)
   EMAIL=$(git config --global user.email)
   if [ -z "$EMAIL" ]; then
     EMAIL="mathies@example.com"
   fi
-  
+
   # Generate SSH key
   ssh-keygen -t ed25519 -C "$EMAIL" -f "$SSH_KEY" -N ""
   

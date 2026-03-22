@@ -8,6 +8,9 @@
 4. Open **Disk Utility**, select your disk, click **Erase**
 5. Close Disk Utility, click **Reinstall macOS**
 
+> Remember to currently name the user `mathiesschou`,
+> as the scripts depends on it.
+
 ---
 
 ## 1. Install Xcode Command Line Tools
@@ -32,7 +35,7 @@ sudo scutil --set ComputerName mathies-macos
 
 ## 3. Log in to App Store
 
-Log in before rebuilding, otherwise App Store apps will not install.
+Open App Store to log in before rebuilding, otherwise App Store apps will not install.
 
 ## 4. Install Nix
 
@@ -43,7 +46,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 Activate nix in the same shell
 
 ```sh
-/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 ```
 
 ## 5. Fix /etc/zshrc conflict
@@ -52,6 +55,9 @@ nix-darwin cannot overwrite the existing zshrc — back it up first:
 
 ```sh
 sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
+```
+
+```sh
 sudo mv /etc/zshenv /etc/zshenv.before-nix-darwin 2>/dev/null || true
 ```
 
