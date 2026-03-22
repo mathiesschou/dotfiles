@@ -5,7 +5,7 @@
     ./homebrew.nix
   ];
 
-  # System packages (CLI tools that need to be system-wide)
+  # system-wide packages
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -19,26 +19,19 @@
     tree-sitter
     nil
     nixpkgs-fmt
-
-    # Node.js (needed for MCP server setup)
-    nodejs_20
-
-    # AI tools
-    claude-code
-
-    # Database tools
-    postgresql
-
-    # Typst and related tools
-    typst
-    tinymist
-    websocat
+    nodejs_20 # mcp servers
+    claude-code # antrophic cli
+    postgresql #database
+    typst # typst
+    tinymist # typst related tools
+    websocat # typst related tools
   ];
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnsupportedSystem = true;
-  nix.enable = false;
+  nixpkgs.config.allowUnfree = true; # proprietary software allow
+  nixpkgs.config.allowUnsupportedSystem = true; # packages not tested on ARM
+  nix.enable = false; # disable managing nix daemon, as it is already installed 
 
+  # Apple's API dependencides for compiling some packages.  
   nixpkgs.config.darwin.apple_sdk.frameworks = [
     "Security"
     "CoreFoundation"
@@ -46,18 +39,18 @@
     "Iconv"
   ];
 
+  # set environment variables
   environment.variables = {
-    # Basic C/C++ toolchain (useful for per-project builds)
     CC = "${pkgs.clang}/bin/clang";
     CXX = "${pkgs.clang}/bin/clang++";
   };
 
-  # System defaults
+  # system defaults
   system.defaults = {
     NSGlobalDomain = {
-      _HIHideMenuBar = false;
-      KeyRepeat = 1;
-      InitialKeyRepeat = 10;
+      _HIHideMenuBar = true;
+      KeyRepeat = 2;
+      InitialKeyRepeat = 20;
       "com.apple.trackpad.scaling" = 1.5;
     };
 
@@ -77,6 +70,7 @@
       tilesize = 48;
       mru-spaces = false;
 
+      # apps in dock
       persistent-apps = [
         "/Applications/Ghostty.app"
         "/Applications/Zen.app"
@@ -88,31 +82,28 @@
     };
   };
 
-  # Nix configuration
+  # allow unstable nix-features  
   nix.settings.experimental-features = "nix-command flakes";
 
-  # System-level zsh configuration
+  # use zsh from nix packages as main zsh
   programs.zsh.enable = true;
 
   # System version
   system.stateVersion = 5;
   system.primaryUser = "mathies";
-
-  # Hostname configuration
   networking.computerName = "mathies-macos";
   networking.hostName = "mathies-macos";
   networking.localHostName = "mathies-macos";
 
-  # Keyboard settings
+  # keyboard settings
   system.keyboard = {
     enableKeyMapping = true;
     remapCapsLockToControl = true;
   };
 
-  # Activation scripts
+  # settings scripts that nixos cannot control 
   system.activationScripts.extraActivation.text = ''
-    # Configure keyboard input sources (English US and Danish)
-    echo "Configuring keyboard input sources..."
+    echo "use input source US and DK"
     /usr/bin/sudo -u mathies /bin/bash -c '
       # Add English (US) input source
       /usr/bin/defaults write com.apple.HIToolbox AppleEnabledInputSources -array \
@@ -120,35 +111,32 @@
         "<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>9</integer><key>KeyboardLayout Name</key><string>Danish</string></dict>"
     ' || true
 
-    # Set keyboard shortcut to switch between input sources (Control+Space)
+    echo "ctrl+space to alternate input sourcess"
     /usr/bin/sudo -u mathies /usr/bin/defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>262144</integer></array><key>type</key><string>standard</string></dict></dict>" || true
     /usr/bin/sudo -u mathies /usr/bin/defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 61 "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>786432</integer></array><key>type</key><string>standard</string></dict></dict>" || true
 
-    echo "Keyboard input sources configured (English US and Danish with Control+Space to switch)"
-
-    # Globe/Fn key → Show Emoji & Symbols
+    echo "fn key for emojis"
     /usr/bin/sudo -u mathies /usr/bin/defaults write com.apple.HIToolbox AppleFnUsageType -int 2
 
     # Apply settings immediately
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
-    # Install Rosetta 2 if needed (Apple Silicon only)
+    # install rosetts if not installed
     if [[ $(uname -m) == "arm64" ]] && ! /usr/bin/pgrep -q oahd; then
-      echo "Installing Rosetta 2..."
+      echo "Installing Rosetta 2"
       /usr/sbin/softwareupdate --install-rosetta --agree-to-license
     fi
 
-    # Run setup script as user
-    echo "Running default terminal setup..."
+
+    echo "set ghostty as default terminal"
     /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./scripts/set-default-terminal.sh}
 
-    # Setup SSH key
-    echo "Checking SSH setup.."
-    /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${../../scripts/setup-ssh.sh}
+    echo "check if ssh is present, create if not"
+    /usr/bin/sudo -u mathies /usr/bin/env HOME=/Users/mathies /bin/bash ${./scripts/setup-ssh.sh}
 
     # Remove quarantine from f.lux and ensure it's in Login Items
     if [[ -d "/Applications/Flux.app" ]]; then
-      echo "Removing quarantine from f.lux..."
+      echo "Removing quarantine from f.lux"
       /usr/bin/xattr -cr /Applications/Flux.app 2>/dev/null || true
 
       # Add f.lux to Login Items if not already there
@@ -157,20 +145,8 @@
       echo "f.lux added to Login Items"
     fi
 
-    # Set wallpaper
-    echo "Setting wallpaper..."
+    echo "setting wallpaper"
     /usr/bin/sudo -u mathies /usr/bin/osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"/Users/mathies/dotfiles/wallpapers/airballons.jpg\""
-
-    # Deploy Zen user.js to all profiles
-    for profile in /Users/mathies/Library/Application\ Support/zen/Profiles/*/; do
-      cp /Users/mathies/dotfiles/config/zen/user.js "$profile/user.js" 2>/dev/null || true
-    done
-
-    # Create projects folder if it doesn't exist
-    if [[ ! -d "/Users/mathies/projects" ]]; then
-      echo "Creating projects folder..."
-      /usr/bin/sudo -u mathies mkdir -p /Users/mathies/projects
-    fi
 
     # Install Codex and setup MCP servers
     # Note: Requires Node.js to be available (install via project flake or globally if needed)
@@ -192,46 +168,46 @@
 
         # Use npm from PATH (requires Node.js to be available)
         if command -v npm >/dev/null 2>&1 && npm install -g @openai/codex 2>&1; then
-          echo "✓ Codex installed successfully"
+          echo "codex installed successfully"
           touch "$MARKER"
         else
-          echo "✗ Codex installation failed"
-          echo "  You may need to run: npm install -g @openai/codex"
+          echo "codex installation failed"
+          echo "you may need to run: npm install -g @openai/codex"
         fi
       fi
 
       CLAUDE_MARKER="$HOME/.claude-mcp-setup-done"
       if [ ! -f "$CLAUDE_MARKER" ]; then
-        echo "Setting up Claude MCP servers..."
+        echo "setting up Claude MCP servers..."
 
         # Add serena
         OUTPUT=$(${pkgs.claude-code}/bin/claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server 2>&1)
         if echo "$OUTPUT" | grep -q "already exists"; then
-          echo "✓ Claude: serena (already configured)"
+          echo "claude: serena (already configured)"
         elif [ $? -eq 0 ]; then
-          echo "✓ Claude: serena added"
+          echo "claude: serena added"
         else
-          echo "✗ Claude: serena failed"
+          echo "claude: serena failed"
         fi
 
         # Add sequential-thinking
         OUTPUT=$(${pkgs.claude-code}/bin/claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking 2>&1)
         if echo "$OUTPUT" | grep -q "already exists"; then
-          echo "✓ Claude: sequential-thinking (already configured)"
+          echo "claude: sequential-thinking (already configured)"
         elif [ $? -eq 0 ]; then
-          echo "✓ Claude: sequential-thinking added"
+          echo "claude: sequential-thinking added"
         else
-          echo "✗ Claude: sequential-thinking failed"
+          echo "claude: sequential-thinking failed"
         fi
 
         # Add context7
         OUTPUT=$(${pkgs.claude-code}/bin/claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp 2>&1)
         if echo "$OUTPUT" | grep -q "already exists"; then
-          echo "✓ Claude: context7 (already configured)"
+          echo "claude: context7 (already configured)"
         elif [ $? -eq 0 ]; then
-          echo "✓ Claude: context7 added"
+          echo "claude: context7 added"
         else
-          echo "✗ Claude: context7 failed"
+          echo "claude: context7 failed"
         fi
 
         touch "$CLAUDE_MARKER"
@@ -239,39 +215,39 @@
 
       CODEX_MARKER="$HOME/.codex-mcp-setup-done"
       if [ ! -f "$CODEX_MARKER" ]; then
-        echo "Setting up Codex MCP servers..."
+        echo "setting up Codex MCP servers..."
 
         if [ ! -f "$HOME/.npm-global/bin/codex" ]; then
-          echo "✗ Codex not found at $HOME/.npm-global/bin/codex, skipping MCP setup"
+          echo "codex not found at $HOME/.npm-global/bin/codex, skipping MCP setup"
         else
           # Add serena
           OUTPUT=$($HOME/.npm-global/bin/codex mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server 2>&1)
           if echo "$OUTPUT" | grep -q "already exists"; then
-            echo "✓ Codex: serena (already configured)"
+            echo "codex: serena (already configured)"
           elif echo "$OUTPUT" | grep -q "Added"; then
-            echo "✓ Codex: serena added"
+            echo "codex: serena added"
           else
-            echo "✗ Codex: serena failed"
+            echo "codex: serena failed"
           fi
 
           # Add sequential-thinking
           OUTPUT=$($HOME/.npm-global/bin/codex mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking 2>&1)
           if echo "$OUTPUT" | grep -q "already exists"; then
-            echo "✓ Codex: sequential-thinking (already configured)"
+            echo "codex: sequential-thinking (already configured)"
           elif echo "$OUTPUT" | grep -q "Added"; then
-            echo "✓ Codex: sequential-thinking added"
+            echo "codex: sequential-thinking added"
           else
-            echo "✗ Codex: sequential-thinking failed"
+            echo "codex: sequential-thinking failed"
           fi
 
           # Add context7
           OUTPUT=$($HOME/.npm-global/bin/codex mcp add context7 -- npx -y @upstash/context7-mcp 2>&1)
           if echo "$OUTPUT" | grep -q "already exists"; then
-            echo "✓ Codex: context7 (already configured)"
+            echo "codex: context7 (already configured)"
           elif echo "$OUTPUT" | grep -q "Added"; then
-            echo "✓ Codex: context7 added"
+            echo "codex: context7 added"
           else
-            echo "✗ Codex: context7 failed"
+            echo "codex: context7 failed"
           fi
         fi
 
@@ -286,4 +262,3 @@
     name = "mathies";
     home = "/Users/mathies";
   };
-}

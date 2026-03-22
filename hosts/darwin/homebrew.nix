@@ -16,11 +16,11 @@
       "zen"
       "discord"
       "drawio"
-      "dotnet-sdk" # .NET 10 SDK for C# course
+      "dotnet-sdk" # for job 
       "orbstack"
       "flashspace"
       "rectangle"
-      "raycast"
+      "ffmpeg"
     ];
 
     taps = [
@@ -31,7 +31,7 @@
       "uv"
       "mas"
       "syncthing"
-      "dotnet" # TEMPORARY: needed for C# course — csharp-ls doesn't build on aarch64-darwin via Nix
+      "dotnet" # for job
       "postgresql@17"
     ];
 

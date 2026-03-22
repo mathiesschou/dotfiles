@@ -13,6 +13,6 @@ result-*
 *-debug.log
 debug.log
 
-# LLMs'
+# cli llm files
 .claude
 .serena

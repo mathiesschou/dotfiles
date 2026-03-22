@@ -20,7 +20,13 @@ xcode-select --install
 
 ```sh
 sudo scutil --set HostName mathies-macos
+```
+
+```sh
 sudo scutil --set LocalHostName mathies-macos
+```
+
+```sh
 sudo scutil --set ComputerName mathies-macos
 ```
 
@@ -64,14 +70,7 @@ Do NOT install Homebrew manually — nix-homebrew handles it automatically.
 ```sh
 sudo nix run nix-darwin -- switch --flake ~/dotfiles#mathies-macos
 ```
-
-## 8. Rebuild darwin (subsequent rebuilds)
-
-```sh
-dr
-```
-
-This will install all packages, configure macOS settings, set up SSH, install Claude Code, Codex, and MCP servers automatically.
+``
 
 **Note:** If Codex or MCP servers fail to install, remove the marker files and rebuild:
 
@@ -81,16 +80,6 @@ dr
 ```
 
 ## 8.5. Initialize theme system
-
-After the first rebuild, initialize the theme system (themes are now managed dynamically, not by home-manager):
-
-```sh
-~/dotfiles/scripts/switch-theme.sh latte  # for light theme
-# or
-~/dotfiles/scripts/switch-theme.sh mocha  # for dark theme
-```
-
-You can quickly switch themes anytime using shell aliases:
 
 - `light` — Switch to Catppuccin Latte (light theme)
 - `dark` — Switch to Catppuccin Mocha (dark theme)
@@ -126,15 +115,6 @@ Replace `YOUR_API_KEY` with the actual key from the dashboard.
 
 **Note:** `serena` and `sequential-thinking` MCP servers don't require API keys and will work automatically.
 
-## 11. Start Rift
-
-```sh
-rift service install && rift service start
-```
-
-Then go to **System Settings → Privacy & Security → Accessibility** and enable Rift.
-Press `Option + Z` to activate Rift on the current Space.
-
 ## 12. Enable Adguard
 
 Go to **System Settings → Extensions** and enable Adguard.
@@ -143,29 +123,9 @@ Go to **System Settings → Extensions** and enable Adguard.
 
 Open Flow and configure work/break intervals and appearance manually.
 
-## 14. Configure Syncthing
+## 14. Configure workspaces and window management
 
-Start the Syncthing service:
-
-```sh
-brew services start syncthing
-```
-
-Open http://localhost:8384 and configure:
-
-1. **Add ThinkPad P50 as a remote device**
-2. **Add/configure the `projects` folder**:
-
-## 15. Install csharp-ls (TEMPORARY — for C# course)
-
-`dotnet` is installed via Homebrew. After `dr`, install the language server globally:
-
-```sh
-dotnet tool install --global csharp-ls
-```
-
-Then ensure `~/.dotnet/tools` is in your PATH (already configured in zsh).
-Remove this step and the `dotnet` brew entry in `homebrew.nix` when the course is done.
+Open Flashspace and Rectangle and configure windows.
 
 ## 16. Configure menu bar items
 

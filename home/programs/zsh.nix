@@ -49,6 +49,7 @@
         alias ll='ls -lah'
         alias la='ls -a'
 
+        # Create dev flake template
         mkflake() {
           cat > flake.nix <<'EOF'
 {
@@ -75,17 +76,14 @@ EOF
           echo "Created flake.nix"
         }
 
-        # tmux
+        # tmux aliases
         alias tn='tmux new-session -s'
         alias tl='tmux list-sessions'
         alias ta='tmux attach-session'
 
         # Theme switching
-        alias light='~/dotfiles/scripts/switch-theme.sh latte'
-        alias dark='~/dotfiles/scripts/switch-theme.sh mocha'
-
-        # Save clipboard image to file (workaround for snapshots on Linux)
-        alias cpaste='wl-paste > /tmp/clip.png && echo "/tmp/clip.png"'
+        alias light='~/dotfiles/hosts/darwin/scripts/switch-theme.sh latte'
+        alias dark='~/dotfiles/hosts/darwin/scripts/switch-theme.sh mocha'
 
         # Add Homebrew to PATH
         export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
@@ -94,50 +92,26 @@ EOF
         # Add npm global bin to PATH
         export PATH="$HOME/.npm-global/bin:$PATH"
 
-        # Add Cargo bin to PATH (for rustlings)
+        # Add Cargo bin to PATH
         export PATH="$HOME/.cargo/bin:$PATH"
 
-        # Rebuild functions
-        unalias dr 2>/dev/null || true
-        unalias nr 2>/dev/null || true
+        # Rebuild darwin system
+        dr() {
+          sudo darwin-rebuild switch --flake ~/dotfiles && exec zsh
+        }
 
-        if [[ "$(uname)" == "Darwin" ]]; then
-          # macOS: darwin-rebuild
-          dr() {
-            sudo darwin-rebuild switch --flake ~/dotfiles && exec zsh
-          }
-        else
-          # NixOS: nixos-rebuild (auto-detect hostname)
-          dr() {
-            local hostname=$(hostname)
-            if [[ "$hostname" == "thinkpad-p50" ]]; then
-              sudo nixos-rebuild switch --flake ~/dotfiles#thinkpad-p50 --impure && exec zsh
-            else
-              sudo nixos-rebuild switch --flake ~/dotfiles#nixos-dev --impure && exec zsh
-            fi
-          }
+        # Prefer Apple toolchain for builds
+        if command -v xcrun &> /dev/null; then
+          export CC="$(xcrun --find clang)"
+          export SDKROOT="$(xcrun --show-sdk-path)"
+          export LIBRARY_PATH="$SDKROOT/usr/lib"
         fi
 
-        # macOS-specific configuration
-        if [[ "$(uname)" == "Darwin" ]]; then
-          # Prefer Apple toolchain for builds
-          if command -v xcrun &> /dev/null; then
-            export CC="$(xcrun --find clang)"
-            export SDKROOT="$(xcrun --show-sdk-path)"
-            export LIBRARY_PATH="$SDKROOT/usr/lib"
-          fi
-
-          # Docker/Colima configuration
-          unset DOCKER_HOST
-          # DOCKER_CONTEXT removed - switch contexts manually based on project needs
-          # Use: docker context use colima (ARM) or docker context use colima-x86 (x86_64)
-
-          # Load Context7 API key from macOS Keychain
-          if command -v security &> /dev/null; then
-            CONTEXT7_KEY=$(security find-generic-password -a "$USER" -s "context7-api-key" -w 2>/dev/null || echo "")
-            if [[ -n "$CONTEXT7_KEY" ]]; then
-              export CONTEXT7_API_KEY="$CONTEXT7_KEY"
-            fi
+        # Load Context7 API key from macOS Keychain
+        if command -v security &> /dev/null; then
+          CONTEXT7_KEY=$(security find-generic-password -a "$USER" -s "context7-api-key" -w 2>/dev/null || echo "")
+          if [[ -n "$CONTEXT7_KEY" ]]; then
+            export CONTEXT7_API_KEY="$CONTEXT7_KEY"
           fi
         fi
       ''

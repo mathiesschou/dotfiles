@@ -1,35 +1,43 @@
 {
   description = "mathies schous config for macos.";
 
+  # dependencies pulled in
   inputs = {
+    # packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    # configuring macOS settings declaratively
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # setting up configurations, and environment variables 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # homebrew for macOS 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
+    # menu bar for nixOS
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # for nixOS intall (homebrew install for macOS)
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
+  # what is produced from the inputs
   outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, noctalia, zen-browser }:
     let
-      # Overlay to fix direnv build on darwin (fish tests are broken)
+      # custom overlay to fix direnv build on darwin (fish tests are broken)
       darwinOverlay = final: prev: {
         direnv = prev.direnv.overrideAttrs (old: {
           doCheck = false;
@@ -81,10 +89,10 @@
       darwinConfigurations."mathies-macos" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          # Apply overlay to fix direnv
+          # apply overlay to fix direnv
           { nixpkgs.overlays = [ darwinOverlay ]; }
 
-          # nix-darwin configuration
+          # system configuration (default.nix)
           ./hosts/darwin
 
           # nix-homebrew
