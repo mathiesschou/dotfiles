@@ -70,6 +70,7 @@ Do NOT install Homebrew manually — nix-homebrew handles it automatically.
 ```sh
 sudo nix run nix-darwin -- switch --flake ~/dotfiles#mathies-macos
 ```
+
 ``
 
 **Note:** If Codex or MCP servers fail to install, remove the marker files and rebuild:
@@ -131,9 +132,10 @@ Open Flow and configure work/break intervals and appearance manually.
 
 Open Flashspace and Rectangle and configure windows.
 
-Flashspace: 6-6 workspaces: navigate spaces with opt + number, and automate open. 
-Rectangle: Check `rectangle.png` in this repo and copy setting. 
-- Make both launch at login. 
+Flashspace: 6-6 workspaces: navigate spaces with opt + number, and automate open.
+Rectangle: Check `rectangle.png` in this repo and copy setting.
+
+- Make both launch at login.
 
 ## 16. Configure menu bar items
 
@@ -141,3 +143,7 @@ Manually hide unwanted menu bar icons in each app's settings.
 
 ## 17. Add dotfiles to Finder's favourite list (and others)
 
+## 18. Add Gmail, and Outlook
+
+- Add gmail to mail
+- Add outlook to mail
