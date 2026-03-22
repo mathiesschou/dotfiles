@@ -48,7 +48,7 @@
   # system defaults
   system.defaults = {
     NSGlobalDomain = {
-      _HIHideMenuBar = true;
+      _HIHideMenuBar = false;
       KeyRepeat = 2;
       InitialKeyRepeat = 20;
       "com.apple.trackpad.scaling" = 1.5;
@@ -140,8 +140,8 @@
       /usr/bin/xattr -cr /Applications/Flux.app 2>/dev/null || true
 
       # Add f.lux to Login Items if not already there
-      /usr/bin/sudo -u mathies /usr/bin/osascript -e 'tell application "System Events" to delete login item "Flux"' 2>/dev/null || true
-      /usr/bin/sudo -u mathies /usr/bin/osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Flux.app", hidden:false}' 2>/dev/null || true
+      /usr/bin/sudo -u mathies /usr/bin/osascript -e 'tell application "System Events" to delete login item "Flux"' &>/dev/null || true
+      /usr/bin/sudo -u mathies /usr/bin/osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Flux.app", hidden:false}' &>/dev/null || true
       echo "f.lux added to Login Items"
     fi
 
