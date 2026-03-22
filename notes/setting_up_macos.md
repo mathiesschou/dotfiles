@@ -35,7 +35,7 @@ sudo scutil --set ComputerName mathies-macos
 
 ## 3. Log in to App Store
 
-Open App Store to log in before rebuilding, otherwise App Store apps will not install.
+Open App Store to Log in before rebuilding, otherwise App Store apps will not install.
 
 ## 4. Install Nix
 
@@ -139,7 +139,9 @@ Open Flow and configure work/break intervals and appearance manually.
 Open Flashspace and Rectangle and configure windows.
 
 Flashspace: 6-6 workspaces: navigate spaces with opt + number, and automate open.
-Rectangle: Check `rectangle.png` in this repo and copy setting.
+
+- Focus manager on and add hotkeys opt w + q for going back and forth.
+  Rectangle: Check `rectangle.png` in this repo and copy setting.
 
 - Make both launch at login.
 
