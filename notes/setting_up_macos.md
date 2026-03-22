@@ -79,7 +79,7 @@ rm ~/.ai-tools-setup-done ~/.claude-mcp-setup-done ~/.codex-mcp-setup-done
 dr
 ```
 
-## 8.5. Initialize theme system
+## 8. Initialize theme system
 
 - `light` — Switch to Catppuccin Latte (light theme)
 - `dark` — Switch to Catppuccin Mocha (dark theme)
@@ -115,6 +115,10 @@ Replace `YOUR_API_KEY` with the actual key from the dashboard.
 
 **Note:** `serena` and `sequential-thinking` MCP servers don't require API keys and will work automatically.
 
+## 11. Zen Browser
+
+Setup Zen as default browser and log in for sync
+
 ## 12. Enable Adguard
 
 Go to **System Settings → Extensions** and enable Adguard.
@@ -127,6 +131,13 @@ Open Flow and configure work/break intervals and appearance manually.
 
 Open Flashspace and Rectangle and configure windows.
 
+Flashspace: 6-6 workspaces: navigate spaces with opt + number, and automate open. 
+Rectangle: Check `rectangle.png` in this repo and copy setting. 
+- Make both launch at login. 
+
 ## 16. Configure menu bar items
 
 Manually hide unwanted menu bar icons in each app's settings.
+
+## 17. Add dotfiles to Finder's favourite list (and others)
+

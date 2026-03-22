@@ -23,6 +23,9 @@
       # Essential tools
       direnv
 
+      # Lua
+      lua-language-server # Lua LSP
+
       # Python
       python3
       pyright # Python LSP
@@ -39,6 +42,7 @@
       typescript
       typescript-language-server # TS/JS LSP
       nodePackages.prettier # Code formatter
+      nodePackages.svelte-language-server # Svelte LSP
 
       # C/C++
       clang-tools # Includes clangd LSP
@@ -53,6 +57,19 @@
 
       # C# / .NET
       omnisharp-roslyn # C# LSP (alternative to csharp-ls)
+
+      # Markdown
+      marksman # Markdown LSP
+
+      # JSON
+      nodePackages.vscode-langservers-extracted # Includes jsonls, html, css, eslint LSPs
+
+      # YAML
+      yaml-language-server # YAML LSP
+
+      # Docker
+      dockerfile-language-server-nodejs # Dockerfile LSP
+      docker-compose-language-service # docker-compose.yml LSP
     ];
 
     sessionVariables = {

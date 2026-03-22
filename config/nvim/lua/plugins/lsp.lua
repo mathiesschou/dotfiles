@@ -108,11 +108,11 @@ return {
 							formatting = {
 								command = { "nixpkgs-fmt" },
 							},
-						nix = {
-							flake = {
-								autoArchive = true,
+							nix = {
+								flake = {
+									autoArchive = true,
+								},
 							},
-						},
 						},
 					},
 				},
@@ -123,7 +123,13 @@ return {
 					},
 				},
 				svelte = {},
-				csharp_ls = {},
+				omnisharp = {}, -- C# LSP
+				marksman = {}, -- Markdown LSP
+				sourcekit = {}, -- Swift LSP
+				sqls = {}, -- SQL LSP
+				yamlls = {}, -- YAML LSP
+				dockerls = {}, -- Dockerfile LSP
+				docker_compose_language_service = {}, -- docker-compose.yml LSP
 			}
 
 			-- Setup all servers
