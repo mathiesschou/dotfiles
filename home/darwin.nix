@@ -68,7 +68,7 @@
       yaml-language-server # YAML LSP
 
       # Docker
-      dockerfile-language-server-nodejs # Dockerfile LSP
+      dockerfile-language-server # Dockerfile LSP
       docker-compose-language-service # docker-compose.yml LSP
     ];
 

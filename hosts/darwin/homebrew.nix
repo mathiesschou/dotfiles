@@ -20,11 +20,9 @@
       "orbstack"
       "flashspace"
       "rectangle"
-      "ffmpeg"
     ];
 
     taps = [
-      "acsandmann/tap"
     ];
 
     brews = [
@@ -33,6 +31,7 @@
       "syncthing"
       "dotnet" # for job
       "postgresql@17"
+      "ffmpeg"
     ];
 
     masApps = {
