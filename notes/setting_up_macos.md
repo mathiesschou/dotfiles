@@ -122,10 +122,6 @@ Replace `YOUR_API_KEY` with the actual key from the dashboard.
 
 **Note:** `serena` and `sequential-thinking` MCP servers don't require API keys and will work automatically.
 
-## 11. Zen Browser
-
-Setup Zen as default browser and log in for sync
-
 ## 12. Enable Adguard
 
 Go to **System Settings → Extensions** and enable Adguard.

@@ -12,7 +12,6 @@
       "adguard"
       "flux-app"
       "font-commit-mono"
-      "zen"
       "discord"
       "drawio"
       "dotnet-sdk" # for job 

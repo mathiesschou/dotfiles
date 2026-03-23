@@ -1,8 +1,8 @@
 # dotfiles
 
 ## todos
-- [ ] persistent spaces configutation in zen browse. 
-- [ ] clean up and fix nixOS vm and physical host 
+
+- [ ] clean up and fix nixOS vm and physical host
 
 ## MacOs
 

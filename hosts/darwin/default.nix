@@ -73,7 +73,7 @@
       # apps in dock
       persistent-apps = [
         "/Applications/Ghostty.app"
-        "/Applications/Zen.app"
+        "/Applications/Safari.app/"
       ];
 
       persistent-others = [
