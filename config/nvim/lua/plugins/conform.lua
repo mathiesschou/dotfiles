@@ -43,7 +43,7 @@ return {
       python = { "isort", "black" },
 
       -- Nix (nil_ls)
-      nix = { "nixpkgs-fmt" },
+      nix = { "nixpkgs_fmt" },
 
       -- Svelte
       svelte = { "prettier", "prettierd" },
@@ -55,6 +55,9 @@ return {
     formatters = {
       prettier = {
         prepend_args = { "--print-width", "80" },
+      },
+      nixpkgs_fmt = {
+        command = "nixpkgs-fmt",
       },
     },
     format_on_save = {

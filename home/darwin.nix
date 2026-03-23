@@ -25,6 +25,7 @@
 
       # Lua
       lua-language-server # Lua LSP
+      stylua # Lua formatter
 
       # Python
       python3
@@ -42,6 +43,7 @@
       typescript
       typescript-language-server # TS/JS LSP
       nodePackages.prettier # Code formatter
+      prettierd # Faster prettier daemon
       nodePackages.svelte-language-server # Svelte LSP
 
       # C/C++
