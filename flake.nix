@@ -42,7 +42,7 @@
       # NixOS configuration (ThinkPad P50)
       nixosConfigurations."thinkpad-p50" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit noctalia zen-browser; };
+        specialArgs = { inherit noctalia; };
         modules = [
           ./hosts/thinkpad-p50/configuration.nix
 
