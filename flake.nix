@@ -29,7 +29,7 @@
   };
 
   # what is produced from the inputs
-  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, noctalia, zen-browser }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, noctalia }:
     let
       # custom overlay to fix direnv build on darwin (fish tests are broken)
       darwinOverlay = final: prev: {
