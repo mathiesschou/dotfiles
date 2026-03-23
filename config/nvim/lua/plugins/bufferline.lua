@@ -2,7 +2,10 @@ return {
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"catppuccin/nvim",
+		},
 		event = "VeryLazy",
 		keys = {
 			{ "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin buffer" },

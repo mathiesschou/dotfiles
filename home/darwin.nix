@@ -58,6 +58,7 @@
       sourcekit-lsp # Swift LSP
 
       # C# / .NET
+      dotnet-sdk_10 # .NET 10 SDK (required for omnisharp and your project)
       omnisharp-roslyn # C# LSP (alternative to csharp-ls)
 
       # Markdown

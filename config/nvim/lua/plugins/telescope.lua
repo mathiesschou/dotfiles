@@ -13,6 +13,15 @@ return {
     },
     opts = {
       defaults = {
+        layout_strategy = "horizontal",
+        layout_config = {
+          width = 0.8,           -- 80% of screen width
+          height = 0.75,         -- 75% of screen height
+          preview_width = 0.5,   -- Preview takes 50% of popup width
+          horizontal = {
+            preview_cutoff = 100,
+          },
+        },
         mappings = {
           i = {
             ["<C-j>"] = "move_selection_next",
