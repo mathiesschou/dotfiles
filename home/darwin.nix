@@ -34,10 +34,9 @@
       isort # Python import sorter
 
       # Rust
-      rustc
-      cargo
-      rust-analyzer # Rust LSP
-      rustfmt # Rust formatter
+      (rust-bin.stable.latest.default.override {
+        extensions = [ "rust-src" "rust-analyzer" ];
+      })
 
       # TypeScript/JavaScript
       typescript
@@ -57,9 +56,7 @@
       swift # Swift compiler
       sourcekit-lsp # Swift LSP
 
-      # C# / .NET
-      dotnet-sdk_10 # .NET 10 SDK (required for omnisharp and your project)
-      omnisharp-roslyn # C# LSP (alternative to csharp-ls)
+      # C# / .NET - Use Homebrew versions instead (nix versions have .NET path issues)
 
       # Markdown
       marksman # Markdown LSP

@@ -26,10 +26,15 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # what is produced from the inputs
-  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, noctalia }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, noctalia, rust-overlay }:
     let
       # custom overlay to fix direnv build on darwin (fish tests are broken)
       darwinOverlay = final: prev: {
@@ -84,7 +89,7 @@
         system = "aarch64-darwin";
         modules = [
           # apply overlay to fix direnv
-          { nixpkgs.overlays = [ darwinOverlay ]; }
+          { nixpkgs.overlays = [ darwinOverlay rust-overlay.overlays.default ]; }
 
           # system configuration (default.nix)
           ./hosts/darwin

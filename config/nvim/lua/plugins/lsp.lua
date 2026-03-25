@@ -125,7 +125,7 @@ return {
         svelte = {
           cmd = { "svelteserver", "--stdio" }
         },
-        omnisharp = {},                   -- C# LSP
+        -- omnisharp = {},  -- C# LSP (disabled - use Homebrew version if needed)
         marksman = {},                    -- Markdown LSP
         sourcekit = {},                   -- Swift LSP
         sqls = {},                        -- SQL LSP
