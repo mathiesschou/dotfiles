@@ -55,6 +55,7 @@
       # Swift
       swift # Swift compiler
       sourcekit-lsp # Swift LSP
+      swiftformat # Swift formatter
 
       # C# / .NET - Use Homebrew versions instead (nix versions have .NET path issues)
 

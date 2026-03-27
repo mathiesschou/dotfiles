@@ -48,6 +48,9 @@ return {
       -- Svelte
       svelte = { "prettier", "prettierd" },
 
+      -- Swift (swift/swift_format)
+      swift = { "swift", "swiftformat", stop_after_first = true },
+
       -- Extra
       markdown = { "prettier", "prettierd" },
       yaml = { "prettier", "prettierd" },
