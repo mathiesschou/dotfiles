@@ -53,9 +53,8 @@
       sqlite # SQLite database
 
       # Swift
-      swift # Swift compiler
-      sourcekit-lsp # Swift LSP
-      swiftformat # Swift formatter
+      swift # Swift compiler (for CLI tools)
+      swiftformat # Swift formatter (LSP from Xcode)
 
       # C# / .NET - Use Homebrew versions instead (nix versions have .NET path issues)
 

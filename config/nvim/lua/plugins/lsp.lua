@@ -127,7 +127,9 @@ return {
         },
         -- omnisharp = {},  -- C# LSP (disabled - use Homebrew version if needed)
         marksman = {},                    -- Markdown LSP
-        sourcekit = {},                   -- Swift LSP
+        sourcekit = {                     -- Swift LSP (use Xcode's version for Swift 6.3)
+          cmd = { "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp" },
+        },
         sqls = {},                        -- SQL LSP
         yamlls = {},                      -- YAML LSP
         dockerls = {},                    -- Dockerfile LSP

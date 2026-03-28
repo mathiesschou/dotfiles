@@ -48,8 +48,8 @@ return {
       -- Svelte
       svelte = { "prettier", "prettierd" },
 
-      -- Swift (swift/swift_format)
-      swift = { "swift", "swiftformat", stop_after_first = true },
+      -- Swift (swiftformat)
+      swift = { "swiftformat" },
 
       -- Extra
       markdown = { "prettier", "prettierd" },
