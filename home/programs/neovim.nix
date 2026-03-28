@@ -8,6 +8,11 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    # The Fix: Link against the system library and the CoreFoundation framework
+    NIX_LDFLAGS = "-L/usr/lib -lSystem -F${pkgs.darwin.apple_sdk.frameworks.CoreFoundation}/Library/Frameworks";
+
+    # Ensure C-based crates can find libiconv
+    LIBRARY_PATH = "${pkgs.libiconv}/lib";
   };
 
   # symlink neovim configuration directory

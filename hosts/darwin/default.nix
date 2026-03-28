@@ -25,6 +25,7 @@
     typst # typst
     tinymist # typst related tools
     websocat # typst related tools
+    libiconv
   ];
 
   nixpkgs.config.allowUnfree = true; # proprietary software allow
