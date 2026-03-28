@@ -26,9 +26,6 @@
     tinymist # typst related tools
     websocat # typst related tools
     libiconv
-    darwin.apple_sdk.frameworks.CoreFoundation
-    darwin.apple_sdk.frameworks.Security
-    darwin.apple_sdk.frameworks.SystemConfiguration
   ];
 
   nixpkgs.config.allowUnfree = true; # proprietary software allow

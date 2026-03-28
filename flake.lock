@@ -91,33 +91,12 @@
         "type": "github"
       }
     },
-    "noctalia": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1768920407,
-        "narHash": "sha256-fXPz9SuD/NTUB4UHeAw0jXZUrexEzMe6qbnOZrbyHz8=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
-        "rev": "ece8af751fec32876914a99c8e10d91de6159647",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "noctalia": "noctalia",
         "rust-overlay": "rust-overlay"
       }
     },
