@@ -39,7 +39,8 @@
   environment.variables = {
     CC = "${pkgs.clang}/bin/clang";
     CXX = "${pkgs.clang}/bin/clang++";
-    NIX_LDFLAGS = "-L/usr/lib -lSystem -F${pkgs.darwin.apple_sdk.frameworks.CoreFoundation}/Library/Frameworks";
+    # Fix Rust/C linking on macOS
+    RUSTFLAGS = "-L/usr/lib";
   };
 
   # system defaults

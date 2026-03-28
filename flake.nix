@@ -18,14 +18,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # homebrew for macOS 
+    # homebrew for macOS
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-
-    # menu bar for nixOS
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -34,7 +28,7 @@
   };
 
   # what is produced from the inputs
-  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, noctalia, rust-overlay }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, rust-overlay }:
     let
       # custom overlay to fix direnv build on darwin (fish tests are broken)
       darwinOverlay = final: prev: {
@@ -44,46 +38,6 @@
       };
     in
     {
-      # NixOS configuration (ThinkPad P50)
-      nixosConfigurations."thinkpad-p50" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit noctalia; };
-        modules = [
-          ./hosts/thinkpad-p50/configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              extraSpecialArgs = { hostName = "thinkpad-p50"; };
-              users.mathies = import ./home/nixos.nix;
-            };
-          }
-        ];
-      };
-
-      # NixOS configuration (VM)
-      nixosConfigurations."nixos-dev" = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        specialArgs = { inherit noctalia; };
-        modules = [
-          ./hosts/nixos/configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              extraSpecialArgs = { hostName = "nixos-dev"; };
-              users.mathies = import ./home/nixos.nix;
-            };
-          }
-        ];
-      };
-
       # macOS configuration (nix-darwin + home-manager)
       darwinConfigurations."mathies-macos" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
