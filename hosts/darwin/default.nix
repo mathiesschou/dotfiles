@@ -26,24 +26,20 @@
     tinymist # typst related tools
     websocat # typst related tools
     libiconv
+    darwin.apple_sdk.frameworks.CoreFoundation
+    darwin.apple_sdk.frameworks.Security
+    darwin.apple_sdk.frameworks.SystemConfiguration
   ];
 
   nixpkgs.config.allowUnfree = true; # proprietary software allow
   nixpkgs.config.allowUnsupportedSystem = true; # packages not tested on ARM
   nix.enable = false; # disable managing nix daemon, as it is already installed 
 
-  # Apple's API dependencides for compiling some packages.  
-  nixpkgs.config.darwin.apple_sdk.frameworks = [
-    "Security"
-    "CoreFoundation"
-    "Foundation"
-    "Iconv"
-  ];
-
   # set environment variables
   environment.variables = {
     CC = "${pkgs.clang}/bin/clang";
     CXX = "${pkgs.clang}/bin/clang++";
+    NIX_LDFLAGS = "-L/usr/lib -lSystem -F${pkgs.darwin.apple_sdk.frameworks.CoreFoundation}/Library/Frameworks";
   };
 
   # system defaults
