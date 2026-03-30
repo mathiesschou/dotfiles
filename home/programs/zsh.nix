@@ -8,14 +8,14 @@
     enable = true;
     settings = {
       add_newline = false;
-      format = "$directory$git_branch$git_status$character";
+      format = "$directory$git_branch$git_status$python$character";
       directory = {
         style = "blue";
         truncation_length = 3;
       };
       git_branch = {
         style = "purple";
-        format = "[$branch]($style) ";
+        format = "[[$branch]]($style) ";
       };
       git_status = {
         style = "red";
@@ -24,6 +24,11 @@
       character = {
         success_symbol = "[❯](green)";
         error_symbol = "[❯](red)";
+      };
+      python = {
+        style = "yellow";
+        format = "[$virtualenv]($style) ";
+        symbol = "";
       };
     };
   };
