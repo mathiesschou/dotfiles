@@ -15,7 +15,7 @@
       };
       git_branch = {
         style = "purple";
-        format = "([$branch])($style) ";
+        format = "[$branch]($style) ";
       };
       git_status = {
         style = "red";

@@ -14,10 +14,11 @@
       "font-commit-mono"
       "discord"
       "drawio"
-      "dotnet-sdk" # for job 
+      "dotnet-sdk" # for job
       "orbstack"
       "flashspace"
       "rectangle"
+      "mactex-no-gui" # for manim LaTeX rendering
     ];
 
     taps = [
@@ -30,6 +31,8 @@
       "dotnet" # for job
       "postgresql@17"
       "ffmpeg"
+      "cairo"
+      "pkg-config"
     ];
 
     masApps = {
