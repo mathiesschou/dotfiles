@@ -1,9 +1,7 @@
 { pkgs, config, ... }:
 
 {
-  # Create default theme symlink (dark theme by default)
-  home.file.".config/tmux/theme.conf".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux/theme-dark.conf";
+  # Note: theme.conf is managed by switch-theme.sh script, not by Nix
 
   programs.tmux = {
     enable = true;
