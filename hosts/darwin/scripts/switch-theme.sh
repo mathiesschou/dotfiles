@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Switch macOS theme between light (latte) and dark (mocha)
-# macOS-only simplified version
 
 set -euo pipefail
 
@@ -25,9 +24,12 @@ case "$VARIANT" in
     dark|mocha|true|1)
         VARIANT="mocha"
         ;;
+    frappe|frappé)
+        VARIANT="frappe"
+        ;;
     *)
         echo "Error: Unknown variant '$VARIANT'"
-        echo "Valid variants: latte, mocha, light, dark"
+        echo "Valid variants: latte, mocha, frappe, light, dark"
         exit 1
         ;;
 esac
@@ -54,6 +56,10 @@ case "$VARIANT" in
     mocha)
         GHOSTTY_THEME="catppuccin-mocha"
         TMUX_THEME="theme-dark.conf"
+        ;;
+    frappe)
+        GHOSTTY_THEME="catppuccin-frappe"
+        TMUX_THEME="theme-frappe.conf"
         ;;
 esac
 

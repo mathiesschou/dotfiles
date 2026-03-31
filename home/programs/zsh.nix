@@ -89,6 +89,7 @@ EOF
         # Theme switching
         alias light='~/dotfiles/hosts/darwin/scripts/switch-theme.sh latte'
         alias dark='~/dotfiles/hosts/darwin/scripts/switch-theme.sh mocha'
+        alias frappe='~/dotfiles/hosts/darwin/scripts/switch-theme.sh frappe'
 
         # Add Homebrew to PATH
         export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
