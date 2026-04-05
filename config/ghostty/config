@@ -1,4 +1,4 @@
-theme = "catppuccin-latte"
+theme = "catppuccin-frappe"
 
 # Font
 font-family = "Commit Mono"
@@ -12,8 +12,8 @@ cursor-style-blink = true
 window-padding-x = 10
 window-padding-y = 10
 window-decoration = true
-background-opacity = 0.85
-background-blur-radius = 20
+# background-opacity = 0.85
+# background-blur-radius = 20
 
 # Other
 macos-option-as-alt = false 

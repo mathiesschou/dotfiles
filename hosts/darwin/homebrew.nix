@@ -19,6 +19,7 @@
       "flashspace"
       "rectangle"
       "mactex-no-gui" # for manim LaTeX rendering
+      "obsidian"
     ];
 
     taps = [

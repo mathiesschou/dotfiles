@@ -36,6 +36,12 @@ return {
         ["h"] = "close_node",
         ["s"] = "open_split",
         ["v"] = "open_vsplit",
+        [">"] = function()
+          vim.cmd("vertical resize +5")
+        end,
+        ["<"] = function()
+          vim.cmd("vertical resize -5")
+        end,
       },
     },
     default_component_configs = {
