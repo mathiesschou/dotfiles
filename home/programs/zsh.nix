@@ -53,6 +53,7 @@
         # Aliases
         alias ll='ls -lah'
         alias la='ls -a'
+        alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 
         # Create dev flake template
         mkflake() {
