@@ -20,7 +20,6 @@
     nil
     nixpkgs-fmt
     nodejs_20 # mcp servers
-    claude-code # antrophic cli
     postgresql #database
     typst # typst
     tinymist # typst related tools
