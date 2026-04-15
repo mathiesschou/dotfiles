@@ -7,7 +7,6 @@
 
   # system-wide packages
   environment.systemPackages = with pkgs; [
-    neovim
     git
     tree
     ripgrep
@@ -16,15 +15,11 @@
     clang
     lazygit
     fzf
-    tree-sitter
-    nil
+    nixd
     nixpkgs-fmt
-    nodejs_20 # mcp servers
-    postgresql #database
-    typst # typst
-    tinymist # typst related tools
-    websocat # typst related tools
-    libiconv
+    typst
+    tinymist
+    websocat
   ];
 
   nixpkgs.config.allowUnfree = true; # proprietary software allow
@@ -34,9 +29,6 @@
   # set environment variables
   environment.variables = {
     CC = "${pkgs.clang}/bin/clang";
-    CXX = "${pkgs.clang}/bin/clang++";
-    # Fix Rust/C linking on macOS
-    RUSTFLAGS = "-L/usr/lib";
   };
 
   # system defaults
@@ -115,13 +107,6 @@
     # Apply settings immediately
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
-    # install rosetts if not installed
-    if [[ $(uname -m) == "arm64" ]] && ! /usr/bin/pgrep -q oahd; then
-      echo "Installing Rosetta 2"
-      /usr/sbin/softwareupdate --install-rosetta --agree-to-license
-    fi
-
-
     echo "set ghostty as default terminal"
     /usr/bin/sudo -u mathiesschou /usr/bin/env HOME=/Users/mathiesschou /bin/bash ${./scripts/set-default-terminal.sh}
 
@@ -142,112 +127,6 @@
     echo "setting wallpaper"
     /usr/bin/sudo -u mathiesschou /usr/bin/osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"/Users/mathiesschou/dotfiles/wallpapers/airballons.jpg\""
 
-    # Install Codex and setup MCP servers
-    # Note: Requires Node.js to be available (install via project flake or globally if needed)
-    /usr/bin/sudo -u mathiesschou /usr/bin/env HOME=/Users/mathiesschou /bin/bash -c '
-      # Setup npm global directory
-      mkdir -p $HOME/.npm-global
-      mkdir -p $HOME/.npm-global/lib
-
-      # Configure npm
-      echo "prefix=$HOME/.npm-global" > $HOME/.npmrc
-
-      # Ensure config directories exist
-      mkdir -p $HOME/.config/claude
-      mkdir -p $HOME/.config/codex
-
-      MARKER="$HOME/.ai-tools-setup-done"
-      if [ ! -f "$MARKER" ]; then
-        echo "Installing Codex..."
-
-        # Use npm from PATH (requires Node.js to be available)
-        if command -v npm >/dev/null 2>&1 && npm install -g @openai/codex 2>&1; then
-          echo "codex installed successfully"
-          touch "$MARKER"
-        else
-          echo "codex installation failed"
-          echo "you may need to run: npm install -g @openai/codex"
-        fi
-      fi
-
-      CLAUDE_MARKER="$HOME/.claude-mcp-setup-done"
-      if [ ! -f "$CLAUDE_MARKER" ]; then
-        echo "setting up Claude MCP servers..."
-
-        # Add serena
-        OUTPUT=$(${pkgs.claude-code}/bin/claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server 2>&1)
-        if echo "$OUTPUT" | grep -q "already exists"; then
-          echo "claude: serena (already configured)"
-        elif [ $? -eq 0 ]; then
-          echo "claude: serena added"
-        else
-          echo "claude: serena failed"
-        fi
-
-        # Add sequential-thinking
-        OUTPUT=$(${pkgs.claude-code}/bin/claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking 2>&1)
-        if echo "$OUTPUT" | grep -q "already exists"; then
-          echo "claude: sequential-thinking (already configured)"
-        elif [ $? -eq 0 ]; then
-          echo "claude: sequential-thinking added"
-        else
-          echo "claude: sequential-thinking failed"
-        fi
-
-        # Add context7
-        OUTPUT=$(${pkgs.claude-code}/bin/claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp 2>&1)
-        if echo "$OUTPUT" | grep -q "already exists"; then
-          echo "claude: context7 (already configured)"
-        elif [ $? -eq 0 ]; then
-          echo "claude: context7 added"
-        else
-          echo "claude: context7 failed"
-        fi
-
-        touch "$CLAUDE_MARKER"
-      fi
-
-      CODEX_MARKER="$HOME/.codex-mcp-setup-done"
-      if [ ! -f "$CODEX_MARKER" ]; then
-        echo "setting up Codex MCP servers..."
-
-        if [ ! -f "$HOME/.npm-global/bin/codex" ]; then
-          echo "codex not found at $HOME/.npm-global/bin/codex, skipping MCP setup"
-        else
-          # Add serena
-          OUTPUT=$($HOME/.npm-global/bin/codex mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server 2>&1)
-          if echo "$OUTPUT" | grep -q "already exists"; then
-            echo "codex: serena (already configured)"
-          elif echo "$OUTPUT" | grep -q "Added"; then
-            echo "codex: serena added"
-          else
-            echo "codex: serena failed"
-          fi
-
-          # Add sequential-thinking
-          OUTPUT=$($HOME/.npm-global/bin/codex mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking 2>&1)
-          if echo "$OUTPUT" | grep -q "already exists"; then
-            echo "codex: sequential-thinking (already configured)"
-          elif echo "$OUTPUT" | grep -q "Added"; then
-            echo "codex: sequential-thinking added"
-          else
-            echo "codex: sequential-thinking failed"
-          fi
-
-          # Add context7
-          OUTPUT=$($HOME/.npm-global/bin/codex mcp add context7 -- npx -y @upstash/context7-mcp 2>&1)
-          if echo "$OUTPUT" | grep -q "already exists"; then
-            echo "codex: context7 (already configured)"
-          elif echo "$OUTPUT" | grep -q "Added"; then
-            echo "codex: context7 added"
-          else
-            echo "codex: context7 failed"
-          fi
-        fi
-
-        touch "$CODEX_MARKER"
-      fi
-    ' || true
   '';
 
   nixpkgs.hostPlatform = "aarch64-darwin";

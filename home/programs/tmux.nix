@@ -17,15 +17,7 @@
     # Start window/pane numbering at 1
     baseIndex = 1;
 
-    # Plugins
-    plugins = with pkgs.tmuxPlugins; [
-      vim-tmux-navigator
-    ];
-
     extraConfig = ''
-      # Faster escape for vim
-      set -g escape-time 0
-
       # Automatically renumber windows when one is closed
       set -g renumber-windows on
 
@@ -36,30 +28,21 @@
       # Terminal colors
       set -ag terminal-overrides ",xterm-256color:RGB"
 
-      # Vim-style pane navigation
-      bind-key h select-pane -L
-      bind-key j select-pane -D
-      bind-key k select-pane -U
-      bind-key l select-pane -R
-
-      # Pane resizing med prefix + H/J/K/L (repeatable)
-      bind -r H resize-pane -L 5
-      bind -r J resize-pane -D 5
-      bind -r K resize-pane -U 5
-      bind -r L resize-pane -R 5
-
       # Status bar at top
       set -g status-position top
 
-      # Theme: Dynamic based on ~/.config/tmux/theme.conf
+      # Theme: Catppuccin Latte
       set -g pane-border-lines simple
       set -g status-left ""
       set -g window-status-format "•"
       set -g window-status-current-format "•"
-
-      # Source theme file (will be symlinked by theme switcher)
-      # -q flag makes it optional (won't error if missing)
-      source-file -q ~/.config/tmux/theme.conf
+      set -g pane-border-style "fg=#ccd0da"
+      set -g pane-active-border-style "fg=#8839ef"
+      set -g status-style "bg=default,fg=#4c4f69"
+      set -g status-right "#[fg=#4c4f69]#S"
+      set -g window-status-style "fg=#9ca0b0"
+      set -g window-status-current-style "#{?window_zoomed_flag,fg=#df8e1d,fg=#8839ef,nobold}"
+      set -g window-status-bell-style "fg=#d20f39,nobold"
 
       # Window navigation: Ctrl+Tab
       bind -n C-Tab next-window

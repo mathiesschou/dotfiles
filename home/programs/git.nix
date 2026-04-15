@@ -14,7 +14,7 @@
         autoSetupRemote = true;
       };
       core = {
-        editor = "nvim";
+        editor = "zed --wait";
         autocrlf = "input";
       };
       color.ui = "auto";

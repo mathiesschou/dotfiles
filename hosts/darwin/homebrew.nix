@@ -14,26 +14,21 @@
       "font-commit-mono"
       "discord"
       "drawio"
-      "dotnet-sdk" # for job
+      "dotnet-sdk"
       "orbstack"
       "flashspace"
       "rectangle"
-      "mactex-no-gui" # for manim LaTeX rendering
-      "obsidian"
+      "obsidian" # temp untill summer.
     ];
 
     taps = [
     ];
 
     brews = [
-      "uv"
+      "uv" # venv
       "mas"
-      "syncthing"
-      "dotnet" # for job
+      "dotnet"
       "postgresql@17"
-      "ffmpeg"
-      "cairo"
-      "pkg-config"
     ];
 
     masApps = {
@@ -41,6 +36,7 @@
       "Flow" = 1423210932;
       "Keynote" = 409183694;
       "Numbers" = 409203825;
+      "Things" = 904280696;
       "Xcode" = 497799835;
     };
 
