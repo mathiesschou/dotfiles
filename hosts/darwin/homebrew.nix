@@ -6,6 +6,7 @@
 
     casks = [
       "ghostty"
+      "zed"	
       "zoom"
       "anki"
       "spotify"
