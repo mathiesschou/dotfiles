@@ -40,13 +40,13 @@
       set -g status-left ""
       set -g window-status-format "•"
       set -g window-status-current-format "•"
-      set -g pane-border-style "fg=#504945"
-      set -g pane-active-border-style "fg=#d79921"
-      set -g status-style "bg=default,fg=#ebdbb2"
-      set -g status-right "#[fg=#d79921]#S"
-      set -g window-status-style "fg=#928374"
-      set -g window-status-current-style "#{?window_zoomed_flag,fg=#fabd2f,fg=#d79921,nobold}"
-      set -g window-status-bell-style "fg=#fb4934,nobold"
+      set -g pane-border-style "fg=#625e5a"
+      set -g pane-active-border-style "fg=#c4b28a"
+      set -g status-style "bg=default,fg=#c5c9c5"
+      set -g status-right "#[fg=#c4b28a]#S"
+      set -g window-status-style "fg=#625e5a"
+      set -g window-status-current-style "#{?window_zoomed_flag,fg=#e6c384,fg=#c4b28a,nobold}"
+      set -g window-status-bell-style "fg=#c4746e,nobold"
 
       # Pane resizing
       bind -r H resize-pane -L 5
