@@ -1,4 +1,4 @@
-theme = catppuccin-frappe
+theme = gruvbox-dark
 
 # Font
 font-family = "Commit Mono"

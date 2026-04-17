@@ -40,13 +40,17 @@
       set -g status-left ""
       set -g window-status-format "•"
       set -g window-status-current-format "•"
-      set -g pane-border-style "fg=#ccd0da"
-      set -g pane-active-border-style "fg=#8839ef"
-      set -g status-style "bg=default,fg=#4c4f69"
-      set -g status-right "#[fg=#4c4f69]#S"
-      set -g window-status-style "fg=#9ca0b0"
-      set -g window-status-current-style "#{?window_zoomed_flag,fg=#df8e1d,fg=#8839ef,nobold}"
-      set -g window-status-bell-style "fg=#d20f39,nobold"
+      set -g pane-border-style "fg=#504945"
+      set -g pane-active-border-style "fg=#d79921"
+      set -g status-style "bg=default,fg=#ebdbb2"
+      set -g status-right "#[fg=#d79921]#S"
+      set -g window-status-style "fg=#928374"
+      set -g window-status-current-style "#{?window_zoomed_flag,fg=#fabd2f,fg=#d79921,nobold}"
+      set -g window-status-bell-style "fg=#fb4934,nobold"
+
+      # Pane resizing
+      bind -r H resize-pane -L 5
+      bind -r L resize-pane -R 5
 
       # Window navigation: Ctrl+Tab
       bind -n C-Tab next-window
