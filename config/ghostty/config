@@ -2,7 +2,7 @@ theme = kanagawa-dragon
 
 # Font
 font-family = "Commit Mono"
-font-size = 16
+font-size = 18
 
 # Cursor
 cursor-style = block
@@ -21,3 +21,7 @@ confirm-close-surface = false
 shell-integration-features = no-cursor
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+v=paste_from_clipboard
+keybind = alt+left=unbind
+keybind = alt+right=unbind
+keybind = alt+up=unbind
+keybind = alt+down=unbind

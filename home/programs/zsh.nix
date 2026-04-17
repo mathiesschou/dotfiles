@@ -81,6 +81,9 @@ EOF
       alias tl='tmux list-sessions'
       alias ta='tmux attach-session'
 
+      # c alias
+      alias clang=/usr/bin/clang
+
       # Add Homebrew to PATH
       export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
       export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"

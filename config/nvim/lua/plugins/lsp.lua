@@ -27,11 +27,10 @@ return {
           end
           map("gd", vim.lsp.buf.definition, "Go to definition")
           map("gD", vim.lsp.buf.declaration, "Go to declaration")
-          map("gr", vim.lsp.buf.references, "References")
+          map("gr", vim.lsp.buf.references, "List references")
           map("K", vim.lsp.buf.hover, "Hover docs")
-          map("<leader>rn", vim.lsp.buf.rename, "Rename")
-          map("<leader>ca", vim.lsp.buf.code_action, "Code action")
-          map("<leader>d", vim.diagnostic.open_float, "Diagnostics")
+          map("<leader>rn", vim.lsp.buf.rename, "Rename symbol")
+          map("<leader>d", vim.diagnostic.open_float, "Show line diagnostics")
           map("[d", vim.diagnostic.goto_prev, "Prev diagnostic")
           map("]d", vim.diagnostic.goto_next, "Next diagnostic")
         end,
