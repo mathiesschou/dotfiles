@@ -17,6 +17,16 @@
       git_status = {
         style = "red";
         format = "[$all_status$ahead_behind]($style) ";
+        conflicted = "conflict ";
+        ahead = "ahead:$\{count} ";
+        behind = "behind:$\{count} ";
+        diverged = "ahead:$\{ahead_count} behind:$\{behind_count} ";
+        untracked = "untracked:$\{count} ";
+        stashed = "stashed ";
+        modified = "modified:$\{count} ";
+        staged = "staged:$\{count} ";
+        renamed = "renamed:$\{count} ";
+        deleted = "deleted:$\{count} ";
       };
       character = {
         success_symbol = "[❯](green)";
