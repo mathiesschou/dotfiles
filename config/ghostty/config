@@ -1,4 +1,4 @@
-theme = dark:catppuccin-macchiato,light:catppuccin-latte
+theme = catppuccin-frappe
 
 # Font
 font-family = "Commit Mono"
