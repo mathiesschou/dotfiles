@@ -17,6 +17,10 @@
     # Start window/pane numbering at 1
     baseIndex = 1;
 
+    plugins = with pkgs.tmuxPlugins; [
+      vim-tmux-navigator
+    ];
+
     extraConfig = ''
       # Automatically renumber windows when one is closed
       set -g renumber-windows on

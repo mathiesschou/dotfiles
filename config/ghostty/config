@@ -1,8 +1,8 @@
-theme = "catppuccin-latte"
+theme = dark:catppuccin-macchiato,light:catppuccin-latte
 
 # Font
 font-family = "Commit Mono"
-font-size = 18
+font-size = 16
 
 # Cursor
 cursor-style = block

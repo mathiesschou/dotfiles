@@ -30,6 +30,7 @@
       "mas"
       "dotnet"
       "postgresql@17"
+      "neovim"
     ];
 
     masApps = {
