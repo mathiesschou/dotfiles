@@ -12,19 +12,11 @@ return {
         "rust_analyzer",
         "ts_ls",
         "pyright",
-        "sourcekit",
       },
+      automatic_enable = true,
     },
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
-    config = function()
-      local lspconfig = require("lspconfig")
-      local servers = { "lua_ls", "rust_analyzer", "ts_ls", "pyright" }
-      for _, server in ipairs(servers) do
-        lspconfig[server].setup({})
-      end
-    end,
   },
 }

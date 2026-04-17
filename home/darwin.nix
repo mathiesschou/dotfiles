@@ -20,6 +20,7 @@
     packages = with pkgs; [
       swift
       swiftformat
+      nodejs
     ];
 
     sessionVariables = {
