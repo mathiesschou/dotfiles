@@ -10,7 +10,6 @@ return {
       ensure_installed = {
         "lua_ls",
         "rust_analyzer",
-        "ts_ls",
         "pyright",
         "clangd",
       },
@@ -20,6 +19,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
+      vim.lsp.config("sourcekit", {
+        cmd = { "xcrun", "sourcekit-lsp" },
+        filetypes = { "swift", "objc", "objcpp" },
+      })
+      vim.lsp.enable("sourcekit")
+
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
           local map = function(keys, func, desc)

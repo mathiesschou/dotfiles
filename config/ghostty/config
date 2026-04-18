@@ -16,7 +16,7 @@ window-decoration = true
 # background-blur-radius = 20
 
 # Other
-macos-option-as-alt = false
+macos-option-as-alt = true 
 confirm-close-surface = false
 shell-integration-features = no-cursor
 keybind = ctrl+shift+c=copy_to_clipboard
