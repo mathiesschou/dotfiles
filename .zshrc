@@ -23,3 +23,6 @@ alias tn='tmux new-session -s'
 alias tl='tmux list-sessions'
 alias ta='tmux attach-session'
 alias clang=/usr/bin/clang
+
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word

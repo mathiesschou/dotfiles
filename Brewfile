@@ -34,7 +34,8 @@ cask "orbstack"
 cask "flashspace"
 cask "rectangle"
 cask "obsidian"
-cask "excalidraw"
+cask "excalidrawz"
+cask "onyx"
 
 mas "Bear", id: 1091189122
 mas "Flow", id: 1423210932

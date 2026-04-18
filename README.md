@@ -1,9 +1,21 @@
 # dotfiles
 
-## MacOs
+Personal macOS dotfiles and bootstrap setup.
 
-My personal dotfiles for macOS and a reproducible NixOS dev environment.
+## Bootstrap
 
-Nix makes the entire system declarative and reproducible. One config file defines everything — packages, settings, dotfiles.
+Run the full bootstrap:
 
-This setup is tailored to my workflow and hardware. I'm currently using this on a Macbook Pro M4.
+```bash
+bash ~/dotfiles/bootstrap.sh
+```
+
+That installs your Brewfile packages, restores config links, applies macOS defaults, and checks SSH. Existing config files that get replaced are backed up to `~/.dotfiles-backups/<timestamp>`.
+
+If you only want to rerun part of the setup:
+
+```bash
+bash ~/dotfiles/bootstrap.sh --defaults
+```
+
+You can also use `--packages`, `--links`, `--ssh`, or `--all`.
