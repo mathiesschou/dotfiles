@@ -1,2 +1,0 @@
-#!/bin/bash
-borders active_color=0xffcc4444 inactive_color=0xff333333 width=10 style=round &
